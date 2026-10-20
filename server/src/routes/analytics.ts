@@ -147,40 +147,5 @@ router.get('/charts', authenticate, authorizeRoles('MANAGER', 'STAFF'), async (_
   }
 });
 
-// GET /api/analytics/schema (Live database table metrics & schema overview)
-router.get('/schema', authenticate, authorizeRoles('MANAGER'), async (_req: Request, res: Response) => {
-  try {
-    const counts = await query(`
-      SELECT 
-        (SELECT count(*) FROM sv_users)::int as users,
-        (SELECT count(*) FROM sv_products)::int as products,
-        (SELECT count(*) FROM sv_suppliers)::int as suppliers,
-        (SELECT count(*) FROM sv_orders)::int as orders,
-        (SELECT count(*) FROM sv_order_items)::int as order_items,
-        (SELECT count(*) FROM sv_purchase_orders)::int as purchase_orders,
-        (SELECT count(*) FROM sv_purchase_order_items)::int as purchase_order_items,
-        (SELECT count(*) FROM sv_shipments)::int as shipments,
-        (SELECT count(*) FROM sv_inventory_movements)::int as inventory_movements,
-        (SELECT count(*) FROM sv_restock_requests)::int as restock_requests,
-        (SELECT count(*) FROM sv_notifications)::int as notifications,
-        (SELECT count(*) FROM sv_audit_logs)::int as audit_logs;
-    `);
-
-    const dbStats = await query(`
-      SELECT 
-        current_database() as "databaseName",
-        version() as "version",
-        pg_size_pretty(pg_database_size(current_database())) as "databaseSize";
-    `);
-
-    return res.json({
-      counts: counts.rows[0],
-      db: dbStats.rows[0],
-    });
-  } catch (err: any) {
-    return res.status(500).json({ error: err.message });
-  }
-});
-
 export default router;
 

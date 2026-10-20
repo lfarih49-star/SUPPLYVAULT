@@ -18,8 +18,7 @@ import {
   CheckCircle,
   Building2,
   Boxes,
-  Compass,
-  Database
+  Compass
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { NotificationsPopover } from '../common/NotificationsPopover';
@@ -62,7 +61,6 @@ export const Shell: React.FC<ShellProps> = ({
           { id: 'orders', label: 'Buyer Orders', icon: ShoppingBag },
           { id: 'shipments', label: 'Logistics & Dispatch', icon: Truck },
           { id: 'reports', label: 'Enterprise Reports', icon: History },
-          { id: 'schema', label: 'Database & ER Schema', icon: Database },
           { id: 'audit', label: 'Audit Security Log', icon: ShieldCheck },
         ];
       case 'STAFF':
