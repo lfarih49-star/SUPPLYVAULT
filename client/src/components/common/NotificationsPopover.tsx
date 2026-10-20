@@ -85,14 +85,14 @@ export const NotificationsPopover: React.FC<NotificationsPopoverProps> = ({ isOp
       <div className="absolute right-0 mt-2 w-96 max-w-[calc(100vw-2rem)] bg-navy-900 border border-slate-800 rounded-2xl shadow-2xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
         <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-navy-950/80">
           <div className="flex items-center gap-2">
-            <Bell className="w-4 h-4 text-gold-500" />
+            <Bell className="w-4 h-4 text-emerald-400" />
             <span className="text-sm font-bold text-slate-100">
               Notification Centre
             </span>
           </div>
           <button
             onClick={markAllAsRead}
-            className="text-xs text-gold-400 hover:text-gold-300 flex items-center gap-1 font-medium transition-colors"
+            className="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 font-medium transition-colors"
           >
             <CheckCheck className="w-3.5 h-3.5" />
             Mark all read
@@ -114,7 +114,7 @@ export const NotificationsPopover: React.FC<NotificationsPopoverProps> = ({ isOp
                 className={`p-3.5 flex gap-3 items-start transition-colors cursor-pointer ${
                   n.read
                     ? 'bg-transparent opacity-75 hover:bg-navy-800/40'
-                    : 'bg-gold-950/20 hover:bg-gold-950/30'
+                    : 'bg-emerald-950/20 hover:bg-emerald-950/30'
                 }`}
               >
                 {getIcon(n.type)}
@@ -132,7 +132,7 @@ export const NotificationsPopover: React.FC<NotificationsPopoverProps> = ({ isOp
                   </p>
                 </div>
                 {!n.read && (
-                  <span className="w-2 h-2 rounded-full bg-gold-500 shrink-0 mt-1" />
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0 mt-1" />
                 )}
               </div>
             ))

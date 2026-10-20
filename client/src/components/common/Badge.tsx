@@ -15,6 +15,7 @@ export const Badge: React.FC<BadgeProps> = ({
 }) => {
   const styles = {
     gold: 'bg-emerald-950/60 text-emerald-300 border-emerald-800/80',
+    emerald: 'bg-emerald-950/60 text-emerald-300 border-emerald-800/80',
     teal: 'bg-teal-950/60 text-teal-300 border-teal-800/80',
     blue: 'bg-blue-950/60 text-blue-300 border-blue-800/80',
     success: 'bg-emerald-950/60 text-emerald-300 border-emerald-800/80',
@@ -24,7 +25,8 @@ export const Badge: React.FC<BadgeProps> = ({
   };
 
   const dotColors = {
-    gold: 'bg-gold-500',
+    gold: 'bg-emerald-500',
+    emerald: 'bg-emerald-500',
     teal: 'bg-teal-500',
     blue: 'bg-blue-500',
     success: 'bg-emerald-500',

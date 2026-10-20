@@ -127,7 +127,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
   if (loading || !kpis) {
     return (
       <div className="p-12 text-center text-slate-400">
-        <div className="w-8 h-8 border-2 border-gold-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+        <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
         <p className="text-xs uppercase tracking-widest font-semibold">Loading Executive Command Centre...</p>
       </div>
     );
@@ -142,7 +142,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
             <h1 className="text-2xl font-black text-slate-100 tracking-tight">
               Executive Command Centre
             </h1>
-            <Badge variant="gold" size="sm">Active Oversight</Badge>
+            <span className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Operational Active</span>
           </div>
           <p className="text-xs text-slate-400 mt-1">
             Real-time supply chain operational metrics, inventory valuation, and procurement approvals.
@@ -155,12 +155,12 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
             download
             className="px-3.5 py-2 text-xs font-semibold bg-navy-900 border border-slate-700 hover:bg-navy-800 text-slate-200 rounded-xl shadow-sm flex items-center gap-2 transition-all"
           >
-            <FileDown className="w-4 h-4 text-gold-500" />
+            <FileDown className="w-4 h-4 text-emerald-400" />
             Export Inventory CSV
           </a>
           <button
             onClick={() => onNavigateTab('products')}
-            className="px-3.5 py-2 text-xs font-semibold bg-navy-900 hover:bg-navy-800 text-gold-400 border border-gold-500/30 rounded-xl shadow-md flex items-center gap-1.5 transition-all"
+            className="px-3.5 py-2 text-xs font-semibold bg-emerald-500 hover:bg-emerald-400 text-navy-950 rounded-xl shadow-sm flex items-center gap-1.5 transition-all"
           >
             Manage Products
           </button>
@@ -169,79 +169,84 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
 
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Total Inventory Valuation INR */}
-        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm relative overflow-hidden group">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Inventory Valuation</span>
-            <div className="p-2 rounded-xl bg-gold-50 dark:bg-gold-950/40 text-gold-600 dark:text-gold-400">
+        {/* Card 1: Inventory Valuation */}
+        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 hover:border-slate-700/80 transition-all space-y-3 shadow-sm">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Inventory Valuation</span>
+            <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">
               <TrendingUp className="w-4 h-4" />
             </div>
           </div>
-          <h2 className="text-2xl font-extrabold text-slate-100 font-mono tracking-tight">
-            {formatINR(kpis.inventoryValuationINR)}
-          </h2>
-          <div className="flex items-center justify-between text-[11px] text-slate-500 mt-2">
-            <span>Physical: <b className="text-slate-300 font-mono">{kpis.physicalStockUnits} units</b></span>
-            <span>Available: <b className="text-emerald-600 dark:text-emerald-400 font-mono">{kpis.availableStockUnits}</b></span>
+          <div>
+            <div className="text-2xl font-bold font-mono text-slate-100 tracking-tight">
+              {formatINR(kpis.inventoryValuationINR)}
+            </div>
+            <div className="flex items-center gap-3 text-xs text-slate-400 mt-2 font-mono">
+              <span>Physical: <b className="text-slate-200">{kpis.physicalStockUnits}</b></span>
+              <span className="text-slate-600">•</span>
+              <span>Available: <b className="text-emerald-400">{kpis.availableStockUnits}</b></span>
+            </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-500 to-amber-400" />
         </div>
 
-        {/* Total Sales Value INR */}
-        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm relative overflow-hidden group">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Total Orders Value</span>
-            <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400">
+        {/* Card 2: Orders Value */}
+        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 hover:border-slate-700/80 transition-all space-y-3 shadow-sm">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Total Orders Value</span>
+            <div className="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center">
               <Boxes className="w-4 h-4" />
             </div>
           </div>
-          <h2 className="text-2xl font-extrabold text-slate-100 font-mono tracking-tight">
-            {formatINR(kpis.totalSalesValueINR)}
-          </h2>
-          <div className="flex items-center justify-between text-[11px] text-slate-500 mt-2">
-            <span>Awaiting: <b className="text-amber-600 dark:text-amber-400">{kpis.ordersAwaitingProcessing} orders</b></span>
-            <span>Delivered: <b className="text-emerald-600 dark:text-emerald-400">{kpis.ordersDelivered}</b></span>
+          <div>
+            <div className="text-2xl font-bold font-mono text-slate-100 tracking-tight">
+              {formatINR(kpis.totalSalesValueINR)}
+            </div>
+            <div className="flex items-center gap-3 text-xs text-slate-400 mt-2 font-mono">
+              <span>Awaiting: <b className="text-amber-400">{kpis.ordersAwaitingProcessing}</b></span>
+              <span className="text-slate-600">•</span>
+              <span>Delivered: <b className="text-emerald-400">{kpis.ordersDelivered}</b></span>
+            </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-500" />
         </div>
 
-        {/* Procurement Expenditure INR */}
-        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm relative overflow-hidden group">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Procurement Spend</span>
-            <div className="p-2 rounded-xl bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400">
+        {/* Card 3: Procurement Spend */}
+        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 hover:border-slate-700/80 transition-all space-y-3 shadow-sm">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Procurement Spend</span>
+            <div className="w-8 h-8 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center">
               <Building2 className="w-4 h-4" />
             </div>
           </div>
-          <h2 className="text-2xl font-extrabold text-slate-100 font-mono tracking-tight">
-            {formatINR(kpis.procurementExpenditureINR)}
-          </h2>
-          <div className="flex items-center justify-between text-[11px] text-slate-500 mt-2">
-            <span>Active Suppliers: <b className="text-slate-300">{kpis.totalSuppliers}</b></span>
-            <span>Pending POs: <b className="text-amber-600 dark:text-amber-400">{kpis.pendingPOsCount}</b></span>
+          <div>
+            <div className="text-2xl font-bold font-mono text-slate-100 tracking-tight">
+              {formatINR(kpis.procurementExpenditureINR)}
+            </div>
+            <div className="flex items-center gap-3 text-xs text-slate-400 mt-2 font-mono">
+              <span>Suppliers: <b className="text-slate-200">{kpis.totalSuppliers}</b></span>
+              <span className="text-slate-600">•</span>
+              <span>Active POs: <b className="text-amber-400">{kpis.pendingPOsCount}</b></span>
+            </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 to-emerald-400" />
         </div>
 
-        {/* Critical Alerts Card */}
-        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm relative overflow-hidden group">
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider">Operational Tickers</span>
-            <div className="p-2 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400">
+        {/* Card 4: Inventory Alerts */}
+        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 hover:border-slate-700/80 transition-all space-y-3 shadow-sm">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Stock Alerts</span>
+            <div className="w-8 h-8 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center">
               <AlertTriangle className="w-4 h-4" />
             </div>
           </div>
-          <div className="flex items-baseline gap-2">
-            <h2 className="text-2xl font-extrabold text-rose-600 dark:text-rose-400 font-mono">
+          <div>
+            <div className="text-2xl font-bold font-mono text-rose-400 tracking-tight">
               {kpis.lowStockCount + kpis.outOfStockCount}
-            </h2>
-            <span className="text-xs text-slate-400">inventory alerts</span>
+            </div>
+            <div className="flex items-center gap-3 text-xs text-slate-400 mt-2 font-mono">
+              <span>Low Stock: <b className="text-amber-400">{kpis.lowStockCount}</b></span>
+              <span className="text-slate-600">•</span>
+              <span>Out of Stock: <b className="text-rose-400">{kpis.outOfStockCount}</b></span>
+            </div>
           </div>
-          <div className="flex items-center justify-between text-[11px] text-slate-500 mt-2">
-            <span>Low Stock: <b className="text-amber-600 dark:text-amber-400">{kpis.lowStockCount}</b></span>
-            <span>Out of Stock: <b className="text-rose-600 dark:text-rose-400">{kpis.outOfStockCount}</b></span>
-          </div>
-          <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-500 to-amber-500" />
         </div>
       </div>
 
@@ -249,14 +254,14 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
       <div className="bg-navy-900 border border-slate-800 rounded-2xl p-6 shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <Clock className="w-5 h-5 text-gold-500" />
+            <Clock className="w-5 h-5 text-emerald-400" />
             <h2 className="text-base font-bold text-slate-100 tracking-tight">
               Requisition Approval Queue ({pendingRestocks.length})
             </h2>
           </div>
           <button
             onClick={() => onNavigateTab('restock')}
-            className="text-xs text-gold-600 dark:text-gold-400 font-semibold hover:underline flex items-center gap-1"
+            className="text-xs text-emerald-400 font-semibold hover:underline flex items-center gap-1"
           >
             Full Requisitions Ledger <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
@@ -286,10 +291,10 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                   <tr key={item.id} className="hover:bg-navy-950/40 transition-colors">
                     <td className="py-3 font-medium text-slate-100">
                       <div>{item.productName}</div>
-                      <span className="text-[10px] font-mono text-gold-600 dark:text-gold-400">{item.productSku}</span>
+                      <span className="text-[10px] font-mono text-emerald-400">{item.productSku}</span>
                     </td>
                     <td className="py-3 font-mono">{item.currentStock} units</td>
-                    <td className="py-3 font-mono font-bold text-gold-600 dark:text-gold-400">{item.requestedQuantity} units</td>
+                    <td className="py-3 font-mono font-bold text-emerald-400">{item.requestedQuantity} units</td>
                     <td className="py-3">
                       <Badge
                         variant={item.priority === 'URGENT' ? 'danger' : item.priority === 'HIGH' ? 'warning' : 'neutral'}
@@ -307,7 +312,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                           setApprovedQty(item.requestedQuantity);
                           setReviewNotes('');
                         }}
-                        className="px-3 py-1.5 bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold text-xs rounded-lg shadow-sm transition-all"
+                        className="px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-semibold text-xs rounded-lg shadow-sm transition-all"
                       >
                         Review Requisition
                       </button>
@@ -433,60 +438,52 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
       {/* Interactive Charts Area */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Category Stock Valuation Chart */}
-        <div className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm">
-          <div className="flex items-center justify-between mb-4">
+        <div className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4">
+          <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-bold text-slate-100 tracking-tight">
                 Inventory Valuation by Category
               </h3>
-              <p className="text-xs text-slate-400">Aggregated line-item valuation</p>
+              <p className="text-xs text-slate-400 mt-0.5">Real-time aggregate valuation across master hardware SKUs</p>
             </div>
-            <Badge variant="teal" size="sm">Real Database Aggregation</Badge>
+            <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-navy-950 border border-slate-800 text-slate-300">
+              Aggregated
+            </span>
           </div>
 
           <div className="h-64">
             {charts?.categoryValuation && charts.categoryValuation.length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={charts.categoryValuation} margin={{ top: 10, right: 10, left: 10, bottom: 25 }}>
-                  <defs>
-                    <linearGradient id="barGradientCyan" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#38BDF8" stopOpacity={0.95}/>
-                      <stop offset="100%" stopColor="#0284C7" stopOpacity={0.7}/>
-                    </linearGradient>
-                    <linearGradient id="barGradientViolet" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#C084FC" stopOpacity={0.95}/>
-                      <stop offset="100%" stopColor="#7C3AED" stopOpacity={0.7}/>
-                    </linearGradient>
-                    <linearGradient id="barGradientAmber" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#FDE047" stopOpacity={0.95}/>
-                      <stop offset="100%" stopColor="#D97706" stopOpacity={0.7}/>
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" opacity={0.6} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false} opacity={0.6} />
                   <XAxis
                     dataKey="category"
                     tick={{ fontSize: 10, fill: '#94a3b8' }}
                     angle={-15}
                     textAnchor="end"
                     stroke="#334155"
+                    tickLine={false}
+                    axisLine={{ stroke: '#1e293b' }}
                   />
                   <YAxis
                     tick={{ fontSize: 10, fill: '#94a3b8' }}
                     tickFormatter={val => `₹${(val / 1000).toFixed(0)}k`}
                     stroke="#334155"
+                    tickLine={false}
+                    axisLine={false}
                   />
                   <Tooltip
                     formatter={(val: any) => [formatINR(val), 'Valuation']}
                     contentStyle={{
-                      backgroundColor: '#050b14',
-                      borderColor: '#10B981',
+                      backgroundColor: '#071219',
+                      borderColor: '#334155',
                       color: '#f8fafc',
-                      borderRadius: '12px',
+                      borderRadius: '8px',
                       boxShadow: '0 8px 24px rgba(0,0,0,0.6)',
-                      borderWidth: '1px'
+                      fontSize: '12px'
                     }}
                   />
-                  <Bar dataKey="valuationINR" radius={[6, 6, 0, 0]}>
+                  <Bar dataKey="valuationINR" radius={[4, 4, 0, 0]}>
                     {charts.categoryValuation.map((entry: any, index: number) => (
                       <Cell
                         key={`bar-cell-${index}`}
@@ -504,60 +501,82 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
           </div>
         </div>
 
-        {/* Order Status Distribution */}
-        <div className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm">
-          <div className="flex items-center justify-between mb-4">
+        {/* Order Status Distribution with Clean Side Legend */}
+        <div className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4">
+          <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-bold text-slate-100 tracking-tight">
-                Buyer Order Fulfilment Pipeline
+                Order Pipeline Distribution
               </h3>
-              <p className="text-xs text-slate-400">Active distribution of orders across fulfilment statuses</p>
+              <p className="text-xs text-slate-400 mt-0.5">Active wholesale orders by current fulfilment milestone</p>
             </div>
-            <Badge variant="blue" size="sm">Live Workflow Status</Badge>
+            <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-navy-950 border border-slate-800 text-slate-300">
+              Live Pipeline
+            </span>
           </div>
 
-          <div className="h-64 flex items-center justify-center">
+          <div className="h-64">
             {charts?.orderStatus && charts.orderStatus.length > 0 ? (
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={charts.orderStatus}
-                    dataKey="count"
-                    nameKey="status"
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={45}
-                    outerRadius={80}
-                    paddingAngle={3}
-                    label={({ name, percent }: any) => `${name} ${(percent * 100).toFixed(0)}%`}
-                    labelLine={false}
-                  >
-                    {charts.orderStatus.map((entry: any, index: number) => (
-                      <Cell
-                        key={`pie-cell-${index}`}
-                        fill={ORDER_STATUS_COLORS[entry.status] || SPECTRUM_COLORS[index % SPECTRUM_COLORS.length]}
-                        stroke="#071219"
-                        strokeWidth={2}
-                      />
-                    ))}
-                  </Pie>
-                  <Tooltip
-                    formatter={(val: any) => [`${val} orders`, 'Count']}
-                    contentStyle={{
-                      backgroundColor: '#050b14',
-                      borderColor: '#10B981',
-                      color: '#f8fafc',
-                      borderRadius: '12px',
-                      boxShadow: '0 8px 24px rgba(0,0,0,0.6)',
-                      borderWidth: '1px'
-                    }}
-                  />
-                </PieChart>
-              </ResponsiveContainer>
+              <div className="h-full grid grid-cols-1 sm:grid-cols-2 items-center gap-4">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={charts.orderStatus}
+                      dataKey="count"
+                      nameKey="status"
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={50}
+                      outerRadius={75}
+                      paddingAngle={3}
+                    >
+                      {charts.orderStatus.map((entry: any, index: number) => (
+                        <Cell
+                          key={`pie-cell-${index}`}
+                          fill={ORDER_STATUS_COLORS[entry.status] || SPECTRUM_COLORS[index % SPECTRUM_COLORS.length]}
+                          stroke="#071219"
+                          strokeWidth={2}
+                        />
+                      ))}
+                    </Pie>
+                    <Tooltip
+                      formatter={(val: any) => [`${val} orders`, 'Orders']}
+                      contentStyle={{
+                        backgroundColor: '#071219',
+                        borderColor: '#334155',
+                        color: '#f8fafc',
+                        borderRadius: '8px',
+                        boxShadow: '0 8px 24px rgba(0,0,0,0.6)',
+                        fontSize: '12px'
+                      }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+
+                <div className="space-y-1.5 overflow-y-auto max-h-56 pr-2 text-xs">
+                  {charts.orderStatus.map((entry: any, index: number) => {
+                    const color = ORDER_STATUS_COLORS[entry.status] || SPECTRUM_COLORS[index % SPECTRUM_COLORS.length];
+                    const totalCount = charts.orderStatus.reduce((acc: number, curr: any) => acc + curr.count, 0);
+                    const pct = totalCount > 0 ? ((entry.count / totalCount) * 100).toFixed(0) : '0';
+                    return (
+                      <div key={entry.status} className="flex items-center justify-between p-2 rounded-lg bg-navy-950/70 border border-slate-800/80">
+                        <div className="flex items-center gap-2">
+                          <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: color }} />
+                          <span className="font-semibold text-slate-200">{entry.status}</span>
+                        </div>
+                        <div className="font-mono text-slate-400">
+                          <span className="font-bold text-slate-100">{entry.count}</span>
+                          <span className="text-[10px] text-slate-500 ml-1.5">({pct}%)</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             ) : (
-              <div className="text-xs text-slate-400 text-center">
-                <Package className="w-8 h-8 text-slate-300 dark:text-slate-400 mx-auto mb-2" />
-                No buyer orders placed yet. Orders will appear here upon checkout.
+              <div className="h-full flex items-center justify-center text-xs text-slate-400">
+                <Package className="w-8 h-8 text-slate-500 mx-auto mb-2 opacity-50" />
+                No orders placed yet.
               </div>
             )}
           </div>
@@ -610,7 +629,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
               </label>
               <textarea
                 rows={3}
-                placeholder="Authorize for emergency PO from primary metallurgical supplier..."
+                placeholder="Authorize for emergency purchase order from national distributor (e.g. Redington/Ingram Micro)..."
                 value={reviewNotes}
                 onChange={e => setReviewNotes(e.target.value)}
                 className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 text-xs"
@@ -622,7 +641,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                 type="button"
                 disabled={isSubmitting}
                 onClick={() => handleReviewDecision('REJECT')}
-                className="flex-1 py-2.5 px-4 bg-rose-50 hover:bg-rose-100 text-rose-700 font-semibold rounded-xl border border-rose-200 transition-colors flex items-center justify-center gap-2"
+                className="flex-1 py-2.5 px-4 bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 font-semibold rounded-xl border border-rose-800/60 transition-colors flex items-center justify-center gap-2"
               >
                 <XCircle className="w-4 h-4" /> Reject Requisition
               </button>
@@ -630,7 +649,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                 type="button"
                 disabled={isSubmitting || approvedQty <= 0}
                 onClick={() => handleReviewDecision('APPROVE')}
-                className="flex-1 py-2.5 px-4 bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold rounded-xl shadow-md transition-colors flex items-center justify-center gap-2"
+                className="flex-1 py-2.5 px-4 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-xl shadow-md transition-colors flex items-center justify-center gap-2"
               >
                 <CheckCircle2 className="w-4 h-4" /> Authorize Requisition
               </button>

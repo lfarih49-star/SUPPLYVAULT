@@ -92,7 +92,7 @@ export const Shell: React.FC<ShellProps> = ({
   const getRoleBadge = (role: Role) => {
     switch (role) {
       case 'MANAGER':
-        return 'border-gold-500/40 text-gold-400 bg-gold-950/40';
+        return 'border-emerald-500/30 text-emerald-400 bg-emerald-950/40';
       case 'STAFF':
         return 'border-teal-500/40 text-teal-300 bg-teal-950/40';
       case 'BUYER':
@@ -116,13 +116,13 @@ export const Shell: React.FC<ShellProps> = ({
 
           {/* Brand Mark on Mobile / Header */}
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-navy-900 to-navy-950 border border-gold-500/40 flex items-center justify-center shadow-md">
-              <span className="font-extrabold text-gold-400 font-mono text-sm tracking-wider">SV</span>
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-navy-900 to-navy-950 border border-emerald-500/30 flex items-center justify-center shadow-md">
+              <span className="font-black text-emerald-400 font-mono text-sm tracking-wider">SV</span>
             </div>
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="text-base font-black tracking-tight text-slate-100 uppercase">
-                  Supply<span className="text-gold-500">Vault</span>
+                  Supply<span className="text-emerald-400">Vault</span>
                 </span>
                 
               </div>
@@ -142,7 +142,7 @@ export const Shell: React.FC<ShellProps> = ({
               placeholder="Search products, orders, POs, suppliers..."
               value={searchQuery}
               onChange={e => onSearchChange(e.target.value)}
-              className="w-full pl-9 pr-4 py-1.5 text-xs bg-navy-950 border border-slate-800 rounded-full text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-gold-500/40 transition-all"
+              className="w-full pl-9 pr-4 py-1.5 text-xs bg-navy-950 border border-slate-800 rounded-full text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition-all"
             />
           </div>
         </div>
@@ -158,7 +158,7 @@ export const Shell: React.FC<ShellProps> = ({
             >
               <ShoppingCart className="w-5 h-5" />
               {cart.length > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-gold-500 text-navy-950 text-[10px] font-bold rounded-full flex items-center justify-center shadow-md animate-pulse">
+                <span className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-emerald-500 text-navy-950 text-[10px] font-bold rounded-full flex items-center justify-center shadow-md animate-pulse">
                   {cart.reduce((s, i) => s + i.quantity, 0)}
                 </span>
               )}
@@ -194,13 +194,13 @@ export const Shell: React.FC<ShellProps> = ({
               </span>
             </div>
 
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-gold-500 to-gold-400 text-navy-950 font-bold flex items-center justify-center text-xs shadow">
+            <div className="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold flex items-center justify-center text-xs shadow">
               {user.fullName.charAt(0)}
             </div>
 
             <button
               onClick={logout}
-              className="p-2 text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/30 rounded-lg transition-colors"
+              className="p-2 text-slate-400 hover:text-rose-500 hover:bg-rose-950/40 rounded-lg transition-colors"
               title="Logout session"
             >
               <LogOut className="w-4 h-4" />
@@ -223,7 +223,7 @@ export const Shell: React.FC<ShellProps> = ({
           <div className="p-6 border-b border-navy-800/80">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-[11px] font-mono text-gold-400/80 uppercase tracking-widest font-semibold">
+                <p className="text-[11px] font-mono text-emerald-400/80 uppercase tracking-widest font-semibold">
                   Platform Portal
                 </p>
                 <h3 className="text-sm font-bold text-white tracking-tight mt-0.5">
@@ -252,12 +252,12 @@ export const Shell: React.FC<ShellProps> = ({
                     w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium tracking-wide transition-all
                     ${
                       isActive
-                        ? 'bg-gradient-to-r from-gold-500/20 to-transparent text-gold-300 font-bold border-l-2 border-gold-400 shadow-sm'
+                        ? 'bg-emerald-500/10 text-emerald-300 font-semibold border-l-2 border-emerald-400 shadow-sm'
                         : 'text-slate-400 hover:text-slate-200 hover:bg-navy-900/60'
                     }
                   `}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-gold-400' : 'text-slate-400'}`} />
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-emerald-400' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
                 </button>
               );

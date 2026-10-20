@@ -167,7 +167,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
         <div className="flex items-center gap-2">
           <button
             onClick={() => setRestockModalOpen(true)}
-            className="px-4 py-2 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-700 text-navy-950 font-bold text-xs rounded-xl shadow-md flex items-center gap-1.5 transition-all"
+            className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-semibold text-xs rounded-xl shadow-sm flex items-center gap-1.5 transition-all"
           >
             <Plus className="w-4 h-4" /> Submit Restock Requisition
           </button>
@@ -177,7 +177,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
       {/* Task Queue Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="p-4 rounded-xl bg-navy-900 border border-slate-800 shadow-sm flex items-center gap-4">
-          <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950 text-blue-600">
+          <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
             <Package className="w-5 h-5" />
           </div>
           <div>
@@ -187,7 +187,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
         </div>
 
         <div className="p-4 rounded-xl bg-navy-900 border border-slate-800 shadow-sm flex items-center gap-4">
-          <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950 text-rose-600">
+          <div className="p-3 rounded-xl bg-rose-500/10 text-rose-400 border border-rose-500/20">
             <AlertTriangle className="w-5 h-5" />
           </div>
           <div>
@@ -197,7 +197,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
         </div>
 
         <div className="p-4 rounded-xl bg-navy-900 border border-slate-800 shadow-sm flex items-center gap-4">
-          <div className="p-3 rounded-xl bg-teal-50 dark:bg-teal-950 text-teal-600">
+          <div className="p-3 rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/20">
             <ClipboardList className="w-5 h-5" />
           </div>
           <div>
@@ -238,7 +238,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
                   <div>
                     <div className="font-bold text-slate-100">{o.orderNumber}</div>
                     <span className="text-slate-500">{o.buyerName} • {o.city}</span>
-                    <div className="text-[11px] font-mono font-bold text-gold-600 dark:text-gold-400 mt-0.5">
+                    <div className="text-[11px] font-mono font-bold text-emerald-400 dark:text-emerald-400 mt-0.5">
                       {formatINR(o.totalAmount)}
                     </div>
                   </div>
@@ -263,7 +263,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
             </h2>
             <button
               onClick={() => onNavigateTab('inventory')}
-              className="text-xs text-gold-600 dark:text-gold-400 hover:underline"
+              className="text-xs text-emerald-400 dark:text-emerald-400 hover:underline"
             >
               Inventory Registry
             </button>
@@ -278,7 +278,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
               {lowStockItems.map(p => (
                 <div
                   key={p.id}
-                  className="p-3.5 rounded-xl border border-amber-200/60 dark:border-amber-900/40 bg-amber-50/30 dark:bg-amber-950/20 flex items-center justify-between text-xs"
+                  className="p-3.5 rounded-xl border border-amber-900/40 bg-amber-950/20 flex items-center justify-between text-xs"
                 >
                   <div>
                     <div className="font-bold text-slate-100">{p.name}</div>
@@ -293,7 +293,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
                       setAdjustQty(p.reorderQuantity);
                       setAdjustModalOpen(true);
                     }}
-                    className="px-2.5 py-1.5 bg-navy-900 border border-slate-700 hover:border-gold-500 font-semibold rounded-lg text-slate-200 shadow-sm text-xs"
+                    className="px-2.5 py-1.5 bg-navy-900 border border-slate-700 hover:border-emerald-500 font-semibold rounded-lg text-slate-200 shadow-sm text-xs"
                   >
                     Adjust Stock
                   </button>
@@ -308,7 +308,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
       <div className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <History className="w-5 h-5 text-gold-500" />
+            <History className="w-5 h-5 text-emerald-400" />
             <h2 className="text-base font-bold text-slate-100 tracking-tight">
               Warehouse Movement Audit Feed
             </h2>
@@ -438,7 +438,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-2.5 bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+            className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-semibold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2"
           >
             {isSubmitting ? 'Transmitting...' : 'Dispatch Requisition to Manager'}
           </button>
@@ -500,7 +500,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-2.5 bg-navy-900 hover:bg-navy-800 text-gold-400 font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 border border-gold-500/30"
+              className="w-full py-2.5 bg-navy-900 hover:bg-navy-800 text-emerald-400 font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 border border-emerald-500/30"
             >
               {isSubmitting ? 'Recording Movement...' : 'Apply Stock Change'}
             </button>

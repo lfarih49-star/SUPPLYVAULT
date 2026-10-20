@@ -210,7 +210,7 @@ export const PurchaseOrdersView: React.FC = () => {
                     {po.poNumber}
                   </td>
                   <td className="py-3 px-4 font-medium text-slate-200">{po.supplierName}</td>
-                  <td className="py-3 px-4 text-right font-mono font-bold text-gold-600 dark:text-gold-400">
+                  <td className="py-3 px-4 text-right font-mono font-bold text-emerald-400">
                     {formatINR(po.totalAmount)}
                   </td>
                   <td className="py-3 px-4 text-center">
@@ -238,7 +238,7 @@ export const PurchaseOrdersView: React.FC = () => {
                       {isManager && po.status === 'PENDING_APPROVAL' && (
                         <button
                           onClick={() => handleApprovePO(po.id)}
-                          className="px-2.5 py-1 bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold rounded-lg shadow-sm"
+                          className="px-2.5 py-1 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-lg shadow-sm"
                         >
                           Approve PO
                         </button>
@@ -379,7 +379,7 @@ export const PurchaseOrdersView: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting || poItems.length === 0}
-            className="w-full py-2.5 bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold rounded-xl shadow-md transition-all"
+            className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-xl shadow-md transition-all"
           >
             {isSubmitting ? 'Submitting PO...' : 'Issue Purchase Order'}
           </button>
@@ -420,7 +420,7 @@ export const PurchaseOrdersView: React.FC = () => {
               ))}
             </div>
 
-            <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-[11px] text-emerald-800 dark:text-emerald-300">
+            <div className="p-3 rounded-xl bg-emerald-950/30 border border-emerald-800/60 text-[11px] text-emerald-300">
               <b>Inventory Rule:</b> Physical inventory will automatically increment for the received units and a GOODS_RECEIPT audit log entry will be created.
             </div>
 

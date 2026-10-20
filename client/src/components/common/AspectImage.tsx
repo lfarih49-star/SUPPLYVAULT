@@ -41,7 +41,7 @@ export const AspectImage: React.FC<AspectImageProps> = ({
           {/* Skeleton placeholder while loading */}
           {!isLoaded && (
             <div className="absolute inset-0 bg-navy-900 animate-pulse flex items-center justify-center">
-              <Package className="w-8 h-8 text-gold-500/20" />
+              <Package className="w-8 h-8 text-emerald-400/20" />
             </div>
           )}
 
@@ -59,13 +59,13 @@ export const AspectImage: React.FC<AspectImageProps> = ({
       ) : (
         /* Luxury Monogram SVG Fallback */
         <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900 flex flex-col items-center justify-center p-4 text-center">
-          <div className="w-12 h-12 rounded-2xl bg-navy-800/80 border border-gold-500/30 flex items-center justify-center shadow-inner mb-2 group-hover:border-gold-500/60 transition-colors">
-            <Package className="w-6 h-6 text-gold-400" />
+          <div className="w-12 h-12 rounded-2xl bg-navy-800/80 border border-emerald-500/30 flex items-center justify-center shadow-inner mb-2 group-hover:border-emerald-500/60 transition-colors">
+            <Package className="w-6 h-6 text-emerald-400" />
           </div>
           <span className="text-[11px] font-bold text-slate-300 tracking-tight line-clamp-1 max-w-[85%]">
             {fallbackText || alt}
           </span>
-          <span className="text-[9px] uppercase tracking-widest font-mono text-gold-500/70 mt-0.5">
+          <span className="text-[9px] uppercase tracking-widest font-mono text-emerald-400/70 mt-0.5">
             SupplyVault Certified
           </span>
         </div>

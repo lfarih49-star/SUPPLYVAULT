@@ -116,20 +116,20 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <Compass className="w-5 h-5 text-gold-400 animate-spin-slow" />
+              <Compass className="w-5 h-5 text-emerald-400 animate-spin-slow" />
               <h1 className="text-xl font-black tracking-tight text-white">
                 Logistics Mission Control
               </h1>
             </div>
             <p className="text-xs text-slate-400 mt-1">
-              Field Courier: <b className="text-gold-400">{user?.fullName}</b> • Schedule: <span className="text-slate-300 font-mono">Asia/Kolkata</span>
+              Field Courier: <b className="text-emerald-400">{user?.fullName}</b> • Schedule: <span className="text-slate-300 font-mono">Asia/Kolkata</span>
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <div className="px-3.5 py-1.5 rounded-xl bg-navy-800/80 border border-navy-700 text-center">
               <span className="text-[10px] text-slate-400 uppercase font-semibold">Active Trips</span>
-              <div className="text-lg font-black font-mono text-gold-400">{activeDeliveries.length}</div>
+              <div className="text-lg font-black font-mono text-emerald-400">{activeDeliveries.length}</div>
             </div>
             <div className="px-3.5 py-1.5 rounded-xl bg-navy-800/80 border border-navy-700 text-center">
               <span className="text-[10px] text-slate-400 uppercase font-semibold">Delivered</span>
@@ -144,7 +144,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
             onClick={() => setActiveTab('deliveries')}
             className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
               activeTab === 'deliveries'
-                ? 'bg-gold-500 text-navy-950 shadow-sm'
+                ? 'bg-emerald-500 text-navy-950 shadow-sm'
                 : 'text-slate-400 hover:text-white bg-navy-850'
             }`}
           >
@@ -154,7 +154,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
             onClick={() => setActiveTab('history')}
             className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
               activeTab === 'history'
-                ? 'bg-gold-500 text-navy-950 shadow-sm'
+                ? 'bg-emerald-500 text-navy-950 shadow-sm'
                 : 'text-slate-400 hover:text-white bg-navy-850'
             }`}
           >
@@ -178,7 +178,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
               return (
                 <div
                   key={s.id}
-                  className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4 hover:border-gold-500/50 transition-all"
+                  className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4 hover:border-emerald-500/50 transition-all"
                 >
                   {/* Top Bar */}
                   <div className="flex items-center justify-between pb-3 border-b border-slate-800 text-xs">
@@ -217,7 +217,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
                       <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">Customer Details</span>
                       <div className="font-bold text-slate-100">{s.recipientName}</div>
                       <div className="flex items-center gap-1.5 text-slate-300 mt-1">
-                        <Phone className="w-3.5 h-3.5 text-gold-500" />
+                        <Phone className="w-3.5 h-3.5 text-emerald-400" />
                         <a href={`tel:${s.recipientPhone}`} className="hover:underline font-mono">
                           {s.recipientPhone}
                         </a>
@@ -235,7 +235,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
 
                   {/* Failure notice if failed attempt */}
                   {s.status === 'FAILED_ATTEMPT' && (
-                    <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/60 text-xs text-rose-800 dark:text-rose-300">
+                    <div className="p-3 rounded-xl bg-rose-950/30 border border-rose-900/60 text-xs text-rose-300">
                       <div className="font-bold flex items-center gap-1.5">
                         <AlertOctagon className="w-4 h-4" /> Previous Attempt Unsuccessful
                       </div>
@@ -247,7 +247,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
                   <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
                     <button
                       onClick={() => setFailModalShipment(s)}
-                      className="px-3.5 py-2 text-xs font-semibold bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 rounded-xl border border-rose-200 dark:border-rose-800 flex items-center justify-center gap-1.5 transition-colors"
+                      className="px-3.5 py-2 text-xs font-semibold bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 rounded-xl border border-rose-800/60 flex items-center justify-center gap-1.5 transition-colors"
                     >
                       <AlertOctagon className="w-4 h-4" /> Report Exception / Failed Attempt
                     </button>
@@ -255,9 +255,9 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
                     {action && (
                       <button
                         onClick={() => setConfirmModal({ shipment: s, nextStatus: action.nextStatus })}
-                        className="px-5 py-2.5 text-xs font-bold bg-navy-900 hover:bg-navy-800 text-gold-400 border border-gold-500/40 rounded-xl shadow-md flex items-center justify-center gap-2 transition-all"
+                        className="px-5 py-2.5 text-xs font-bold bg-navy-900 hover:bg-navy-800 text-emerald-400 border border-emerald-500/40 rounded-xl shadow-md flex items-center justify-center gap-2 transition-all"
                       >
-                        {action.label} <ArrowRight className="w-4 h-4 text-gold-400" />
+                        {action.label} <ArrowRight className="w-4 h-4 text-emerald-400" />
                       </button>
                     )}
                   </div>
@@ -351,7 +351,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
         >
           <div className="space-y-4 text-xs">
             <p className="text-slate-300">
-              Are you sure you want to transition this delivery to <b className="text-gold-500 font-mono">{confirmModal.nextStatus}</b>?
+              Are you sure you want to transition this delivery to <b className="text-emerald-400 font-mono">{confirmModal.nextStatus}</b>?
               {confirmModal.nextStatus === 'DELIVERED' && (
                 <span className="block mt-2 text-emerald-600 font-semibold">
                   This will mark the customer order as DELIVERED and generate proof of delivery timestamps.
@@ -371,7 +371,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
                 type="button"
                 disabled={isSubmitting}
                 onClick={() => updateShipmentStatus(confirmModal.shipment.id, confirmModal.nextStatus)}
-                className="flex-1 py-2 bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold rounded-xl shadow-md"
+                className="flex-1 py-2 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-xl shadow-md"
               >
                 {isSubmitting ? 'Updating...' : 'Confirm Update'}
               </button>

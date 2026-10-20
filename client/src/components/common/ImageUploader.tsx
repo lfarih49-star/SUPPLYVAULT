@@ -189,10 +189,10 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
     <div className="space-y-3">
       <div className="flex items-center justify-between">
         <label className="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-          <ImageIcon className="w-4 h-4 text-gold-400" />
+          <ImageIcon className="w-4 h-4 text-emerald-400" />
           {label}
         </label>
-        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-gold-950/80 text-gold-400 border border-gold-500/30">
+        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-500/30">
           Fixed 16:9 Ratio
         </span>
       </div>
@@ -204,9 +204,9 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
           alt={productTitle}
           aspectRatio="16/9"
           fallbackText={productTitle}
-          containerClassName="border-2 border-dashed border-slate-700/80 group-hover:border-gold-500/50 transition-colors shadow-lg"
+          containerClassName="border-2 border-dashed border-slate-700/80 group-hover:border-emerald-500/50 transition-colors shadow-lg"
           badge={
-            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-navy-950/90 text-gold-400 font-mono text-[10px] border border-gold-500/30 backdrop-blur-sm">
+            <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-navy-950/90 text-emerald-400 font-mono text-[10px] border border-emerald-500/30 backdrop-blur-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               16:9 Master Preview
             </div>
@@ -232,7 +232,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
           onClick={() => setActiveMode('upload')}
           className={`flex-1 py-1.5 px-3 rounded-lg font-semibold flex items-center justify-center gap-1.5 transition-all ${
             activeMode === 'upload'
-              ? 'bg-navy-800 text-gold-400 shadow-sm border border-gold-500/30'
+              ? 'bg-navy-800 text-emerald-400 shadow-sm border border-emerald-500/30'
               : 'text-slate-400 hover:text-slate-200'
           }`}
         >
@@ -245,7 +245,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
           onClick={() => setActiveMode('url')}
           className={`flex-1 py-1.5 px-3 rounded-lg font-semibold flex items-center justify-center gap-1.5 transition-all ${
             activeMode === 'url'
-              ? 'bg-navy-800 text-gold-400 shadow-sm border border-gold-500/30'
+              ? 'bg-navy-800 text-emerald-400 shadow-sm border border-emerald-500/30'
               : 'text-slate-400 hover:text-slate-200'
           }`}
         >
@@ -258,7 +258,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
           onClick={() => setActiveMode('presets')}
           className={`flex-1 py-1.5 px-3 rounded-lg font-semibold flex items-center justify-center gap-1.5 transition-all ${
             activeMode === 'presets'
-              ? 'bg-navy-800 text-gold-400 shadow-sm border border-gold-500/30'
+              ? 'bg-navy-800 text-emerald-400 shadow-sm border border-emerald-500/30'
               : 'text-slate-400 hover:text-slate-200'
           }`}
         >
@@ -279,7 +279,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
           onClick={() => fileInputRef.current?.click()}
           className={`p-5 rounded-xl border-2 border-dashed text-center cursor-pointer transition-all ${
             isDragOver
-              ? 'border-gold-500 bg-gold-950/20'
+              ? 'border-emerald-500 bg-emerald-950/20'
               : 'border-slate-800 hover:border-slate-700 bg-navy-950/60'
           }`}
         >
@@ -291,7 +291,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
             className="hidden"
           />
 
-          <div className="w-10 h-10 mx-auto mb-2 rounded-xl bg-navy-900 border border-slate-700 flex items-center justify-center text-gold-400">
+          <div className="w-10 h-10 mx-auto mb-2 rounded-xl bg-navy-900 border border-slate-700 flex items-center justify-center text-emerald-400">
             {isProcessing ? (
               <RefreshCw className="w-5 h-5 animate-spin" />
             ) : (
@@ -316,11 +316,11 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
             placeholder="https://example.com/product-image.jpg"
             value={urlInput}
             onChange={(e) => setUrlInput(e.target.value)}
-            className="flex-1 px-3 py-2 text-xs rounded-xl bg-navy-950 border border-slate-800 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-gold-500/40"
+            className="flex-1 px-3 py-2 text-xs rounded-xl bg-navy-950 border border-slate-800 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
           />
           <button
             type="submit"
-            className="px-4 py-2 text-xs font-bold bg-gold-500 hover:bg-gold-600 text-navy-950 rounded-xl transition-all shrink-0"
+            className="px-4 py-2 text-xs font-bold bg-emerald-500 hover:bg-emerald-400 text-navy-950 rounded-xl transition-all shrink-0"
           >
             Apply
           </button>
@@ -339,7 +339,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
                 onClick={() => onChange(preset.url)}
                 className={`p-2 rounded-xl border text-left transition-all flex flex-col group relative overflow-hidden ${
                   isSelected
-                    ? 'border-gold-500 bg-gold-950/30 ring-1 ring-gold-500/50'
+                    ? 'border-emerald-500 bg-emerald-950/30 ring-1 ring-emerald-500/50'
                     : 'border-slate-800 bg-navy-950 hover:border-slate-700'
                 }`}
               >
@@ -350,7 +350,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                   />
                   {isSelected && (
-                    <div className="absolute top-1 right-1 w-4 h-4 bg-gold-500 rounded-full flex items-center justify-center text-navy-950">
+                    <div className="absolute top-1 right-1 w-4 h-4 bg-emerald-500 rounded-full flex items-center justify-center text-navy-950">
                       <Check className="w-3 h-3 stroke-[3]" />
                     </div>
                   )}

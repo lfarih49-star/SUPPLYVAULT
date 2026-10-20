@@ -130,7 +130,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
             }`}
           >
             My Orders
-            <span className="bg-gold-500/20 text-gold-600 dark:text-gold-400 px-1.5 py-0.2 rounded-full font-mono text-[10px]">
+            <span className="bg-emerald-500/20 text-emerald-400 dark:text-emerald-400 px-1.5 py-0.2 rounded-full font-mono text-[10px]">
               {orders.length}
             </span>
           </button>
@@ -146,8 +146,8 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                 onClick={() => setSelectedCategory('ALL')}
                 className={`px-3 py-1.5 rounded-full font-semibold whitespace-nowrap transition-all ${
                   selectedCategory === 'ALL'
-                    ? 'bg-navy-900 text-gold-400 dark:bg-gold-500 dark:text-navy-950 shadow-sm'
-                    : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-gold-500'
+                    ? 'bg-navy-900 text-emerald-400 dark:bg-emerald-500 dark:text-navy-950 shadow-sm'
+                    : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-emerald-500'
                 }`}
               >
                 All Categories ({products.length})
@@ -158,8 +158,8 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-3 py-1.5 rounded-full font-semibold whitespace-nowrap transition-all ${
                     selectedCategory === cat
-                      ? 'bg-navy-900 text-gold-400 dark:bg-gold-500 dark:text-navy-950 shadow-sm'
-                      : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-gold-500'
+                      ? 'bg-navy-900 text-emerald-400 dark:bg-emerald-500 dark:text-navy-950 shadow-sm'
+                      : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-emerald-500'
                   }`}
                 >
                   {cat}
@@ -174,7 +174,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                 placeholder="Search catalogue..."
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="w-full pl-9 pr-3 py-1.5 text-xs bg-navy-900 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-gold-500/40"
+                className="w-full pl-9 pr-3 py-1.5 text-xs bg-navy-900 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
               />
             </div>
           </div>
@@ -199,7 +199,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                       fallbackText={product.name}
                       containerClassName="border-b border-slate-800"
                       badge={
-                        <span className="text-[10px] font-mono font-bold bg-navy-950/90 text-gold-400 backdrop-blur-sm px-2 py-0.5 rounded border border-gold-500/30">
+                        <span className="text-[10px] font-mono font-bold bg-navy-950/90 text-emerald-400 backdrop-blur-sm px-2 py-0.5 rounded border border-emerald-500/30">
                           {product.sku}
                         </span>
                       }
@@ -247,7 +247,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                             ? 'bg-navy-950 text-slate-400 cursor-not-allowed border border-slate-800'
                             : isAdded
                             ? 'bg-emerald-600 text-white'
-                            : 'bg-navy-900 hover:bg-navy-800 text-gold-400 border border-gold-500/40 hover:border-gold-400 shadow-md'
+                            : 'bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold transition-all shadow-sm'
                         }`}
                       >
                         {isAdded ? (
@@ -277,7 +277,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
               <p className="text-xs text-slate-400 mt-1">Explore our product catalogue and place your first wholesale order.</p>
               <button
                 onClick={() => setActiveTab('storefront')}
-                className="mt-4 px-4 py-2 bg-navy-900 text-gold-400 font-semibold text-xs rounded-xl border border-gold-500/30"
+                className="mt-4 px-4 py-2 bg-navy-900 text-emerald-400 font-semibold text-xs rounded-xl border border-emerald-500/30"
               >
                 Browse Products
               </button>
@@ -322,7 +322,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                     <div className="flex items-center gap-4">
                       <div className="text-right">
                         <span className="text-[10px] text-slate-400 uppercase font-semibold">Total Amount</span>
-                        <div className="text-sm font-extrabold text-gold-600 dark:text-gold-400 font-mono">
+                        <div className="text-sm font-extrabold text-emerald-400 dark:text-emerald-400 font-mono">
                           {formatINR(order.totalAmount)}
                         </div>
                       </div>
@@ -330,7 +330,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                       {isEligibleForCancel && (
                         <button
                           onClick={() => handleCancelOrder(order.id)}
-                          className="px-3 py-1.5 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 font-semibold rounded-lg border border-rose-200 dark:border-rose-800 text-xs transition-colors"
+                          className="px-3 py-1.5 bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 font-semibold rounded-lg border border-rose-800/60 text-xs transition-colors"
                         >
                           Cancel Order
                         </button>

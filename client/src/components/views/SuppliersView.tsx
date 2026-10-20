@@ -106,7 +106,7 @@ export const SuppliersView: React.FC = () => {
         {suppliers.map(s => (
           <div
             key={s.id}
-            className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4 hover:border-gold-500/40 transition-all"
+            className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4 hover:border-emerald-500/40 transition-all"
           >
             <div className="flex items-start justify-between">
               <div>
@@ -124,11 +124,11 @@ export const SuppliersView: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-3 text-xs">
               <div className="flex items-center gap-2 text-slate-300">
-                <Mail className="w-3.5 h-3.5 text-gold-500 shrink-0" />
+                <Mail className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 <span className="truncate">{s.email}</span>
               </div>
               <div className="flex items-center gap-2 text-slate-300">
-                <Phone className="w-3.5 h-3.5 text-gold-500 shrink-0" />
+                <Phone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 <span className="font-mono">{s.phone}</span>
               </div>
               <div className="flex items-center gap-2 text-slate-300 col-span-2">
@@ -142,7 +142,7 @@ export const SuppliersView: React.FC = () => {
                 <Clock className="w-3.5 h-3.5" />
                 <span>Lead Time: <b className="font-mono text-slate-200">{s.leadTimeDays} days</b></span>
               </div>
-              <div className="flex items-center gap-1 text-gold-500 font-bold font-mono">
+              <div className="flex items-center gap-1 text-emerald-400 font-bold font-mono">
                 <Star className="w-3.5 h-3.5 fill-gold-500" />
                 <span>{s.rating || 4.8} / 5.0</span>
               </div>
@@ -164,7 +164,7 @@ export const SuppliersView: React.FC = () => {
             <input
               type="text"
               required
-              placeholder="Bharat Precision Metallurgy Pvt Ltd"
+              placeholder="Redington India Limited / Ingram Micro India"
               value={name}
               onChange={e => setName(e.target.value)}
               className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
@@ -249,7 +249,7 @@ export const SuppliersView: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-2.5 bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold rounded-xl shadow-md transition-all"
+            className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-xl shadow-md transition-all"
           >
             {isSubmitting ? 'Registering...' : 'Register Enterprise Supplier'}
           </button>

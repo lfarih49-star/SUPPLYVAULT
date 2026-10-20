@@ -32,9 +32,9 @@ const AppContent: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-navy-950 flex items-center justify-center text-gold-400">
+      <div className="min-h-screen bg-navy-950 flex items-center justify-center text-emerald-400">
         <div className="text-center space-y-3">
-          <div className="w-10 h-10 border-2 border-gold-500 border-t-transparent rounded-full animate-spin mx-auto" />
+          <div className="w-10 h-10 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto" />
           <p className="text-xs font-mono uppercase tracking-widest">Loading SupplyVault Enterprise...</p>
         </div>
       </div>

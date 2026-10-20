@@ -89,8 +89,8 @@ export const ShipmentsView: React.FC = () => {
             onClick={() => setStatusFilter(st)}
             className={`px-3.5 py-1.5 rounded-xl font-semibold transition-all whitespace-nowrap ${
               statusFilter === st
-                ? 'bg-navy-900 text-gold-400 dark:bg-gold-500 dark:text-navy-950 shadow-sm'
-                : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-gold-500'
+                ? 'bg-navy-900 text-emerald-400 dark:bg-emerald-500 dark:text-navy-950 shadow-sm'
+                : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-emerald-500'
             }`}
           >
             {st === 'ALL' ? 'All Shipments' : st.replace('_', ' ')}
@@ -209,7 +209,7 @@ export const ShipmentsView: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting || !selectedAgentId}
-              className="w-full py-2.5 bg-gold-500 hover:bg-gold-600 text-navy-950 font-bold rounded-xl shadow-md transition-all"
+              className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-xl shadow-md transition-all"
             >
               {isSubmitting ? 'Assigning...' : 'Confirm Field Agent Assignment'}
             </button>
