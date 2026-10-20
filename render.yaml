@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: supplyvault
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DEFAULT_CURRENCY
+        value: INR
+      - key: DEFAULT_LOCALE
+        value: en-IN
+      - key: DEFAULT_TIMEZONE
+        value: Asia/Kolkata
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
