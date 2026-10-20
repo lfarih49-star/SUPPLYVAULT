@@ -103,13 +103,13 @@ export const Shell: React.FC<ShellProps> = ({
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-navy-950 flex flex-col antialiased">
+    <div className="min-h-screen bg-navy-950 flex flex-col antialiased">
       {/* Top Navbar */}
-      <header className="sticky top-0 z-30 h-16 bg-white/95 dark:bg-navy-900/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 flex items-center justify-between px-4 sm:px-6">
+      <header className="sticky top-0 z-30 h-16 bg-navy-900/95 backdrop-blur-md border-b border-slate-800 flex items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-4">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="lg:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-navy-800 rounded-lg"
+            className="lg:hidden p-2 text-slate-300 hover:bg-navy-800 rounded-lg"
           >
             {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -121,7 +121,7 @@ export const Shell: React.FC<ShellProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-base font-black tracking-tight text-slate-900 dark:text-slate-100 uppercase">
+                <span className="text-base font-black tracking-tight text-slate-100 uppercase">
                   Supply<span className="text-gold-500">Vault</span>
                 </span>
                 
@@ -142,7 +142,7 @@ export const Shell: React.FC<ShellProps> = ({
               placeholder="Search products, orders, POs, suppliers..."
               value={searchQuery}
               onChange={e => onSearchChange(e.target.value)}
-              className="w-full pl-9 pr-4 py-1.5 text-xs bg-slate-100/80 dark:bg-navy-950/80 border border-slate-200 dark:border-slate-800 rounded-full text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-gold-500/40 transition-all"
+              className="w-full pl-9 pr-4 py-1.5 text-xs bg-navy-950 border border-slate-800 rounded-full text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-gold-500/40 transition-all"
             />
           </div>
         </div>
@@ -153,7 +153,7 @@ export const Shell: React.FC<ShellProps> = ({
           {user.role === 'BUYER' && (
             <button
               onClick={() => setCartOpen(true)}
-              className="relative p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-navy-800 rounded-full transition-colors"
+              className="relative p-2 text-slate-300 hover:bg-navy-800 rounded-full transition-colors"
               title="View Cart"
             >
               <ShoppingCart className="w-5 h-5" />
@@ -169,7 +169,7 @@ export const Shell: React.FC<ShellProps> = ({
           <div className="relative">
             <button
               onClick={() => setNotificationsOpen(!notificationsOpen)}
-              className="relative p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-navy-800 rounded-full transition-colors"
+              className="relative p-2 text-slate-300 hover:bg-navy-800 rounded-full transition-colors"
               title="Notifications"
             >
               <Bell className="w-5 h-5" />
@@ -184,9 +184,9 @@ export const Shell: React.FC<ShellProps> = ({
           </div>
 
           {/* User Profile Pill & Logout */}
-          <div className="flex items-center gap-2 pl-2 border-l border-slate-200 dark:border-slate-800">
+          <div className="flex items-center gap-2 pl-2 border-l border-slate-800">
             <div className="hidden sm:block text-right">
-              <p className="text-xs font-bold text-slate-900 dark:text-slate-100 leading-tight">
+              <p className="text-xs font-bold text-slate-100 leading-tight">
                 {user.fullName}
               </p>
               <span className={`text-[10px] uppercase font-mono px-1.5 py-0.2 rounded border ${getRoleBadge(user.role)}`}>

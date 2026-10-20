@@ -81,12 +81,12 @@ export const SuppliersView: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-800">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+          <h1 className="text-2xl font-black text-slate-100 tracking-tight">
             Supplier & Vendor Network
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-slate-400 mt-1">
             Certified enterprise vendor network with lead time monitoring and procurement performance.
           </p>
         </div>
@@ -106,15 +106,15 @@ export const SuppliersView: React.FC = () => {
         {suppliers.map(s => (
           <div
             key={s.id}
-            className="p-5 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4 hover:border-gold-500/40 transition-all"
+            className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4 hover:border-gold-500/40 transition-all"
           >
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+                <h3 className="text-base font-bold text-slate-100 tracking-tight">
                   {s.name}
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  Point of Contact: <b className="text-slate-800 dark:text-slate-200">{s.contactPerson}</b>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  Point of Contact: <b className="text-slate-200">{s.contactPerson}</b>
                 </p>
               </div>
               <Badge variant="success" size="sm">
@@ -123,24 +123,24 @@ export const SuppliersView: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-3 text-xs">
-              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+              <div className="flex items-center gap-2 text-slate-300">
                 <Mail className="w-3.5 h-3.5 text-gold-500 shrink-0" />
                 <span className="truncate">{s.email}</span>
               </div>
-              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+              <div className="flex items-center gap-2 text-slate-300">
                 <Phone className="w-3.5 h-3.5 text-gold-500 shrink-0" />
                 <span className="font-mono">{s.phone}</span>
               </div>
-              <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300 col-span-2">
+              <div className="flex items-center gap-2 text-slate-300 col-span-2">
                 <MapPin className="w-3.5 h-3.5 text-rose-500 shrink-0" />
                 <span>{s.address}, {s.city}</span>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+            <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
               <div className="flex items-center gap-1 text-slate-500">
                 <Clock className="w-3.5 h-3.5" />
-                <span>Lead Time: <b className="font-mono text-slate-800 dark:text-slate-200">{s.leadTimeDays} days</b></span>
+                <span>Lead Time: <b className="font-mono text-slate-200">{s.leadTimeDays} days</b></span>
               </div>
               <div className="flex items-center gap-1 text-gold-500 font-bold font-mono">
                 <Star className="w-3.5 h-3.5 fill-gold-500" />
@@ -167,7 +167,7 @@ export const SuppliersView: React.FC = () => {
               placeholder="Bharat Precision Metallurgy Pvt Ltd"
               value={name}
               onChange={e => setName(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+              className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
             />
           </div>
 
@@ -180,7 +180,7 @@ export const SuppliersView: React.FC = () => {
                 placeholder="Ramesh Patel"
                 value={contactPerson}
                 onChange={e => setContactPerson(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
               />
             </div>
             <div>
@@ -191,7 +191,7 @@ export const SuppliersView: React.FC = () => {
                 placeholder="+91 22 2876 5432"
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 font-mono"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 font-mono"
               />
             </div>
           </div>
@@ -205,7 +205,7 @@ export const SuppliersView: React.FC = () => {
                 placeholder="procurement@bharatmetal.in"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
               />
             </div>
             <div>
@@ -216,7 +216,7 @@ export const SuppliersView: React.FC = () => {
                 placeholder="Mumbai"
                 value={city}
                 onChange={e => setCity(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
               />
             </div>
           </div>
@@ -230,7 +230,7 @@ export const SuppliersView: React.FC = () => {
                 placeholder="Plot 12, Industrial Estate"
                 value={address}
                 onChange={e => setAddress(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
               />
             </div>
             <div>
@@ -241,7 +241,7 @@ export const SuppliersView: React.FC = () => {
                 required
                 value={leadTimeDays}
                 onChange={e => setLeadTimeDays(parseInt(e.target.value, 10) || 5)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 font-mono"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 font-mono"
               />
             </div>
           </div>

@@ -99,24 +99,24 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
   return (
     <div className="space-y-6">
       {/* Buyer Sub-Navigation Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-800">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+          <h1 className="text-2xl font-black text-slate-100 tracking-tight">
             Computer Hardware & Laptop Wholesale Storefront
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-slate-400 mt-1">
             Enterprise wholesale hardware & computing catalogue with live atomic stock reservations.
           </p>
         </div>
 
         {/* Tab switch */}
-        <div className="flex items-center gap-1 p-1 bg-slate-200/60 dark:bg-navy-900 rounded-xl border border-slate-300/60 dark:border-slate-800 text-xs font-semibold">
+        <div className="flex items-center gap-1 p-1 bg-navy-950 rounded-xl border border-slate-800 text-xs font-semibold">
           <button
             onClick={() => setActiveTab('storefront')}
             className={`px-4 py-1.5 rounded-lg transition-all ${
               activeTab === 'storefront'
-                ? 'bg-white dark:bg-navy-800 text-slate-900 dark:text-slate-100 shadow-sm'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+                ? 'bg-navy-800 text-slate-100 shadow-sm'
+                : 'text-slate-400 hover:text-slate-100'
             }`}
           >
             Product Catalogue
@@ -125,8 +125,8 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
             onClick={() => setActiveTab('my-orders')}
             className={`px-4 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
               activeTab === 'my-orders'
-                ? 'bg-white dark:bg-navy-800 text-slate-900 dark:text-slate-100 shadow-sm'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+                ? 'bg-navy-800 text-slate-100 shadow-sm'
+                : 'text-slate-400 hover:text-slate-100'
             }`}
           >
             My Orders
@@ -147,7 +147,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                 className={`px-3 py-1.5 rounded-full font-semibold whitespace-nowrap transition-all ${
                   selectedCategory === 'ALL'
                     ? 'bg-navy-900 text-gold-400 dark:bg-gold-500 dark:text-navy-950 shadow-sm'
-                    : 'bg-white dark:bg-navy-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-gold-500'
+                    : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-gold-500'
                 }`}
               >
                 All Categories ({products.length})
@@ -159,7 +159,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                   className={`px-3 py-1.5 rounded-full font-semibold whitespace-nowrap transition-all ${
                     selectedCategory === cat
                       ? 'bg-navy-900 text-gold-400 dark:bg-gold-500 dark:text-navy-950 shadow-sm'
-                      : 'bg-white dark:bg-navy-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-gold-500'
+                      : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-gold-500'
                   }`}
                 >
                   {cat}
@@ -174,7 +174,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                 placeholder="Search catalogue..."
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="w-full pl-9 pr-3 py-1.5 text-xs bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-gold-500/40"
+                className="w-full pl-9 pr-3 py-1.5 text-xs bg-navy-900 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-gold-500/40"
               />
             </div>
           </div>
@@ -222,18 +222,18 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                       <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400">
                         {product.category}
                       </span>
-                      <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tight mt-0.5">
+                      <h3 className="text-sm font-bold text-slate-100 tracking-tight mt-0.5">
                         {product.name}
                       </h3>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">
+                      <p className="text-xs text-slate-400 mt-1 line-clamp-2">
                         {product.description}
                       </p>
                     </div>
 
-                    <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <div className="mt-4 pt-4 border-t border-slate-800 flex items-center justify-between">
                       <div>
                         <span className="text-[10px] text-slate-400 uppercase font-semibold">Unit Price</span>
-                        <div className="text-base font-extrabold text-slate-900 dark:text-slate-100 font-mono">
+                        <div className="text-base font-extrabold text-slate-100 font-mono">
                           {formatINR(product.sellingPrice)}
                           <span className="text-xs font-normal text-slate-400 font-sans ml-1">/ {product.unit}</span>
                         </div>
@@ -244,7 +244,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                         disabled={isOutOfStock}
                         className={`px-3.5 py-2 text-xs font-bold rounded-xl shadow-sm flex items-center gap-1.5 transition-all ${
                           isOutOfStock
-                            ? 'bg-slate-100 dark:bg-navy-950 text-slate-400 cursor-not-allowed border border-slate-200 dark:border-slate-800'
+                            ? 'bg-navy-950 text-slate-400 cursor-not-allowed border border-slate-800'
                             : isAdded
                             ? 'bg-emerald-600 text-white'
                             : 'bg-navy-900 hover:bg-navy-800 text-gold-400 border border-gold-500/40 hover:border-gold-400 shadow-md'
@@ -271,9 +271,9 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
         /* My Orders & Tracking View */
         <div className="space-y-4">
           {orders.length === 0 ? (
-            <div className="p-12 text-center bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800">
-              <Package className="w-12 h-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
-              <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200">No Orders Placed Yet</h3>
+            <div className="p-12 text-center bg-navy-900 rounded-2xl border border-slate-800">
+              <Package className="w-12 h-12 text-slate-300 dark:text-slate-400 mx-auto mb-3" />
+              <h3 className="text-sm font-bold text-slate-200">No Orders Placed Yet</h3>
               <p className="text-xs text-slate-400 mt-1">Explore our product catalogue and place your first wholesale order.</p>
               <button
                 onClick={() => setActiveTab('storefront')}
@@ -290,13 +290,13 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
               return (
                 <div
                   key={order.id}
-                  className="p-6 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-5"
+                  className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-5"
                 >
                   {/* Top Bar of Order Card */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800 text-xs">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-800 text-xs">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-extrabold text-sm text-slate-900 dark:text-slate-100 font-mono">
+                        <span className="font-extrabold text-sm text-slate-100 font-mono">
                           {order.orderNumber}
                         </span>
                         <Badge
@@ -360,7 +360,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                                 className={`h-2.5 rounded-full transition-all ${
                                   isDone
                                     ? 'bg-gradient-to-r from-cyan-500 to-blue-500 shadow-sm shadow-cyan-500/30'
-                                    : 'bg-slate-200 dark:bg-navy-800'
+                                    : 'bg-navy-900 dark:bg-navy-800'
                                 }`}
                               />
                               <div className="flex items-center gap-1">
@@ -377,7 +377,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                   )}
 
                   {/* Shipping Address Summary */}
-                  <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5 pt-2">
+                  <div className="text-xs text-slate-400 flex items-center gap-1.5 pt-2">
                     <Truck className="w-3.5 h-3.5 text-slate-400" />
                     <span>Destination: <b>{order.shippingAddress}, {order.city} - {order.postalCode}</b></span>
                   </div>

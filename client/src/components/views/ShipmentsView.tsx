@@ -70,12 +70,12 @@ export const ShipmentsView: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-800">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+          <h1 className="text-2xl font-black text-slate-100 tracking-tight">
             Logistics & Shipment Management
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-slate-400 mt-1">
             Fleet tracking, delivery agent assignments, delivery exception queues, and proof-of-delivery timestamps.
           </p>
         </div>
@@ -90,7 +90,7 @@ export const ShipmentsView: React.FC = () => {
             className={`px-3.5 py-1.5 rounded-xl font-semibold transition-all whitespace-nowrap ${
               statusFilter === st
                 ? 'bg-navy-900 text-gold-400 dark:bg-gold-500 dark:text-navy-950 shadow-sm'
-                : 'bg-white dark:bg-navy-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-gold-500'
+                : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-gold-500'
             }`}
           >
             {st === 'ALL' ? 'All Shipments' : st.replace('_', ' ')}
@@ -99,11 +99,11 @@ export const ShipmentsView: React.FC = () => {
       </div>
 
       {/* Table */}
-      <div className="bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
+      <div className="bg-navy-900 border border-slate-800 rounded-2xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-navy-950/60 text-slate-400 font-semibold uppercase">
+              <tr className="border-b border-slate-800 bg-navy-950/60 text-slate-400 font-semibold uppercase">
                 <th className="py-3 px-4">Tracking Ref</th>
                 <th className="py-3 px-4">Order Number</th>
                 <th className="py-3 px-4">Assigned Agent</th>
@@ -114,16 +114,16 @@ export const ShipmentsView: React.FC = () => {
                 <th className="py-3 px-4 text-right">Dispatch Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+            <tbody className="divide-y divide-slate-800">
               {shipments.map(s => (
-                <tr key={s.id} className="hover:bg-slate-50/50 dark:hover:bg-navy-950/40">
-                  <td className="py-3 px-4 font-mono font-bold text-slate-900 dark:text-slate-100">
+                <tr key={s.id} className="hover:bg-navy-950/40">
+                  <td className="py-3 px-4 font-mono font-bold text-slate-100">
                     {s.trackingNumber}
                   </td>
                   <td className="py-3 px-4 font-mono text-slate-500">{s.orderNumber}</td>
                   <td className="py-3 px-4">
                     {s.assignedAgentName ? (
-                      <span className="font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1">
+                      <span className="font-semibold text-slate-200 flex items-center gap-1">
                         <UserCheck className="w-3.5 h-3.5 text-teal-500" />
                         {s.assignedAgentName}
                       </span>
@@ -132,7 +132,7 @@ export const ShipmentsView: React.FC = () => {
                     )}
                   </td>
                   <td className="py-3 px-4">
-                    <div className="font-medium text-slate-800 dark:text-slate-200">{s.recipientName}</div>
+                    <div className="font-medium text-slate-200">{s.recipientName}</div>
                     <span className="text-[10px] text-slate-400">{s.city}</span>
                   </td>
                   <td className="py-3 px-4 text-center">
@@ -160,7 +160,7 @@ export const ShipmentsView: React.FC = () => {
                           setAssignShipment(s);
                           setSelectedAgentId(s.assignedAgentId || (agents[0]?.id || ''));
                         }}
-                        className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 dark:bg-navy-800 text-slate-800 dark:text-slate-200 font-semibold rounded-lg shadow-sm"
+                        className="px-2.5 py-1 bg-navy-800 hover:bg-navy-700 text-slate-200 font-semibold rounded-lg shadow-sm"
                       >
                         {s.assignedAgentName ? 'Reassign' : 'Assign Agent'}
                       </button>
@@ -188,7 +188,7 @@ export const ShipmentsView: React.FC = () => {
                 required
                 value={selectedAgentId}
                 onChange={e => setSelectedAgentId(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 text-slate-900 dark:text-slate-100"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100"
               >
                 <option value="">-- Choose Courier Agent --</option>
                 {agents.map(a => (
@@ -199,9 +199,9 @@ export const ShipmentsView: React.FC = () => {
               </select>
             </div>
 
-            <div className="p-3 bg-slate-50 dark:bg-navy-950 rounded-xl border border-slate-200 dark:border-slate-800">
+            <div className="p-3 bg-navy-950 rounded-xl border border-slate-800">
               <span className="text-slate-400 block mb-0.5">Delivery Address:</span>
-              <p className="font-medium text-slate-800 dark:text-slate-200">
+              <p className="font-medium text-slate-200">
                 {assignShipment.deliveryAddress}, {assignShipment.city} - {assignShipment.postalCode}
               </p>
             </div>

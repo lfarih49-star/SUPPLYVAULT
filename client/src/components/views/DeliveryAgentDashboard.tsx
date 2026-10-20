@@ -166,9 +166,9 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
       {activeTab === 'deliveries' ? (
         <div className="space-y-4">
           {activeDeliveries.length === 0 ? (
-            <div className="p-12 text-center bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+            <div className="p-12 text-center bg-navy-900 rounded-2xl border border-slate-800">
               <CheckCircle className="w-12 h-12 text-emerald-500 mx-auto mb-3" />
-              <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200">No Active Deliveries Assigned</h3>
+              <h3 className="text-sm font-bold text-slate-200">No Active Deliveries Assigned</h3>
               <p className="text-xs text-slate-400 mt-1">All assigned parcels have been delivered or await dispatch at the hub.</p>
             </div>
           ) : (
@@ -178,13 +178,13 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
               return (
                 <div
                   key={s.id}
-                  className="p-5 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4 hover:border-gold-500/50 transition-all"
+                  className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4 hover:border-gold-500/50 transition-all"
                 >
                   {/* Top Bar */}
-                  <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 text-xs">
+                  <div className="flex items-center justify-between pb-3 border-b border-slate-800 text-xs">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-mono font-bold text-slate-900 dark:text-slate-100 text-sm">
+                        <span className="font-mono font-bold text-slate-100 text-sm">
                           {s.trackingNumber}
                         </span>
                         <Badge
@@ -205,7 +205,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
 
                     <div className="text-right">
                       <span className="text-[10px] text-slate-400 uppercase font-semibold">Value</span>
-                      <div className="font-mono font-bold text-slate-900 dark:text-slate-100">
+                      <div className="font-mono font-bold text-slate-100">
                         {formatINR(s.totalAmount)}
                       </div>
                     </div>
@@ -213,10 +213,10 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
 
                   {/* Recipient & Destination Details */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                    <div className="p-3 rounded-xl bg-slate-50 dark:bg-navy-950/60 border border-slate-200/60 dark:border-slate-800">
+                    <div className="p-3 rounded-xl bg-navy-950/60 border border-slate-800">
                       <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">Customer Details</span>
-                      <div className="font-bold text-slate-900 dark:text-slate-100">{s.recipientName}</div>
-                      <div className="flex items-center gap-1.5 text-slate-600 dark:text-slate-300 mt-1">
+                      <div className="font-bold text-slate-100">{s.recipientName}</div>
+                      <div className="flex items-center gap-1.5 text-slate-300 mt-1">
                         <Phone className="w-3.5 h-3.5 text-gold-500" />
                         <a href={`tel:${s.recipientPhone}`} className="hover:underline font-mono">
                           {s.recipientPhone}
@@ -224,9 +224,9 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
                       </div>
                     </div>
 
-                    <div className="p-3 rounded-xl bg-slate-50 dark:bg-navy-950/60 border border-slate-200/60 dark:border-slate-800">
+                    <div className="p-3 rounded-xl bg-navy-950/60 border border-slate-800">
                       <span className="text-[10px] uppercase font-bold text-slate-400 block mb-1">Delivery Address</span>
-                      <div className="flex items-start gap-1.5 text-slate-800 dark:text-slate-200">
+                      <div className="flex items-start gap-1.5 text-slate-200">
                         <MapPin className="w-4 h-4 text-rose-500 shrink-0 mt-0.5" />
                         <span>{s.deliveryAddress}, {s.city} - {s.postalCode}</span>
                       </div>
@@ -272,10 +272,10 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
           {completedDeliveries.map(s => (
             <div
               key={s.id}
-              className="p-4 rounded-xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between text-xs"
+              className="p-4 rounded-xl bg-navy-900 border border-slate-800 shadow-sm flex items-center justify-between text-xs"
             >
               <div>
-                <div className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                <div className="font-bold text-slate-100 flex items-center gap-2">
                   <span className="font-mono">{s.trackingNumber}</span>
                   <Badge variant="success" size="sm">DELIVERED</Badge>
                 </div>
@@ -301,13 +301,13 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
         >
           <div className="space-y-4 text-xs">
             <div>
-              <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="font-semibold text-slate-300 block mb-1">
                 Reason for Incomplete Delivery
               </label>
               <select
                 value={failureReason}
                 onChange={e => setFailureReason(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 text-slate-900 dark:text-slate-100"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100"
               >
                 <option value="Customer unavailable at address">Customer unavailable at address</option>
                 <option value="Address unreachable / incorrect PIN code">Address unreachable / incorrect PIN code</option>
@@ -318,7 +318,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
             </div>
 
             <div>
-              <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="font-semibold text-slate-300 block mb-1">
                 Field Delivery Notes
               </label>
               <textarea
@@ -326,7 +326,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
                 placeholder="Attempted delivery at 4:30 PM. Called phone number twice, no response."
                 value={failureNotes}
                 onChange={e => setFailureNotes(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 text-slate-900 dark:text-slate-100"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100"
               />
             </div>
 
@@ -350,7 +350,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
           subtitle={`Advance ${confirmModal.shipment.trackingNumber} to '${confirmModal.nextStatus}'`}
         >
           <div className="space-y-4 text-xs">
-            <p className="text-slate-600 dark:text-slate-300">
+            <p className="text-slate-300">
               Are you sure you want to transition this delivery to <b className="text-gold-500 font-mono">{confirmModal.nextStatus}</b>?
               {confirmModal.nextStatus === 'DELIVERED' && (
                 <span className="block mt-2 text-emerald-600 font-semibold">
@@ -363,7 +363,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
               <button
                 type="button"
                 onClick={() => setConfirmModal(null)}
-                className="flex-1 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-navy-950 font-semibold rounded-xl text-slate-700 dark:text-slate-300"
+                className="flex-1 py-2 bg-navy-950 hover:bg-navy-800 font-semibold rounded-xl text-slate-300"
               >
                 Cancel
               </button>

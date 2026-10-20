@@ -49,12 +49,12 @@ export const OrdersView: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-800">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+          <h1 className="text-2xl font-black text-slate-100 tracking-tight">
             Buyer Orders Fulfilment
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-slate-400 mt-1">
             Order lifecycle management from placement, atomic reservation, packing, to logistics dispatch.
           </p>
         </div>
@@ -69,7 +69,7 @@ export const OrdersView: React.FC = () => {
             className={`px-3 py-1.5 rounded-xl font-semibold transition-all whitespace-nowrap ${
               statusFilter === st
                 ? 'bg-navy-900 text-gold-400 dark:bg-gold-500 dark:text-navy-950 shadow-sm'
-                : 'bg-white dark:bg-navy-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-gold-500'
+                : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-gold-500'
             }`}
           >
             {st === 'ALL' ? 'All Orders' : st}
@@ -78,11 +78,11 @@ export const OrdersView: React.FC = () => {
       </div>
 
       {/* Table */}
-      <div className="bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
+      <div className="bg-navy-900 border border-slate-800 rounded-2xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-navy-950/60 text-slate-400 font-semibold uppercase">
+              <tr className="border-b border-slate-800 bg-navy-950/60 text-slate-400 font-semibold uppercase">
                 <th className="py-3 px-4">Order Number</th>
                 <th className="py-3 px-4">Buyer Customer</th>
                 <th className="py-3 px-4">Destination</th>
@@ -92,17 +92,17 @@ export const OrdersView: React.FC = () => {
                 <th className="py-3 px-4 text-right">Progress Workflow</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+            <tbody className="divide-y divide-slate-800">
               {orders.map(o => (
-                <tr key={o.id} className="hover:bg-slate-50/50 dark:hover:bg-navy-950/40">
-                  <td className="py-3 px-4 font-mono font-bold text-slate-900 dark:text-slate-100">
+                <tr key={o.id} className="hover:bg-navy-950/40">
+                  <td className="py-3 px-4 font-mono font-bold text-slate-100">
                     {o.orderNumber}
                   </td>
                   <td className="py-3 px-4">
-                    <div className="font-semibold text-slate-800 dark:text-slate-200">{o.buyerName}</div>
+                    <div className="font-semibold text-slate-200">{o.buyerName}</div>
                     <span className="text-[10px] text-slate-400">{o.buyerEmail}</span>
                   </td>
-                  <td className="py-3 px-4 text-slate-600 dark:text-slate-400 max-w-xs truncate">
+                  <td className="py-3 px-4 text-slate-400 max-w-xs truncate">
                     {o.city} ({o.postalCode})
                   </td>
                   <td className="py-3 px-4 text-right font-mono font-bold text-gold-600 dark:text-gold-400">

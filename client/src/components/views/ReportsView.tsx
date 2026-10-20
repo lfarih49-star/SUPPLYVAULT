@@ -70,11 +70,11 @@ export const ReportsView: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="pb-2 border-b border-slate-200 dark:border-slate-800">
-        <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+      <div className="pb-2 border-b border-slate-800">
+        <h1 className="text-2xl font-black text-slate-100 tracking-tight">
           Enterprise Reports & Data Exports
         </h1>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+        <p className="text-xs text-slate-400 mt-1">
           Export actual persisted operational datasets with proper UTF-8 CSV formatting.
         </p>
       </div>
@@ -83,7 +83,7 @@ export const ReportsView: React.FC = () => {
         {reportCards.map(rep => (
           <div
             key={rep.id}
-            className="p-6 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between space-y-4 hover:border-gold-500/40 transition-all"
+            className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm flex flex-col justify-between space-y-4 hover:border-gold-500/40 transition-all"
           >
             <div>
               <div className="flex items-center justify-between mb-2">
@@ -92,15 +92,15 @@ export const ReportsView: React.FC = () => {
                 </Badge>
                 <FileSpreadsheet className="w-5 h-5 text-slate-400" />
               </div>
-              <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+              <h3 className="text-base font-bold text-slate-100 tracking-tight">
                 {rep.title}
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+              <p className="text-xs text-slate-400 mt-1 leading-relaxed">
                 {rep.description}
               </p>
             </div>
 
-            <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
               <span className="text-[11px] font-mono text-slate-400">{rep.filename}</span>
               <button
                 onClick={() => handleDownload(rep.id, rep.filename)}

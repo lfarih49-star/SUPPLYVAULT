@@ -165,12 +165,12 @@ export const PurchaseOrdersView: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-800">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+          <h1 className="text-2xl font-black text-slate-100 tracking-tight">
             Procurement & Purchase Orders
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-slate-400 mt-1">
             Requisitions, management authorization, supplier dispatch, and physical goods receipt auditing.
           </p>
         </div>
@@ -189,11 +189,11 @@ export const PurchaseOrdersView: React.FC = () => {
       </div>
 
       {/* PO Table */}
-      <div className="bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
+      <div className="bg-navy-900 border border-slate-800 rounded-2xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-navy-950/60 text-slate-400 font-semibold uppercase">
+              <tr className="border-b border-slate-800 bg-navy-950/60 text-slate-400 font-semibold uppercase">
                 <th className="py-3 px-4">PO Number</th>
                 <th className="py-3 px-4">Supplier</th>
                 <th className="py-3 px-4 text-right font-mono">Total Cost</th>
@@ -203,13 +203,13 @@ export const PurchaseOrdersView: React.FC = () => {
                 <th className="py-3 px-4 text-right">Workflow Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+            <tbody className="divide-y divide-slate-800">
               {purchaseOrders.map(po => (
-                <tr key={po.id} className="hover:bg-slate-50/50 dark:hover:bg-navy-950/40">
-                  <td className="py-3 px-4 font-mono font-bold text-slate-900 dark:text-slate-100">
+                <tr key={po.id} className="hover:bg-navy-950/40">
+                  <td className="py-3 px-4 font-mono font-bold text-slate-100">
                     {po.poNumber}
                   </td>
-                  <td className="py-3 px-4 font-medium text-slate-800 dark:text-slate-200">{po.supplierName}</td>
+                  <td className="py-3 px-4 font-medium text-slate-200">{po.supplierName}</td>
                   <td className="py-3 px-4 text-right font-mono font-bold text-gold-600 dark:text-gold-400">
                     {formatINR(po.totalAmount)}
                   </td>
@@ -290,7 +290,7 @@ export const PurchaseOrdersView: React.FC = () => {
               required
               value={selectedSupplierId}
               onChange={e => setSelectedSupplierId(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+              className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
             >
               <option value="">-- Choose Supplier --</option>
               {suppliers.map(s => (
@@ -308,7 +308,7 @@ export const PurchaseOrdersView: React.FC = () => {
                 type="date"
                 value={expectedDate}
                 onChange={e => setExpectedDate(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
               />
             </div>
             <div>
@@ -318,7 +318,7 @@ export const PurchaseOrdersView: React.FC = () => {
                 placeholder="FOB Destination, Net 30"
                 value={poNotes}
                 onChange={e => setPoNotes(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
               />
             </div>
           </div>
@@ -332,7 +332,7 @@ export const PurchaseOrdersView: React.FC = () => {
                   addItemToPO(e.target.value);
                   e.target.value = '';
                 }}
-                className="text-xs px-2 py-1 border border-slate-200 dark:border-slate-700 rounded bg-white dark:bg-navy-950"
+                className="text-xs px-2 py-1 border border-slate-700 rounded bg-navy-950"
               >
                 <option value="">+ Add Product Line</option>
                 {products.map(p => (
@@ -345,7 +345,7 @@ export const PurchaseOrdersView: React.FC = () => {
               {poItems.map((item, idx) => {
                 const prod = products.find(p => p.id === item.productId);
                 return (
-                  <div key={idx} className="p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-navy-950 flex items-center justify-between gap-3">
+                  <div key={idx} className="p-2.5 rounded-lg border border-slate-800 bg-navy-950 flex items-center justify-between gap-3">
                     <div className="flex-1 min-w-0">
                       <p className="font-bold truncate">{prod?.name}</p>
                       <span className="text-slate-400 font-mono">Unit: {formatINR(prod?.purchaseCost)}</span>
@@ -360,7 +360,7 @@ export const PurchaseOrdersView: React.FC = () => {
                           const val = parseInt(e.target.value, 10) || 1;
                           setPoItems(prev => prev.map((it, i) => i === idx ? { ...it, quantity: val } : it));
                         }}
-                        className="w-20 px-2 py-1 border rounded bg-white dark:bg-navy-900 font-mono text-center font-bold"
+                        className="w-20 px-2 py-1 border rounded bg-navy-900 font-mono text-center font-bold"
                       />
                       <button
                         type="button"
@@ -397,9 +397,9 @@ export const PurchaseOrdersView: React.FC = () => {
           <form onSubmit={handlePostGoodsReceipt} className="space-y-4 text-xs">
             <div className="space-y-3">
               {receiptPo.items?.map((item: any) => (
-                <div key={item.id} className="p-3 bg-slate-50 dark:bg-navy-950 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4">
+                <div key={item.id} className="p-3 bg-navy-950 rounded-xl border border-slate-800 flex items-center justify-between gap-4">
                   <div>
-                    <h4 className="font-bold text-slate-900 dark:text-slate-100">{item.productName}</h4>
+                    <h4 className="font-bold text-slate-100">{item.productName}</h4>
                     <p className="text-[11px] text-slate-400 font-mono">
                       Ordered: <b>{item.quantity}</b> | Previously Received: <b>{item.receivedQuantity || 0}</b>
                     </p>
@@ -413,7 +413,7 @@ export const PurchaseOrdersView: React.FC = () => {
                       max={item.quantity - (item.receivedQuantity || 0)}
                       value={receiptInputs[item.id] || 0}
                       onChange={e => setReceiptInputs({ ...receiptInputs, [item.id]: parseInt(e.target.value, 10) || 0 })}
-                      className="w-20 px-2 py-1 border rounded bg-white dark:bg-navy-900 font-mono text-center font-bold text-emerald-600"
+                      className="w-20 px-2 py-1 border rounded bg-navy-900 font-mono text-center font-bold text-emerald-600"
                     />
                   </div>
                 </div>

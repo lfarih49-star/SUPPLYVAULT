@@ -29,20 +29,20 @@ export const AuditLogView: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="pb-2 border-b border-slate-200 dark:border-slate-800">
-        <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+      <div className="pb-2 border-b border-slate-800">
+        <h1 className="text-2xl font-black text-slate-100 tracking-tight">
           Security & Operational Audit Trail
         </h1>
-        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+        <p className="text-xs text-slate-400 mt-1">
           Immutable audit record of all authentication, stock adjustments, purchase order authorizations, and checkout reservations.
         </p>
       </div>
 
-      <div className="bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
+      <div className="bg-navy-900 border border-slate-800 rounded-2xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-navy-950/60 text-slate-400 font-semibold uppercase">
+              <tr className="border-b border-slate-800 bg-navy-950/60 text-slate-400 font-semibold uppercase">
                 <th className="py-3 px-4">Timestamp (IST)</th>
                 <th className="py-3 px-4">Actor</th>
                 <th className="py-3 px-4 text-center">Role</th>
@@ -51,17 +51,17 @@ export const AuditLogView: React.FC = () => {
                 <th className="py-3 px-4">Details</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+            <tbody className="divide-y divide-slate-800">
               {logs.map(l => (
-                <tr key={l.id} className="hover:bg-slate-50/50 dark:hover:bg-navy-950/40">
+                <tr key={l.id} className="hover:bg-navy-950/40">
                   <td className="py-3 px-4 text-slate-400 whitespace-nowrap font-mono">{formatDate(l.createdAt, true)}</td>
-                  <td className="py-3 px-4 font-bold text-slate-800 dark:text-slate-200">{l.actorName}</td>
+                  <td className="py-3 px-4 font-bold text-slate-200">{l.actorName}</td>
                   <td className="py-3 px-4 text-center">
                     <Badge variant={l.actorRole === 'MANAGER' ? 'gold' : l.actorRole === 'STAFF' ? 'teal' : 'blue'} size="sm">
                       {l.actorRole}
                     </Badge>
                   </td>
-                  <td className="py-3 px-4 font-mono font-semibold text-slate-700 dark:text-slate-300">{l.action}</td>
+                  <td className="py-3 px-4 font-mono font-semibold text-slate-300">{l.action}</td>
                   <td className="py-3 px-4 text-slate-400 font-mono text-[11px]">{l.entityType}</td>
                   <td className="py-3 px-4 text-slate-500 max-w-sm truncate">{l.details || '—'}</td>
                 </tr>

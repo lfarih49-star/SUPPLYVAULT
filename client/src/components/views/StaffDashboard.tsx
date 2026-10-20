@@ -151,15 +151,15 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
   return (
     <div className="space-y-6">
       {/* Operations Hub Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-800">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+            <h1 className="text-2xl font-black text-slate-100 tracking-tight">
               Warehouse Operations Hub
             </h1>
             <Badge variant="teal" size="sm">Staff Shift Active</Badge>
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-slate-400 mt-1">
             Daily order packing queues, goods receipt logging, and restock requisition dispatch.
           </p>
         </div>
@@ -176,17 +176,17 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
 
       {/* Task Queue Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-4 rounded-xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center gap-4">
+        <div className="p-4 rounded-xl bg-navy-900 border border-slate-800 shadow-sm flex items-center gap-4">
           <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950 text-blue-600">
             <Package className="w-5 h-5" />
           </div>
           <div>
             <span className="text-xs text-slate-400 uppercase font-semibold">Orders to Pack</span>
-            <h3 className="text-xl font-bold font-mono text-slate-900 dark:text-slate-100">{pendingOrders.length}</h3>
+            <h3 className="text-xl font-bold font-mono text-slate-100">{pendingOrders.length}</h3>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center gap-4">
+        <div className="p-4 rounded-xl bg-navy-900 border border-slate-800 shadow-sm flex items-center gap-4">
           <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950 text-rose-600">
             <AlertTriangle className="w-5 h-5" />
           </div>
@@ -196,7 +196,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center gap-4">
+        <div className="p-4 rounded-xl bg-navy-900 border border-slate-800 shadow-sm flex items-center gap-4">
           <div className="p-3 rounded-xl bg-teal-50 dark:bg-teal-950 text-teal-600">
             <ClipboardList className="w-5 h-5" />
           </div>
@@ -209,9 +209,9 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Pending Orders Packing Queue */}
-        <div className="p-6 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">
+        <div className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+            <h2 className="text-sm font-bold text-slate-100 flex items-center gap-2">
               <Package className="w-4 h-4 text-blue-500" />
               Incoming Buyer Orders ({pendingOrders.length})
             </h2>
@@ -233,10 +233,10 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
               {pendingOrders.slice(0, 4).map(o => (
                 <div
                   key={o.id}
-                  className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-navy-950/40 flex items-center justify-between gap-3 text-xs"
+                  className="p-3.5 rounded-xl border border-slate-800 bg-navy-950/40 flex items-center justify-between gap-3 text-xs"
                 >
                   <div>
-                    <div className="font-bold text-slate-900 dark:text-slate-100">{o.orderNumber}</div>
+                    <div className="font-bold text-slate-100">{o.orderNumber}</div>
                     <span className="text-slate-500">{o.buyerName} • {o.city}</span>
                     <div className="text-[11px] font-mono font-bold text-gold-600 dark:text-gold-400 mt-0.5">
                       {formatINR(o.totalAmount)}
@@ -255,9 +255,9 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
         </div>
 
         {/* Low Stock Alerts & Fast Adjustment */}
-        <div className="p-6 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">
+        <div className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+            <h2 className="text-sm font-bold text-slate-100 flex items-center gap-2">
               <AlertTriangle className="w-4 h-4 text-amber-500" />
               Low Stock Alert Watchlist
             </h2>
@@ -281,7 +281,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
                   className="p-3.5 rounded-xl border border-amber-200/60 dark:border-amber-900/40 bg-amber-50/30 dark:bg-amber-950/20 flex items-center justify-between text-xs"
                 >
                   <div>
-                    <div className="font-bold text-slate-900 dark:text-slate-100">{p.name}</div>
+                    <div className="font-bold text-slate-100">{p.name}</div>
                     <span className="text-[10px] font-mono text-slate-400">{p.sku} • Min: {p.minStockLevel} {p.unit}</span>
                     <div className="text-xs font-mono font-bold text-rose-600 dark:text-rose-400 mt-0.5">
                       Physical Stock: {p.physicalStock} {p.unit} (Available: {p.availableStock})
@@ -293,7 +293,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
                       setAdjustQty(p.reorderQuantity);
                       setAdjustModalOpen(true);
                     }}
-                    className="px-2.5 py-1.5 bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-700 hover:border-gold-500 font-semibold rounded-lg text-slate-800 dark:text-slate-200 shadow-sm text-xs"
+                    className="px-2.5 py-1.5 bg-navy-900 border border-slate-700 hover:border-gold-500 font-semibold rounded-lg text-slate-200 shadow-sm text-xs"
                   >
                     Adjust Stock
                   </button>
@@ -305,11 +305,11 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
       </div>
 
       {/* Recent Inventory Movements Feed */}
-      <div className="p-6 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">
+      <div className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <History className="w-5 h-5 text-gold-500" />
-            <h2 className="text-base font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+            <h2 className="text-base font-bold text-slate-100 tracking-tight">
               Warehouse Movement Audit Feed
             </h2>
           </div>
@@ -319,7 +319,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-slate-100 dark:border-slate-800 text-slate-400 font-semibold uppercase">
+              <tr className="border-b border-slate-800 text-slate-400 font-semibold uppercase">
                 <th className="pb-3">Timestamp (IST)</th>
                 <th className="pb-3">Product Name</th>
                 <th className="pb-3">Movement Type</th>
@@ -329,11 +329,11 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
                 <th className="pb-3">Operator</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+            <tbody className="divide-y divide-slate-800">
               {movements.map(m => (
-                <tr key={m.id} className="hover:bg-slate-50/50 dark:hover:bg-navy-950/40">
+                <tr key={m.id} className="hover:bg-navy-950/40">
                   <td className="py-2.5 text-slate-400 whitespace-nowrap">{formatDate(m.createdAt, true)}</td>
-                  <td className="py-2.5 font-medium text-slate-900 dark:text-slate-100">{m.productName}</td>
+                  <td className="py-2.5 font-medium text-slate-100">{m.productName}</td>
                   <td className="py-2.5">
                     <Badge
                       variant={
@@ -352,10 +352,10 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
                   </td>
                   <td className="py-2.5 font-mono font-bold">{m.quantity}</td>
                   <td className="py-2.5 font-mono text-slate-500">
-                    {m.physicalBefore} → <b className="text-slate-800 dark:text-slate-200">{m.physicalAfter}</b>
+                    {m.physicalBefore} → <b className="text-slate-200">{m.physicalAfter}</b>
                   </td>
                   <td className="py-2.5 text-slate-500 max-w-xs truncate">{m.reason}</td>
-                  <td className="py-2.5 font-medium text-slate-700 dark:text-slate-300">{m.performedBy}</td>
+                  <td className="py-2.5 font-medium text-slate-300">{m.performedBy}</td>
                 </tr>
               ))}
             </tbody>
@@ -372,14 +372,14 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
       >
         <form onSubmit={handleCreateRestock} className="space-y-4 text-xs">
           <div>
-            <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+            <label className="font-semibold text-slate-300 block mb-1">
               Select Catalogue Product
             </label>
             <select
               required
               value={selectedProductId}
               onChange={e => setSelectedProductId(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 text-slate-900 dark:text-slate-100"
+              className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100"
             >
               <option value="">-- Choose Product --</option>
               {products.map(p => (
@@ -392,7 +392,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="font-semibold text-slate-300 block mb-1">
                 Requested Quantity (Units)
               </label>
               <input
@@ -401,17 +401,17 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
                 required
                 value={requestedQty}
                 onChange={e => setRequestedQty(parseInt(e.target.value, 10) || 1)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 text-slate-900 dark:text-slate-100 font-mono font-bold"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono font-bold"
               />
             </div>
             <div>
-              <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="font-semibold text-slate-300 block mb-1">
                 Priority Tier
               </label>
               <select
                 value={priority}
                 onChange={e => setPriority(e.target.value as any)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 text-slate-900 dark:text-slate-100"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100"
               >
                 <option value="LOW">Low</option>
                 <option value="MEDIUM">Medium</option>
@@ -422,7 +422,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
           </div>
 
           <div>
-            <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+            <label className="font-semibold text-slate-300 block mb-1">
               Requisition Reason & Justification
             </label>
             <textarea
@@ -431,7 +431,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
               placeholder="Physical inventory depleted due to large wholesale order fulfillment..."
               value={reason}
               onChange={e => setReason(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 text-slate-900 dark:text-slate-100"
+              className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100"
             />
           </div>
 
@@ -455,13 +455,13 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
         >
           <form onSubmit={handleStockAdjustment} className="space-y-4 text-xs">
             <div>
-              <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="font-semibold text-slate-300 block mb-1">
                 Adjustment Type
               </label>
               <select
                 value={adjustType}
                 onChange={e => setAdjustType(e.target.value as any)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 text-slate-900 dark:text-slate-100"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100"
               >
                 <option value="STOCK_IN">Stock-In (Add Physical Units)</option>
                 <option value="STOCK_OUT">Stock-Out (Remove Unreserved Units)</option>
@@ -470,7 +470,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
             </div>
 
             <div>
-              <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="font-semibold text-slate-300 block mb-1">
                 Quantity
               </label>
               <input
@@ -479,12 +479,12 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
                 required
                 value={adjustQty}
                 onChange={e => setAdjustQty(parseInt(e.target.value, 10) || 1)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 text-slate-900 dark:text-slate-100 font-mono font-bold"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono font-bold"
               />
             </div>
 
             <div>
-              <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="font-semibold text-slate-300 block mb-1">
                 Audit Reason
               </label>
               <input
@@ -493,7 +493,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
                 placeholder="Discrepancy count, returned material, quality check..."
                 value={adjustReason}
                 onChange={e => setAdjustReason(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 text-slate-900 dark:text-slate-100"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100"
               />
             </div>
 

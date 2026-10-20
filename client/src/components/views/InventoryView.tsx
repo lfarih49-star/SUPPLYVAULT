@@ -79,24 +79,24 @@ export const InventoryView: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-800">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+          <h1 className="text-2xl font-black text-slate-100 tracking-tight">
             Inventory & Stock Auditing
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-slate-400 mt-1">
             Reconcile physical, reserved, and available stock units with auditable movement logs.
           </p>
         </div>
 
         {/* Sub-tab switcher */}
-        <div className="flex items-center gap-1 p-1 bg-slate-200/60 dark:bg-navy-900 rounded-xl border border-slate-300/60 dark:border-slate-800 text-xs font-semibold">
+        <div className="flex items-center gap-1 p-1 bg-navy-950 rounded-xl border border-slate-800 text-xs font-semibold">
           <button
             onClick={() => setActiveSubTab('levels')}
             className={`px-4 py-1.5 rounded-lg transition-all ${
               activeSubTab === 'levels'
-                ? 'bg-white dark:bg-navy-800 text-slate-900 dark:text-slate-100 shadow-sm'
-                : 'text-slate-600 dark:text-slate-400'
+                ? 'bg-navy-800 text-slate-100 shadow-sm'
+                : 'text-slate-400'
             }`}
           >
             Live Balances
@@ -105,8 +105,8 @@ export const InventoryView: React.FC = () => {
             onClick={() => setActiveSubTab('movements')}
             className={`px-4 py-1.5 rounded-lg transition-all ${
               activeSubTab === 'movements'
-                ? 'bg-white dark:bg-navy-800 text-slate-900 dark:text-slate-100 shadow-sm'
-                : 'text-slate-600 dark:text-slate-400'
+                ? 'bg-navy-800 text-slate-100 shadow-sm'
+                : 'text-slate-400'
             }`}
           >
             Movement Audit Trail ({movements.length})
@@ -117,7 +117,7 @@ export const InventoryView: React.FC = () => {
       {/* Summary KPI Cards */}
       {summary && (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="p-4 rounded-xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div className="p-4 rounded-xl bg-navy-900 border border-slate-800 shadow-sm">
             <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Total Valuation</span>
             <div className="text-xl font-extrabold font-mono text-gold-600 dark:text-gold-400 mt-1">
               {formatINR(summary.totalValuationINR)}
@@ -125,15 +125,15 @@ export const InventoryView: React.FC = () => {
             <span className="text-[10px] text-slate-500">Physical Stock Basis</span>
           </div>
 
-          <div className="p-4 rounded-xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div className="p-4 rounded-xl bg-navy-900 border border-slate-800 shadow-sm">
             <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Physical Units</span>
-            <div className="text-xl font-extrabold font-mono text-slate-900 dark:text-slate-100 mt-1">
+            <div className="text-xl font-extrabold font-mono text-slate-100 mt-1">
               {summary.totalPhysicalUnits}
             </div>
             <span className="text-[10px] text-slate-500">In Warehouse</span>
           </div>
 
-          <div className="p-4 rounded-xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div className="p-4 rounded-xl bg-navy-900 border border-slate-800 shadow-sm">
             <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Reserved Units</span>
             <div className="text-xl font-extrabold font-mono text-amber-600 dark:text-amber-400 mt-1">
               {summary.totalReservedUnits}
@@ -141,7 +141,7 @@ export const InventoryView: React.FC = () => {
             <span className="text-[10px] text-slate-500">Committed to Orders</span>
           </div>
 
-          <div className="p-4 rounded-xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div className="p-4 rounded-xl bg-navy-900 border border-slate-800 shadow-sm">
             <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Available Stock</span>
             <div className="text-xl font-extrabold font-mono text-emerald-600 dark:text-emerald-400 mt-1">
               {summary.totalAvailableUnits}
@@ -152,11 +152,11 @@ export const InventoryView: React.FC = () => {
       )}
 
       {activeSubTab === 'levels' ? (
-        <div className="bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
+        <div className="bg-navy-900 border border-slate-800 rounded-2xl shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-navy-950/60 text-slate-400 font-semibold uppercase">
+                <tr className="border-b border-slate-800 bg-navy-950/60 text-slate-400 font-semibold uppercase">
                   <th className="py-3 px-4">Product Name / SKU</th>
                   <th className="py-3 px-4 text-center">Physical Stock</th>
                   <th className="py-3 px-4 text-center">Reserved Commitments</th>
@@ -165,11 +165,11 @@ export const InventoryView: React.FC = () => {
                   <th className="py-3 px-4 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-slate-800">
                 {products.map(p => (
-                  <tr key={p.id} className="hover:bg-slate-50/50 dark:hover:bg-navy-950/40">
+                  <tr key={p.id} className="hover:bg-navy-950/40">
                     <td className="py-3 px-4">
-                      <div className="font-bold text-slate-900 dark:text-slate-100">{p.name}</div>
+                      <div className="font-bold text-slate-100">{p.name}</div>
                       <span className="font-mono text-[10px] text-gold-600 dark:text-gold-400">{p.sku}</span>
                     </td>
                     <td className="py-3 px-4 text-center font-mono font-bold">{p.physicalStock} {p.unit}</td>
@@ -192,7 +192,7 @@ export const InventoryView: React.FC = () => {
                           setAdjustQty(10);
                           setAdjustReason('');
                         }}
-                        className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-navy-800 dark:hover:bg-navy-700 font-semibold rounded-lg text-slate-800 dark:text-slate-200 shadow-sm"
+                        className="px-3 py-1.5 bg-navy-800 hover:bg-navy-700 font-semibold rounded-lg text-slate-200 shadow-sm"
                       >
                         Adjust
                       </button>
@@ -205,11 +205,11 @@ export const InventoryView: React.FC = () => {
         </div>
       ) : (
         /* Movements Log */
-        <div className="bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
+        <div className="bg-navy-900 border border-slate-800 rounded-2xl shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-navy-950/60 text-slate-400 font-semibold uppercase">
+                <tr className="border-b border-slate-800 bg-navy-950/60 text-slate-400 font-semibold uppercase">
                   <th className="py-3 px-4">Timestamp (IST)</th>
                   <th className="py-3 px-4">Product</th>
                   <th className="py-3 px-4">Type</th>
@@ -220,11 +220,11 @@ export const InventoryView: React.FC = () => {
                   <th className="py-3 px-4">Performed By</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-slate-800">
                 {movements.map(m => (
-                  <tr key={m.id} className="hover:bg-slate-50/50 dark:hover:bg-navy-950/40">
+                  <tr key={m.id} className="hover:bg-navy-950/40">
                     <td className="py-2.5 px-4 text-slate-400 whitespace-nowrap">{formatDate(m.createdAt, true)}</td>
-                    <td className="py-2.5 px-4 font-medium text-slate-900 dark:text-slate-100">{m.productName}</td>
+                    <td className="py-2.5 px-4 font-medium text-slate-100">{m.productName}</td>
                     <td className="py-2.5 px-4">
                       <Badge
                         variant={
@@ -243,13 +243,13 @@ export const InventoryView: React.FC = () => {
                     </td>
                     <td className="py-2.5 px-4 text-center font-mono font-bold">{m.quantity}</td>
                     <td className="py-2.5 px-4 text-center font-mono text-slate-500">
-                      {m.physicalBefore} → <b className="text-slate-800 dark:text-slate-200">{m.physicalAfter}</b>
+                      {m.physicalBefore} → <b className="text-slate-200">{m.physicalAfter}</b>
                     </td>
                     <td className="py-2.5 px-4 text-center font-mono text-slate-500">
                       {m.reservedBefore} → <b className="text-amber-600">{m.reservedAfter}</b>
                     </td>
                     <td className="py-2.5 px-4 text-slate-500 max-w-xs truncate">{m.reason}</td>
-                    <td className="py-2.5 px-4 font-medium text-slate-700 dark:text-slate-300">{m.performedBy}</td>
+                    <td className="py-2.5 px-4 font-medium text-slate-300">{m.performedBy}</td>
                   </tr>
                 ))}
               </tbody>
@@ -272,7 +272,7 @@ export const InventoryView: React.FC = () => {
               <select
                 value={adjustType}
                 onChange={e => setAdjustType(e.target.value as any)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
               >
                 <option value="STOCK_IN">Stock-In (Add Physical Stock)</option>
                 <option value="STOCK_OUT">Stock-Out (Deduct Unreserved Stock)</option>
@@ -288,7 +288,7 @@ export const InventoryView: React.FC = () => {
                 required
                 value={adjustQty}
                 onChange={e => setAdjustQty(parseInt(e.target.value, 10) || 1)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 font-mono font-bold"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 font-mono font-bold"
               />
             </div>
 
@@ -300,7 +300,7 @@ export const InventoryView: React.FC = () => {
                 placeholder="Physical count reconciliation, damage inspection..."
                 value={adjustReason}
                 onChange={e => setAdjustReason(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
               />
             </div>
 

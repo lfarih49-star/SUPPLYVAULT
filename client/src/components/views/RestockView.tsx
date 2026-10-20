@@ -112,12 +112,12 @@ export const RestockView: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-800">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+          <h1 className="text-2xl font-black text-slate-100 tracking-tight">
             Restock Requisitions & Approvals
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-slate-400 mt-1">
             End-to-end inventory requisition pipeline connecting warehouse floor requests to management PO authorization.
           </p>
         </div>
@@ -139,7 +139,7 @@ export const RestockView: React.FC = () => {
             className={`px-3.5 py-1.5 rounded-xl font-semibold transition-all ${
               statusFilter === st
                 ? 'bg-navy-900 text-gold-400 dark:bg-gold-500 dark:text-navy-950 shadow-sm'
-                : 'bg-white dark:bg-navy-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-gold-500'
+                : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-gold-500'
             }`}
           >
             {st === 'ALL' ? 'All Requisitions' : st}
@@ -148,11 +148,11 @@ export const RestockView: React.FC = () => {
       </div>
 
       {/* Table */}
-      <div className="bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl shadow-sm overflow-hidden">
+      <div className="bg-navy-900 border border-slate-800 rounded-2xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-navy-950/60 text-slate-400 font-semibold uppercase">
+              <tr className="border-b border-slate-800 bg-navy-950/60 text-slate-400 font-semibold uppercase">
                 <th className="py-3 px-4">Product / SKU</th>
                 <th className="py-3 px-4 font-mono text-center">Current Stock</th>
                 <th className="py-3 px-4 font-mono text-center">Requested Qty</th>
@@ -164,11 +164,11 @@ export const RestockView: React.FC = () => {
                 {isManager && <th className="py-3 px-4 text-right">Action</th>}
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+            <tbody className="divide-y divide-slate-800">
               {requests.map(r => (
-                <tr key={r.id} className="hover:bg-slate-50/50 dark:hover:bg-navy-950/40">
+                <tr key={r.id} className="hover:bg-navy-950/40">
                   <td className="py-3 px-4">
-                    <div className="font-bold text-slate-900 dark:text-slate-100">{r.productName}</div>
+                    <div className="font-bold text-slate-100">{r.productName}</div>
                     <span className="font-mono text-[10px] text-gold-600 dark:text-gold-400">{r.productSku}</span>
                   </td>
                   <td className="py-3 px-4 text-center font-mono">{r.currentStock}</td>
@@ -192,7 +192,7 @@ export const RestockView: React.FC = () => {
                       {r.status}
                     </Badge>
                   </td>
-                  <td className="py-3 px-4 text-slate-600 dark:text-slate-400">{r.requesterName}</td>
+                  <td className="py-3 px-4 text-slate-400">{r.requesterName}</td>
                   <td className="py-3 px-4 text-slate-400">{formatDate(r.createdAt, false)}</td>
                   {isManager && (
                     <td className="py-3 px-4 text-right">
@@ -233,7 +233,7 @@ export const RestockView: React.FC = () => {
               required
               value={selectedProdId}
               onChange={e => setSelectedProdId(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+              className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
             >
               <option value="">-- Select Product --</option>
               {products.map(p => (
@@ -253,7 +253,7 @@ export const RestockView: React.FC = () => {
                 required
                 value={reqQty}
                 onChange={e => setReqQty(parseInt(e.target.value, 10) || 1)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 font-mono font-bold"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 font-mono font-bold"
               />
             </div>
             <div>
@@ -261,7 +261,7 @@ export const RestockView: React.FC = () => {
               <select
                 value={reqPriority}
                 onChange={e => setReqPriority(e.target.value as any)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
               >
                 <option value="LOW">Low</option>
                 <option value="MEDIUM">Medium</option>
@@ -279,7 +279,7 @@ export const RestockView: React.FC = () => {
               placeholder="Provide context for requirement..."
               value={reqReason}
               onChange={e => setReqReason(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+              className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
             />
           </div>
 
@@ -302,7 +302,7 @@ export const RestockView: React.FC = () => {
           subtitle={`Requested by ${reviewItem.requesterName} • Priority: ${reviewItem.priority}`}
         >
           <div className="space-y-4 text-xs">
-            <div className="p-3 bg-slate-50 dark:bg-navy-950 rounded-xl border border-slate-200 dark:border-slate-800 space-y-1">
+            <div className="p-3 bg-navy-950 rounded-xl border border-slate-800 space-y-1">
               <div><span className="text-slate-400">SKU:</span> <b className="font-mono text-gold-600">{reviewItem.productSku}</b></div>
               <div><span className="text-slate-400">Current Stock:</span> <b className="font-mono">{reviewItem.currentStock} units</b></div>
               <div><span className="text-slate-400">Reason:</span> <span className="italic">{reviewItem.reason}</span></div>
@@ -315,7 +315,7 @@ export const RestockView: React.FC = () => {
                 min="1"
                 value={approvedQty}
                 onChange={e => setApprovedQty(parseInt(e.target.value, 10) || 0)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 font-mono font-bold"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 font-mono font-bold"
               />
             </div>
 
@@ -326,11 +326,11 @@ export const RestockView: React.FC = () => {
                 placeholder="Approved for immediate procurement..."
                 value={reviewNotes}
                 onChange={e => setReviewNotes(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950"
               />
             </div>
 
-            <div className="flex gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+            <div className="flex gap-3 pt-3 border-t border-slate-800">
               <button
                 type="button"
                 disabled={isSubmitting}

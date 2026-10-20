@@ -35,62 +35,25 @@ import { Badge } from '../common/Badge';
 import { Modal } from '../common/Modal';
 import { ManagerKPIs, RestockRequest } from '@shared/types';
 
-type ChartPalette = 'cyan' | 'violet' | 'amber' | 'spectrum';
-
-const PALETTES = {
-  cyan: {
-    id: 'cyan' as const,
-    label: 'Electric Cyan',
-    accentColor: '#38BDF8',
-    borderColor: '#0284C7',
-    gradientId: 'barGradientCyan',
-    barFill: 'url(#barGradientCyan)',
-    pieColors: ['#38BDF8', '#0284C7', '#818CF8', '#F59E0B', '#10B981', '#EC4899', '#94A3B8'],
-    cardBorder: 'border-cyan-500/30',
-    glowColor: 'rgba(6, 182, 212, 0.25)',
-  },
-  violet: {
-    id: 'violet' as const,
-    label: 'Neon Violet',
-    accentColor: '#A855F7',
-    borderColor: '#7C3AED',
-    gradientId: 'barGradientViolet',
-    barFill: 'url(#barGradientViolet)',
-    pieColors: ['#C084FC', '#8B5CF6', '#6366F1', '#EC4899', '#F43F5E', '#14B8A6', '#94A3B8'],
-    cardBorder: 'border-violet-500/30',
-    glowColor: 'rgba(168, 85, 247, 0.25)',
-  },
-  amber: {
-    id: 'amber' as const,
-    label: 'Champagne Gold',
-    accentColor: '#FBBF24',
-    borderColor: '#D97706',
-    gradientId: 'barGradientAmber',
-    barFill: 'url(#barGradientAmber)',
-    pieColors: ['#FDE047', '#F59E0B', '#FB923C', '#EA580C', '#06B6D4', '#10B981', '#EF4444'],
-    cardBorder: 'border-amber-500/30',
-    glowColor: 'rgba(245, 158, 11, 0.25)',
-  },
-  spectrum: {
-    id: 'spectrum' as const,
-    label: 'Multi-Spectrum',
-    accentColor: '#F43F5E',
-    borderColor: '#EC4899',
-    gradientId: 'barGradientCyan',
-    barFill: '#38BDF8',
-    pieColors: ['#38BDF8', '#A855F7', '#34D399', '#FBBF24', '#F43F5E', '#818CF8', '#FB923C'],
-    cardBorder: 'border-emerald-500/30',
-    glowColor: 'rgba(236, 72, 153, 0.25)',
-  },
-};
+const SPECTRUM_COLORS = ['#38BDF8', '#A855F7', '#10B981', '#F59E0B', '#F43F5E', '#06B6D4', '#818CF8', '#FB923C'];
 
 const CATEGORY_COLORS: Record<string, string> = {
   'Enterprise Laptops': '#38BDF8',       // Electric Sky Blue
   'Graphics Cards & GPUs': '#A855F7',   // Neon Purple/Violet
-  'Processors (CPUs)': '#06B6D4',       // Vibrant Cyan
-  'Memory & Storage': '#FBBF24',        // Champagne Amber
+  'Processors (CPUs)': '#10B981',       // Emerald Mint
+  'Memory & Storage': '#F59E0B',        // Champagne Amber Gold
   'Motherboards & Power': '#F43F5E',    // Vivid Coral/Rose
-  'Displays & Peripherals': '#10B981',  // Mint Emerald
+  'Displays & Peripherals': '#06B6D4',  // Electric Cyan
+};
+
+const ORDER_STATUS_COLORS: Record<string, string> = {
+  'PLACED': '#38BDF8',       // Sky Blue
+  'CONFIRMED': '#06B6D4',    // Electric Cyan
+  'PROCESSING': '#818CF8',   // Royal Indigo
+  'PACKED': '#F59E0B',       // Amber Gold
+  'DISPATCHED': '#F97316',   // Vivid Orange
+  'DELIVERED': '#10B981',    // Emerald Green
+  'CANCELLED': '#EF4444',    // Rose Red
 };
 
 interface ManagerDashboardProps {
@@ -103,7 +66,6 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
   const [charts, setCharts] = useState<any>(null);
   const [pendingRestocks, setPendingRestocks] = useState<RestockRequest[]>([]);
   const [loading, setLoading] = useState(true);
-  const [chartColorTheme, setChartColorTheme] = useState<ChartPalette>('cyan');
 
   // Review modal state
   const [selectedRestock, setSelectedRestock] = useState<RestockRequest | null>(null);
@@ -171,20 +133,18 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
     );
   }
 
-  const activePalette = PALETTES[chartColorTheme];
-
   return (
     <div className="space-y-6">
       {/* Executive Welcome & Actions Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-slate-800">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+            <h1 className="text-2xl font-black text-slate-100 tracking-tight">
               Executive Command Centre
             </h1>
             <Badge variant="gold" size="sm">Active Oversight</Badge>
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          <p className="text-xs text-slate-400 mt-1">
             Real-time supply chain operational metrics, inventory valuation, and procurement approvals.
           </p>
         </div>
@@ -193,7 +153,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
           <a
             href={`/api/reports/csv?type=inventory&token=${token}`}
             download
-            className="px-3.5 py-2 text-xs font-semibold bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-navy-800 text-slate-700 dark:text-slate-200 rounded-xl shadow-sm flex items-center gap-2 transition-all"
+            className="px-3.5 py-2 text-xs font-semibold bg-navy-900 border border-slate-700 hover:bg-navy-800 text-slate-200 rounded-xl shadow-sm flex items-center gap-2 transition-all"
           >
             <FileDown className="w-4 h-4 text-gold-500" />
             Export Inventory CSV
@@ -210,32 +170,32 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Total Inventory Valuation INR */}
-        <div className="p-5 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden group">
-          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-2">
+        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm relative overflow-hidden group">
+          <div className="flex items-center justify-between text-slate-400 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Inventory Valuation</span>
             <div className="p-2 rounded-xl bg-gold-50 dark:bg-gold-950/40 text-gold-600 dark:text-gold-400">
               <TrendingUp className="w-4 h-4" />
             </div>
           </div>
-          <h2 className="text-2xl font-extrabold text-slate-900 dark:text-slate-100 font-mono tracking-tight">
+          <h2 className="text-2xl font-extrabold text-slate-100 font-mono tracking-tight">
             {formatINR(kpis.inventoryValuationINR)}
           </h2>
           <div className="flex items-center justify-between text-[11px] text-slate-500 mt-2">
-            <span>Physical: <b className="text-slate-700 dark:text-slate-300 font-mono">{kpis.physicalStockUnits} units</b></span>
+            <span>Physical: <b className="text-slate-300 font-mono">{kpis.physicalStockUnits} units</b></span>
             <span>Available: <b className="text-emerald-600 dark:text-emerald-400 font-mono">{kpis.availableStockUnits}</b></span>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold-500 to-amber-400" />
         </div>
 
         {/* Total Sales Value INR */}
-        <div className="p-5 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden group">
-          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-2">
+        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm relative overflow-hidden group">
+          <div className="flex items-center justify-between text-slate-400 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Total Orders Value</span>
             <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400">
               <Boxes className="w-4 h-4" />
             </div>
           </div>
-          <h2 className="text-2xl font-extrabold text-slate-900 dark:text-slate-100 font-mono tracking-tight">
+          <h2 className="text-2xl font-extrabold text-slate-100 font-mono tracking-tight">
             {formatINR(kpis.totalSalesValueINR)}
           </h2>
           <div className="flex items-center justify-between text-[11px] text-slate-500 mt-2">
@@ -246,26 +206,26 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
         </div>
 
         {/* Procurement Expenditure INR */}
-        <div className="p-5 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden group">
-          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-2">
+        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm relative overflow-hidden group">
+          <div className="flex items-center justify-between text-slate-400 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Procurement Spend</span>
             <div className="p-2 rounded-xl bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400">
               <Building2 className="w-4 h-4" />
             </div>
           </div>
-          <h2 className="text-2xl font-extrabold text-slate-900 dark:text-slate-100 font-mono tracking-tight">
+          <h2 className="text-2xl font-extrabold text-slate-100 font-mono tracking-tight">
             {formatINR(kpis.procurementExpenditureINR)}
           </h2>
           <div className="flex items-center justify-between text-[11px] text-slate-500 mt-2">
-            <span>Active Suppliers: <b className="text-slate-700 dark:text-slate-300">{kpis.totalSuppliers}</b></span>
+            <span>Active Suppliers: <b className="text-slate-300">{kpis.totalSuppliers}</b></span>
             <span>Pending POs: <b className="text-amber-600 dark:text-amber-400">{kpis.pendingPOsCount}</b></span>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 to-emerald-400" />
         </div>
 
         {/* Critical Alerts Card */}
-        <div className="p-5 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden group">
-          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-2">
+        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm relative overflow-hidden group">
+          <div className="flex items-center justify-between text-slate-400 mb-2">
             <span className="text-xs font-semibold uppercase tracking-wider">Operational Tickers</span>
             <div className="p-2 rounded-xl bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400">
               <AlertTriangle className="w-4 h-4" />
@@ -286,11 +246,11 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
       </div>
 
       {/* Pending Restock Approvals Queue */}
-      <div className="bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+      <div className="bg-navy-900 border border-slate-800 rounded-2xl p-6 shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Clock className="w-5 h-5 text-gold-500" />
-            <h2 className="text-base font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+            <h2 className="text-base font-bold text-slate-100 tracking-tight">
               Requisition Approval Queue ({pendingRestocks.length})
             </h2>
           </div>
@@ -311,7 +271,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-slate-100 dark:border-slate-800 text-slate-400 font-semibold uppercase">
+                <tr className="border-b border-slate-800 text-slate-400 font-semibold uppercase">
                   <th className="pb-3">Product / SKU</th>
                   <th className="pb-3">Current Stock</th>
                   <th className="pb-3">Requested Qty</th>
@@ -321,10 +281,10 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                   <th className="pb-3 text-right">Review Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-slate-800">
                 {pendingRestocks.map(item => (
-                  <tr key={item.id} className="hover:bg-slate-50/50 dark:hover:bg-navy-950/40 transition-colors">
-                    <td className="py-3 font-medium text-slate-900 dark:text-slate-100">
+                  <tr key={item.id} className="hover:bg-navy-950/40 transition-colors">
+                    <td className="py-3 font-medium text-slate-100">
                       <div>{item.productName}</div>
                       <span className="text-[10px] font-mono text-gold-600 dark:text-gold-400">{item.productSku}</span>
                     </td>
@@ -360,98 +320,75 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
         )}
       </div>
 
-      {/* Hardware Supply Chain Operational Flow Diagram & Palette Switcher */}
-      <div className="p-5 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100 dark:border-slate-800">
+      {/* Hardware Supply Chain Operational Flow Diagram — Multi-Spectrum */}
+      <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
           <div className="flex items-center gap-2">
-            <div
-              className="w-2.5 h-2.5 rounded-full animate-ping"
-              style={{ backgroundColor: activePalette.accentColor }}
-            />
+            <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
             <div>
-              <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tight flex items-center gap-2">
-                Supply Chain Operational Workflow Diagram
-                <span
-                  className="text-[10px] font-mono px-2 py-0.5 rounded-full border hidden sm:inline-block font-semibold"
-                  style={{ color: activePalette.accentColor, borderColor: `${activePalette.accentColor}50`, backgroundColor: `${activePalette.accentColor}15` }}
-                >
-                  Live Pipeline
+              <h3 className="text-sm font-bold text-slate-100 tracking-tight flex items-center gap-2">
+                Supply Chain Operational Workflow Topology
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-emerald-500/40 bg-emerald-950/40 text-emerald-400 font-bold hidden sm:inline-block">
+                  Multi-Spectrum Pipeline
                 </span>
               </h3>
               <p className="text-[11px] text-slate-400">End-to-end hardware procurement, warehouse inventory, order dispatch, and delivery topology</p>
             </div>
           </div>
 
-          {/* Color Palette Switcher */}
-          <div className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-navy-950 rounded-xl border border-slate-200 dark:border-slate-800 text-xs self-start sm:self-auto">
-            <span className="text-[10px] font-semibold text-slate-400 px-1.5 flex items-center gap-1">
-              <SlidersHorizontal className="w-3 h-3" /> Graph Color:
-            </span>
-            {(Object.keys(PALETTES) as ChartPalette[]).map(pKey => {
-              const p = PALETTES[pKey];
-              const isActive = chartColorTheme === pKey;
-              return (
-                <button
-                  key={pKey}
-                  type="button"
-                  onClick={() => setChartColorTheme(pKey)}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] font-bold flex items-center gap-1.5 transition-all ${
-                    isActive
-                      ? 'bg-navy-800 text-white shadow-sm ring-1 ring-inset ring-slate-600'
-                      : 'text-slate-400 hover:text-slate-200'
-                  }`}
-                >
-                  <span className="w-2 h-2 rounded-full shadow" style={{ backgroundColor: p.accentColor }} />
-                  {p.label}
-                </button>
-              );
-            })}
+          <div className="flex items-center gap-1.5 px-3 py-1 bg-navy-950 rounded-xl border border-slate-800 text-xs self-start sm:self-auto">
+            <span className="w-2 h-2 rounded-full bg-sky-400" />
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <span className="w-2 h-2 rounded-full bg-amber-400" />
+            <span className="w-2 h-2 rounded-full bg-purple-400" />
+            <span className="w-2 h-2 rounded-full bg-cyan-400" />
+            <span className="text-[11px] font-semibold text-slate-300 ml-1">Multi-Spectrum Engine</span>
           </div>
         </div>
 
-        {/* 5-Stage Diagram Progression */}
+        {/* 5-Stage Multi-Spectrum Diagram Progression */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-3 pt-1">
           {/* Node 1: Procurement */}
-          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/80 border border-slate-200 dark:border-slate-800 relative group hover:border-slate-700 transition-all">
+          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-sky-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-slate-400">1. Procurement</span>
-              <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
+              <span className="text-[10px] uppercase font-bold text-sky-400">1. Procurement</span>
+              <div className="p-1.5 rounded-lg bg-sky-500/10 text-sky-400">
                 <Building2 className="w-3.5 h-3.5" />
               </div>
             </div>
-            <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100 font-mono">
+            <div className="text-sm font-extrabold text-slate-100 font-mono">
               {kpis.totalSuppliers} IT Distributors
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">
-              PO Spend: <span className="text-blue-400 font-mono font-bold">{formatINR(kpis.procurementExpenditureINR)}</span>
+              PO Spend: <span className="text-sky-400 font-mono font-bold">{formatINR(kpis.procurementExpenditureINR)}</span>
             </p>
           </div>
 
           {/* Node 2: Warehouse Vault */}
-          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/80 border border-slate-200 dark:border-slate-800 relative group hover:border-slate-700 transition-all">
+          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-emerald-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-slate-400">2. Hardware Vault</span>
-              <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400">
+              <span className="text-[10px] uppercase font-bold text-emerald-400">2. Hardware Vault</span>
+              <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400">
                 <Boxes className="w-3.5 h-3.5" />
               </div>
             </div>
-            <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100 font-mono">
+            <div className="text-sm font-extrabold text-slate-100 font-mono">
               {kpis.physicalStockUnits} Units in Stock
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">
-              Valuation: <span className="text-cyan-400 font-mono font-bold">{formatINR(kpis.inventoryValuationINR)}</span>
+              Valuation: <span className="text-emerald-400 font-mono font-bold">{formatINR(kpis.inventoryValuationINR)}</span>
             </p>
           </div>
 
           {/* Node 3: QA & Order Packing */}
-          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/80 border border-slate-200 dark:border-slate-800 relative group hover:border-slate-700 transition-all">
+          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-amber-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-slate-400">3. Fulfillment Bay</span>
+              <span className="text-[10px] uppercase font-bold text-amber-400">3. Fulfillment Bay</span>
               <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400">
                 <Package className="w-3.5 h-3.5" />
               </div>
             </div>
-            <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100 font-mono">
+            <div className="text-sm font-extrabold text-slate-100 font-mono">
               {kpis.ordersAwaitingProcessing} Orders Queued
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">
@@ -460,34 +397,34 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
           </div>
 
           {/* Node 4: Express Dispatch */}
-          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/80 border border-slate-200 dark:border-slate-800 relative group hover:border-slate-700 transition-all">
+          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-purple-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-slate-400">4. Transit Dispatch</span>
-              <div className="p-1.5 rounded-lg bg-violet-500/10 text-violet-400">
+              <span className="text-[10px] uppercase font-bold text-purple-400">4. Transit Dispatch</span>
+              <div className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400">
                 <Truck className="w-3.5 h-3.5" />
               </div>
             </div>
-            <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100 font-mono">
+            <div className="text-sm font-extrabold text-slate-100 font-mono">
               Active Tracking
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">
-              Logistics SLA: <span className="text-violet-400 font-mono font-bold">Same Day / 24h</span>
+              Logistics SLA: <span className="text-purple-400 font-mono font-bold">Same Day / 24h</span>
             </p>
           </div>
 
           {/* Node 5: Client Delivered */}
-          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/80 border border-slate-200 dark:border-slate-800 relative group hover:border-slate-700 transition-all">
+          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-cyan-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-slate-400">5. Client Handover</span>
-              <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400">
+              <span className="text-[10px] uppercase font-bold text-cyan-400">5. Client Handover</span>
+              <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400">
                 <CheckCircle2 className="w-3.5 h-3.5" />
               </div>
             </div>
-            <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100 font-mono">
+            <div className="text-sm font-extrabold text-slate-100 font-mono">
               {kpis.ordersDelivered} Delivered
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">
-              Gross Revenue: <span className="text-emerald-400 font-mono font-bold">{formatINR(kpis.totalSalesValueINR)}</span>
+              Gross Revenue: <span className="text-cyan-400 font-mono font-bold">{formatINR(kpis.totalSalesValueINR)}</span>
             </p>
           </div>
         </div>
@@ -496,10 +433,10 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
       {/* Interactive Charts Area */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Category Stock Valuation Chart */}
-        <div className="p-6 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+        <div className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+              <h3 className="text-sm font-bold text-slate-100 tracking-tight">
                 Inventory Valuation by Category
               </h3>
               <p className="text-xs text-slate-400">Aggregated line-item valuation</p>
@@ -542,22 +479,18 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                     formatter={(val: any) => [formatINR(val), 'Valuation']}
                     contentStyle={{
                       backgroundColor: '#050b14',
-                      borderColor: activePalette.accentColor,
+                      borderColor: '#10B981',
                       color: '#f8fafc',
                       borderRadius: '12px',
-                      boxShadow: `0 8px 24px ${activePalette.glowColor}`,
+                      boxShadow: '0 8px 24px rgba(0,0,0,0.6)',
                       borderWidth: '1px'
                     }}
                   />
-                  <Bar
-                    dataKey="valuationINR"
-                    fill={chartColorTheme === 'spectrum' ? '#38BDF8' : activePalette.barFill}
-                    radius={[6, 6, 0, 0]}
-                  >
-                    {chartColorTheme === 'spectrum' && charts.categoryValuation.map((entry: any, index: number) => (
+                  <Bar dataKey="valuationINR" radius={[6, 6, 0, 0]}>
+                    {charts.categoryValuation.map((entry: any, index: number) => (
                       <Cell
                         key={`bar-cell-${index}`}
-                        fill={CATEGORY_COLORS[entry.category] || activePalette.pieColors[index % activePalette.pieColors.length]}
+                        fill={CATEGORY_COLORS[entry.category] || SPECTRUM_COLORS[index % SPECTRUM_COLORS.length]}
                       />
                     ))}
                   </Bar>
@@ -572,10 +505,10 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
         </div>
 
         {/* Order Status Distribution */}
-        <div className="p-6 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+        <div className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+              <h3 className="text-sm font-bold text-slate-100 tracking-tight">
                 Buyer Order Fulfilment Pipeline
               </h3>
               <p className="text-xs text-slate-400">Active distribution of orders across fulfilment statuses</p>
@@ -599,11 +532,11 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                     label={({ name, percent }: any) => `${name} ${(percent * 100).toFixed(0)}%`}
                     labelLine={false}
                   >
-                    {charts.orderStatus.map((_: any, index: number) => (
+                    {charts.orderStatus.map((entry: any, index: number) => (
                       <Cell
-                        key={`cell-${index}`}
-                        fill={activePalette.pieColors[index % activePalette.pieColors.length]}
-                        stroke="#050b14"
+                        key={`pie-cell-${index}`}
+                        fill={ORDER_STATUS_COLORS[entry.status] || SPECTRUM_COLORS[index % SPECTRUM_COLORS.length]}
+                        stroke="#071219"
                         strokeWidth={2}
                       />
                     ))}
@@ -612,10 +545,10 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                     formatter={(val: any) => [`${val} orders`, 'Count']}
                     contentStyle={{
                       backgroundColor: '#050b14',
-                      borderColor: activePalette.accentColor,
+                      borderColor: '#10B981',
                       color: '#f8fafc',
                       borderRadius: '12px',
-                      boxShadow: `0 8px 24px ${activePalette.glowColor}`,
+                      boxShadow: '0 8px 24px rgba(0,0,0,0.6)',
                       borderWidth: '1px'
                     }}
                   />
@@ -623,7 +556,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
               </ResponsiveContainer>
             ) : (
               <div className="text-xs text-slate-400 text-center">
-                <Package className="w-8 h-8 text-slate-300 dark:text-slate-600 mx-auto mb-2" />
+                <Package className="w-8 h-8 text-slate-300 dark:text-slate-400 mx-auto mb-2" />
                 No buyer orders placed yet. Orders will appear here upon checkout.
               </div>
             )}
@@ -640,10 +573,10 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
           subtitle={`Submitted by ${selectedRestock.requesterName} • Priority: ${selectedRestock.priority}`}
         >
           <div className="space-y-4 text-xs">
-            <div className="p-3 bg-slate-50 dark:bg-navy-950 rounded-xl border border-slate-200 dark:border-slate-800 grid grid-cols-2 gap-3">
+            <div className="p-3 bg-navy-950 rounded-xl border border-slate-800 grid grid-cols-2 gap-3">
               <div>
                 <span className="text-slate-400">Product SKU:</span>
-                <p className="font-mono font-bold text-slate-800 dark:text-slate-200">{selectedRestock.productSku}</p>
+                <p className="font-mono font-bold text-slate-200">{selectedRestock.productSku}</p>
               </div>
               <div>
                 <span className="text-slate-400">Current Physical Stock:</span>
@@ -651,12 +584,12 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
               </div>
               <div className="col-span-2">
                 <span className="text-slate-400">Requisition Reason:</span>
-                <p className="text-slate-700 dark:text-slate-300 italic">{selectedRestock.reason}</p>
+                <p className="text-slate-300 italic">{selectedRestock.reason}</p>
               </div>
             </div>
 
             <div>
-              <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="font-semibold text-slate-300 block mb-1">
                 Approved Quantity (Units)
               </label>
               <input
@@ -664,7 +597,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                 min="1"
                 value={approvedQty}
                 onChange={e => setApprovedQty(parseInt(e.target.value, 10) || 0)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 text-slate-900 dark:text-slate-100 font-mono font-bold"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono font-bold"
               />
               <p className="text-[11px] text-slate-400 mt-1">
                 Original requested quantity: {selectedRestock.requestedQuantity} units
@@ -672,7 +605,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
             </div>
 
             <div>
-              <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label className="font-semibold text-slate-300 block mb-1">
                 Manager Review Notes / Supplier Instructions
               </label>
               <textarea
@@ -680,11 +613,11 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                 placeholder="Authorize for emergency PO from primary metallurgical supplier..."
                 value={reviewNotes}
                 onChange={e => setReviewNotes(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-navy-950 text-slate-900 dark:text-slate-100 text-xs"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 text-xs"
               />
             </div>
 
-            <div className="flex gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+            <div className="flex gap-3 pt-4 border-t border-slate-800">
               <button
                 type="button"
                 disabled={isSubmitting}
