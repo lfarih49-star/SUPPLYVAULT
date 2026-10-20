@@ -38,7 +38,7 @@ export const LoginView: React.FC = () => {
             Supply<span className="text-gold-400">Vault</span>
           </h1>
           <p className="text-xs text-slate-400 tracking-wider uppercase font-semibold">
-            Enterprise Supply Chain Management Platform
+            Enterprise Computer Hardware & Laptop Supply Chain Platform
           </p>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-950/60 border border-gold-500/30 text-gold-300 text-[11px] font-mono">
             <IndianRupee className="w-3 h-3 text-gold-400" />

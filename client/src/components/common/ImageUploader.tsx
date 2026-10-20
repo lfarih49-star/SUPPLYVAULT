@@ -9,37 +9,77 @@ interface ImageUploaderProps {
   productTitle?: string;
 }
 
-// Curated verified enterprise presets
+// Curated verified enterprise presets for Computer Hardware & Laptops
 const CURATED_PRESETS = [
   {
-    name: 'Titanium Alloy Sheets',
-    category: 'Raw Materials',
-    url: 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80',
+    name: 'Lenovo ThinkPad Ultrabook',
+    category: 'Enterprise Laptops',
+    url: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80',
   },
   {
-    name: 'Obsidian Presentation Vault',
-    category: 'Packaging',
-    url: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80',
+    name: 'Apple MacBook Pro M3',
+    category: 'Enterprise Laptops',
+    url: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80',
   },
   {
-    name: 'IoT Telemetry Sensors',
-    category: 'Hardware',
+    name: 'ASUS ROG Zephyrus Laptop',
+    category: 'Enterprise Laptops',
+    url: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    name: 'Dell XPS Pro Ultrabook',
+    category: 'Enterprise Laptops',
+    url: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    name: 'NVIDIA GeForce RTX GPU',
+    category: 'Graphics Cards & GPUs',
+    url: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    name: 'ASUS TUF Gaming GPU',
+    category: 'Graphics Cards & GPUs',
+    url: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    name: 'AMD Ryzen High-Performance CPU',
+    category: 'Processors (CPUs)',
+    url: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    name: 'Intel Core Special Edition CPU',
+    category: 'Processors (CPUs)',
     url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80',
   },
   {
-    name: 'Carbon Fiber Spools',
-    category: 'Raw Materials',
-    url: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+    name: 'Samsung 990 PRO NVMe SSD',
+    category: 'Memory & Storage',
+    url: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=800&q=80',
   },
   {
-    name: 'Precision Diaphragm Valve',
-    category: 'Hardware',
-    url: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80',
+    name: 'G.Skill Trident Z5 DDR5 RAM',
+    category: 'Memory & Storage',
+    url: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=800&q=80',
   },
   {
-    name: 'Security Holographic Seals',
-    category: 'Logistics',
-    url: 'https://images.unsplash.com/photo-1607344645866-009c320b5ab8?auto=format&fit=crop&w=800&q=80',
+    name: 'ASUS ROG Dark Hero Motherboard',
+    category: 'Motherboards & Power',
+    url: 'https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    name: 'Corsair RM1000x Modular PSU',
+    category: 'Motherboards & Power',
+    url: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    name: 'LG UltraFine 4K UHD Display',
+    category: 'Displays & Peripherals',
+    url: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    name: 'Keychron Custom Mechanical Keyboard',
+    category: 'Displays & Peripherals',
+    url: 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=800&q=80',
   },
 ];
 

@@ -22,13 +22,13 @@ export const ProductsView: React.FC = () => {
   const [newSku, setNewSku] = useState('');
   const [newName, setNewName] = useState('');
   const [newDesc, setNewDesc] = useState('');
-  const [newCat, setNewCat] = useState('Raw Materials');
+  const [newCat, setNewCat] = useState('Enterprise Laptops');
   const [newUnit, setNewUnit] = useState('Units');
-  const [newPurchaseCost, setNewPurchaseCost] = useState(1000);
-  const [newSellingPrice, setNewSellingPrice] = useState(1500);
-  const [newPhysicalStock, setNewPhysicalStock] = useState(50);
-  const [newMinStock, setNewMinStock] = useState(15);
-  const [newReorderQty, setNewReorderQty] = useState(50);
+  const [newPurchaseCost, setNewPurchaseCost] = useState(50000);
+  const [newSellingPrice, setNewSellingPrice] = useState(65000);
+  const [newPhysicalStock, setNewPhysicalStock] = useState(20);
+  const [newMinStock, setNewMinStock] = useState(5);
+  const [newReorderQty, setNewReorderQty] = useState(15);
   const [newImageUrl, setNewImageUrl] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -349,7 +349,7 @@ export const ProductsView: React.FC = () => {
               <input
                 type="text"
                 required
-                placeholder="SV-TITAN-09"
+                placeholder="LAP-DELL-XPS16"
                 value={newSku}
                 onChange={e => setNewSku(e.target.value.toUpperCase())}
                 className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-gold-500/40"
@@ -360,7 +360,7 @@ export const ProductsView: React.FC = () => {
               <input
                 type="text"
                 required
-                placeholder="Raw Materials"
+                placeholder="Enterprise Laptops"
                 value={newCat}
                 onChange={e => setNewCat(e.target.value)}
                 className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-gold-500/40"
@@ -373,7 +373,7 @@ export const ProductsView: React.FC = () => {
             <input
               type="text"
               required
-              placeholder="Precision Forged Alloy Billets"
+              placeholder="Dell Precision 5690 Mobile Workstation"
               value={newName}
               onChange={e => setNewName(e.target.value)}
               className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-gold-500/40"

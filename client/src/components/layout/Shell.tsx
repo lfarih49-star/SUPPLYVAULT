@@ -129,7 +129,7 @@ export const Shell: React.FC<ShellProps> = ({
                 </span>
               </div>
               <p className="hidden sm:block text-[10px] text-slate-400 tracking-wider uppercase font-semibold">
-                Enterprise Supply Chain Management
+                Computer Hardware & Laptop Supply Chain
               </p>
             </div>
           </div>
