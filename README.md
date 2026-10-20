@@ -93,3 +93,50 @@ pnpm run dev
 4. **Delivery Agent Logistics Control:** Mobile-optimized card view, 1-tap status updates, customer phone/address access, failed delivery exception logger.
 5. **Data Exports:** Filtered CSV downloads for Inventory Valuation, Buyer Orders, Purchase Orders, Movement Ledger, and Delivery Logs.
 
+---
+
+## 6. 100% Free Cloud Deployment Guide (Neon + Render)
+
+Because SupplyVault compiles both the frontend client and backend API into a single unified Express service, you can host the entire system **100% free of charge** using:
+- **Free Database:** [Neon.tech](https://neon.tech) (Permanent free managed serverless PostgreSQL)
+- **Free Web App Host:** [Render.com](https://render.com) (Free Node.js web service with free HTTPS)
+
+### Step 1: Create Free PostgreSQL Database on Neon
+1. Go to [https://neon.tech](https://neon.tech) and sign up with GitHub or Google (Free Forever).
+2. Click **Create Project**, name it `supplyvault`, and select region **Asia Pacific (Singapore)**.
+3. Copy the generated **Connection String** (it looks like `postgresql://neondb_owner:password@ep-xyz.ap-southeast-1.aws.neon.tech/neondb?sslmode=require`).
+
+### Step 2: Push Your Code to GitHub
+1. Create a new repository on [GitHub](https://github.com/new) (e.g. `supplyvault`).
+2. Run these commands from the project directory:
+   ```bash
+   git remote add origin https://github.com/YOUR_USERNAME/supplyvault.git
+   git push -u origin main
+   ```
+
+### Step 3: Deploy to Render (Zero Cost)
+1. Go to [https://render.com](https://render.com) and log in with GitHub.
+2. Click **New +** $\to$ **Web Service**.
+3. Select your `supplyvault` repository.
+4. Configure the settings:
+   - **Name:** `supplyvault` (or any unique name)
+   - **Region:** Singapore (or closest to you)
+   - **Branch:** `main`
+   - **Runtime:** `Node`
+   - **Build Command:** `npm install && npm run build`
+   - **Start Command:** `npm start`
+   - **Instance Type:** `Free`
+5. Click **Advanced** $\to$ **Add Environment Variable**:
+   - `DATABASE_URL` = *(Paste your Neon connection string from Step 1)*
+   - `NODE_ENV` = `production`
+   - `DEFAULT_CURRENCY` = `INR`
+   - `DEFAULT_LOCALE` = `en-IN`
+   - `DEFAULT_TIMEZONE` = `Asia/Kolkata`
+   - `JWT_SECRET` = `supplyvault-prod-secret-key-btech-2026-viva`
+6. Click **Deploy Web Service**.
+7. In ~2 minutes, Render will build and deploy your app at a live URL like:
+   `https://supplyvault-xyz.onrender.com`
+
+*Note: On first startup, SupplyVault automatically detects the empty cloud database, runs all 12 table migrations, and seeds the 4 demo role accounts automatically!*
+
+
