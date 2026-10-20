@@ -108,7 +108,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
     );
   }
 
-  const PIE_COLORS = ['#C5A059', '#0D9488', '#2563EB', '#10B981', '#F59E0B', '#EF4444'];
+  const PIE_COLORS = ['#10B981', '#34D399', '#059669', '#14B8A6', '#0D9488', '#2563EB'];
 
   return (
     <div className="space-y-6">
@@ -323,9 +323,9 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                   />
                   <Tooltip
                     formatter={(val: any) => [formatINR(val), 'Valuation']}
-                    contentStyle={{ backgroundColor: '#0B132B', borderColor: '#C5A059', color: '#fff', borderRadius: '12px' }}
+                    contentStyle={{ backgroundColor: '#071219', borderColor: '#10B981', color: '#fff', borderRadius: '12px' }}
                   />
-                  <Bar dataKey="valuationINR" fill="#C5A059" radius={[6, 6, 0, 0]} />
+                  <Bar dataKey="valuationINR" fill="#10B981" radius={[6, 6, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             ) : (
@@ -368,7 +368,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                   </Pie>
                   <Tooltip
                     formatter={(val: any) => [`${val} orders`, 'Count']}
-                    contentStyle={{ backgroundColor: '#0B132B', borderColor: '#C5A059', color: '#fff', borderRadius: '12px' }}
+                    contentStyle={{ backgroundColor: '#071219', borderColor: '#10B981', color: '#fff', borderRadius: '12px' }}
                   />
                 </PieChart>
               </ResponsiveContainer>
