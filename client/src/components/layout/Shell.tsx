@@ -125,11 +125,11 @@ export const Shell: React.FC<ShellProps> = ({
                   Supply<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-blue-200">Vault</span>
                 </span>
                 <span className="hidden sm:inline-block text-[9px] font-mono px-1.5 py-0.2 rounded bg-blue-950/80 text-blue-400 border border-blue-500/30 uppercase tracking-widest font-bold">
-                  Enterprise
+                  Kerala Hub
                 </span>
               </div>
               <p className="hidden md:block text-[10px] text-slate-400 tracking-wider uppercase font-semibold">
-                Computer Hardware & Laptop Supply Chain
+                Kerala IT Hardware & Computing Supply Chain Network
               </p>
             </div>
           </div>
@@ -277,15 +277,19 @@ export const Shell: React.FC<ShellProps> = ({
                 <span className="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_6px_#3B82F6] animate-pulse" />
                 Cluster:
               </span>
-              <span className="text-slate-300 font-mono text-[10px]">ap-south-1 (IN)</span>
+              <span className="text-slate-300 font-mono text-[10px]">kerala-cochin-1 (Kochi)</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span>Central Depot:</span>
+              <span className="text-slate-300 font-mono text-[10px]">Kakkanad, Ernakulam</span>
             </div>
             <div className="flex justify-between items-center">
               <span>Timezone:</span>
               <span className="text-slate-300 font-mono text-[10px]">Asia/Kolkata</span>
             </div>
             <div className="flex justify-between items-center pt-1 border-t border-slate-800/60">
-              <span>Environment:</span>
-              <span className="text-blue-400 font-mono text-[10px] font-bold">ENTERPRISE-PROD</span>
+              <span>Jurisdiction:</span>
+              <span className="text-blue-400 font-mono text-[10px] font-bold">KERALA (GST 32)</span>
             </div>
           </div>
         </aside>

@@ -102,10 +102,10 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-slate-800">
         <div>
           <h1 className="text-2xl font-black text-slate-100 tracking-tight">
-            Computer Hardware & Laptop Wholesale Storefront
+            Kerala Hardware Wholesale Storefront
           </h1>
           <p className="text-xs text-slate-400 mt-1">
-            Enterprise wholesale hardware & computing catalogue with live atomic stock reservations.
+            Enterprise computing hardware catalogue with same-day dispatch across Kochi, Thiruvananthapuram, Kozhikode & statewide IT parks.
           </p>
         </div>
 

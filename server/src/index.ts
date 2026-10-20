@@ -39,7 +39,9 @@ app.use((req, _res, next) => {
 app.get('/api/health', (_req, res) => {
   res.json({
     status: 'UP',
-    platform: 'SupplyVault Luxury Enterprise SCM',
+    platform: 'SupplyVault Kerala Enterprise SCM',
+    region: 'Kerala, India',
+    centralHub: 'Kakkanad, Kochi',
     currency: 'INR',
     locale: 'en-IN',
     timezone: 'Asia/Kolkata',

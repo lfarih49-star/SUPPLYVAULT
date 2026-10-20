@@ -122,7 +122,7 @@ export const DeliveryAgentDashboard: React.FC<DeliveryAgentDashboardProps> = ({ 
               </h1>
             </div>
             <p className="text-xs text-slate-400 mt-1">
-              Field Courier: <b className="text-blue-400">{user?.fullName}</b> • Schedule: <span className="text-slate-300 font-mono">Asia/Kolkata</span>
+              Field Courier: <b className="text-blue-400">{user?.fullName}</b> • Transit Corridor: <span className="text-slate-300 font-mono">Vyttila Hub • Kerala Grid</span>
             </p>
           </div>
 

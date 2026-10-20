@@ -330,23 +330,23 @@ export async function initDb() {
 
     await query(`
       INSERT INTO sv_users (username, email, password_hash, full_name, role, phone) VALUES
-      ('manager', 'manager@supplyvault.in', $1, 'Aarav Singhania', 'MANAGER', '+91 98200 12345'),
-      ('staff', 'staff@supplyvault.in', $2, 'Priya Sharma', 'STAFF', '+91 98200 23456'),
-      ('buyer', 'buyer@enterprise.in', $3, 'Rohan Mehta', 'BUYER', '+91 98200 34567'),
-      ('agent', 'agent@logistics.in', $4, 'Vikram Deshmukh', 'DELIVERY_AGENT', '+91 98200 45678');
+      ('manager', 'faizal.rahman@supplyvault.kerala.in', $1, 'Faizal Rahman', 'MANAGER', '+91 98470 12345'),
+      ('staff', 'anjali.menon@supplyvault.kerala.in', $2, 'Anjali Menon', 'STAFF', '+91 94471 23456'),
+      ('buyer', 'rahul.nair@malabarinfotech.in', $3, 'Rahul Nair', 'BUYER', '+91 97452 34567'),
+      ('agent', 'bilal.logistics@supplyvault.kerala.in', $4, 'Muhammed Bilal', 'DELIVERY_AGENT', '+91 98953 45678');
     `, [managerHash, staffHash, buyerHash, agentHash]);
   }
 
-  // Seed suppliers (National IT Hardware & PC Distributors) if none exist
+  // Seed suppliers (Kerala Regional IT Hardware & PC Distributors) if none exist
   const existingSuppliers = await query(`SELECT count(*) as count FROM sv_suppliers;`);
   if (parseInt(existingSuppliers.rows[0].count) === 0) {
-    console.log('[DB] Seeding national IT hardware & laptop distributors...');
+    console.log('[DB] Seeding Kerala regional IT hardware & laptop distributors...');
     await query(`
       INSERT INTO sv_suppliers (name, contact_person, email, phone, address, city, lead_time_days, rating) VALUES
-      ('Redington India Limited', 'Venkatesh Ramanathan', 'corporate.procurement@redingtongroup.com', '+91 44 4224 3353', 'SPL Guindy House, 95 Mount Road, Guindy', 'Chennai', 3, 4.9),
-      ('Ingram Micro India Pvt Ltd', 'Anil Khandelwal', 'enterprise.distribution@ingrammicro.co.in', '+91 22 6856 1000', 'Godrej IT Park, Pirojshanagar, LBS Marg, Vikhroli West', 'Mumbai', 4, 4.8),
-      ('Savex Technologies Pvt Ltd', 'Devendra Sharma', 'b2b.orders@savex.org', '+91 22 2831 8200', '124, Maker Chambers VI, 12th Floor, Nariman Point', 'Mumbai', 3, 4.7),
-      ('Supertron Infotech Pvt Ltd', 'Subhashish Ghosh', 'oem.hardware@supertronindia.com', '+91 33 2289 1234', 'Supertron House, 2 Cooper Street', 'Kolkata', 5, 4.6);
+      ('Redington India Limited - Kochi Regional Hub', 'Venkatesh Ramanathan', 'kochi.procurement@redingtongroup.com', '+91 484 280 4353', 'Building No. 39/4122, Ravipuram Road, Valanjambalam', 'Kochi', 2, 4.9),
+      ('Ingram Micro India Pvt Ltd - Ernakulam Hub', 'K. P. Jayakrishnan', 'kerala.enterprise@ingrammicro.co.in', '+91 484 411 9000', 'Ground Floor, Kaloor-Kadavanthra Road, Kathrikadavu, Kaloor', 'Kochi', 2, 4.8),
+      ('Savex Technologies Pvt Ltd - Palarivattom Logistics', 'Devanand Namboodiri', 'kerala.b2b@savex.org', '+91 484 234 1820', 'Door No. 32/2855, Pipeline Road, Palarivattom', 'Kochi', 3, 4.7),
+      ('Supertron Infotech Pvt Ltd - Kozhikode Branch', 'K. M. Haris', 'calicut.hardware@supertronindia.com', '+91 495 272 5678', '2nd Floor, Malabar Gate Complex, Ram Mohan Road', 'Kozhikode', 3, 4.6);
     `);
   }
 
@@ -425,7 +425,7 @@ export async function initDb() {
       // 1. Order in CONFIRMED state (ready for warehouse staff to pack)
       const ord1 = await query(`
         INSERT INTO sv_orders (order_number, buyer_id, buyer_name, buyer_email, status, subtotal, tax_amount, total_amount, shipping_address, city, postal_code, notes)
-        VALUES ('ORD-2026-001', $1, $2, $3, 'CONFIRMED', 379980.00, 68396.40, 448376.40, 'Tower B, Tech Mahindra Tech Park, Hinjewadi Phase 3', 'Pune', '411057', 'Deliver to IT Hardware Depot Bay 4.')
+        VALUES ('ORD-2026-001', $1, $2, $3, 'CONFIRMED', 379980.00, 68396.40, 448376.40, 'Ganga Building, Phase III, Technopark Campus, Kazhakkoottam', 'Thiruvananthapuram', '695583', 'Deliver to Technopark Server Room Bay 3.')
         RETURNING id;
       `, [bId, bName, bEmail]);
 
@@ -439,7 +439,7 @@ export async function initDb() {
       // 2. Order in DISPATCHED state with OUT_FOR_DELIVERY shipment
       const ord2 = await query(`
         INSERT INTO sv_orders (order_number, buyer_id, buyer_name, buyer_email, status, subtotal, tax_amount, total_amount, shipping_address, city, postal_code, notes)
-        VALUES ('ORD-2026-002', $1, $2, $3, 'DISPATCHED', 369900.00, 66582.00, 436482.00, 'Godrej One, 10th Floor, Pirojshanagar, Vikhroli East', 'Mumbai', '400079', 'Express dispatch for executive leadership laptop.')
+        VALUES ('ORD-2026-002', $1, $2, $3, 'DISPATCHED', 369900.00, 66582.00, 436482.00, 'Leela Infopark, 6th Floor, Infopark Phase 1, Kakkanad', 'Kochi', '682042', 'Priority express dispatch via Seaport-Airport Road for executive dev team.')
         RETURNING id;
       `, [bId, bName, bEmail]);
 
@@ -450,14 +450,14 @@ export async function initDb() {
 
       await query(`
         INSERT INTO sv_shipments (order_id, order_number, tracking_number, assigned_agent_id, assigned_agent_name, status, recipient_name, recipient_phone, delivery_address, city, postal_code, estimated_delivery, dispatched_at, total_amount)
-        VALUES ($1, 'ORD-2026-002', 'TRK-IN-889021', $2, $3, 'OUT_FOR_DELIVERY', $4, '+91 98200 34567', 'Godrej One, 10th Floor, Pirojshanagar, Vikhroli East', 'Mumbai', '400079', CURRENT_DATE, NOW() - INTERVAL '3 hours', 436482.00);
+        VALUES ($1, 'ORD-2026-002', 'TRK-IN-889021', $2, $3, 'OUT_FOR_DELIVERY', $4, '+91 97452 34567', 'Leela Infopark, 6th Floor, Infopark Phase 1, Kakkanad', 'Kochi', '682042', CURRENT_DATE, NOW() - INTERVAL '3 hours', 436482.00);
       `, [ord2.rows[0].id, agId, agName, bName]);
 
       // 3. Order in DELIVERED state
       if (p3.rows.length) {
         const ord3 = await query(`
           INSERT INTO sv_orders (order_number, buyer_id, buyer_name, buyer_email, status, subtotal, tax_amount, total_amount, shipping_address, city, postal_code, notes)
-          VALUES ('ORD-2026-003', $1, $2, $3, 'DELIVERED', 389800.00, 70164.00, 459964.00, 'Prestige Tech Park, Marathahalli-Sarjapur Ring Rd', 'Bengaluru', '560103', 'Delivered to AI Research Lab.')
+          VALUES ('ORD-2026-003', $1, $2, $3, 'DELIVERED', 389800.00, 70164.00, 459964.00, 'Sahya IT Building, Cyberpark Campus, Mavoor Road Bypass', 'Kozhikode', '673016', 'Delivered to Cyberpark AI Compute Lab.')
           RETURNING id;
         `, [bId, bName, bEmail]);
 
@@ -468,7 +468,7 @@ export async function initDb() {
 
         await query(`
           INSERT INTO sv_shipments (order_id, order_number, tracking_number, assigned_agent_id, assigned_agent_name, status, recipient_name, recipient_phone, delivery_address, city, postal_code, estimated_delivery, dispatched_at, delivered_at, total_amount)
-          VALUES ($1, 'ORD-2026-003', 'TRK-IN-884019', $2, $3, 'DELIVERED', $4, '+91 98200 34567', 'Prestige Tech Park, Marathahalli-Sarjapur Ring Rd', 'Bengaluru', '560103', CURRENT_DATE - INTERVAL '2 days', NOW() - INTERVAL '3 days', NOW() - INTERVAL '2 days', 459964.00);
+          VALUES ($1, 'ORD-2026-003', 'TRK-IN-884019', $2, $3, 'DELIVERED', $4, '+91 97452 34567', 'Sahya IT Building, Cyberpark Campus, Mavoor Road Bypass', 'Kozhikode', '673016', CURRENT_DATE - INTERVAL '2 days', NOW() - INTERVAL '3 days', NOW() - INTERVAL '2 days', 459964.00);
         `, [ord3.rows[0].id, agId, agName, bName]);
       }
     }

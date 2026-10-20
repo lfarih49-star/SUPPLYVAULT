@@ -44,10 +44,10 @@ export const LoginView: React.FC = () => {
 
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-              SUPPLY<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-blue-200">VAULT</span>
+              SUPPLY<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-blue-200">VAULT</span> <span className="text-blue-400 text-lg sm:text-xl font-mono">KERALA</span>
             </h1>
             <p className="text-[11px] font-semibold text-slate-400 tracking-widest uppercase mt-1">
-              Computer Hardware & Laptop Enterprise Supply Chain
+              Kerala Enterprise Computer Hardware & Laptop Supply Chain Network
             </p>
           </div>
         </div>
@@ -149,8 +149,8 @@ export const LoginView: React.FC = () => {
                   <Building2 className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="font-bold text-slate-200">Manager</div>
-                  <div className="text-[10px] font-mono text-blue-400/80">manager123</div>
+                  <div className="font-bold text-slate-200">Faizal Rahman</div>
+                  <div className="text-[10px] text-blue-400/80 font-mono">Manager (Kochi HQ)</div>
                 </div>
               </button>
 
@@ -168,8 +168,8 @@ export const LoginView: React.FC = () => {
                   <UserCheck className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="font-bold text-slate-200">Staff</div>
-                  <div className="text-[10px] font-mono text-blue-400/80">staff123</div>
+                  <div className="font-bold text-slate-200">Anjali Menon</div>
+                  <div className="text-[10px] text-blue-400/80 font-mono">Staff (Kakkanad)</div>
                 </div>
               </button>
 
@@ -187,8 +187,8 @@ export const LoginView: React.FC = () => {
                   <ShoppingBag className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="font-bold text-slate-200">Buyer</div>
-                  <div className="text-[10px] font-mono text-blue-400/80">buyer123</div>
+                  <div className="font-bold text-slate-200">Rahul Nair</div>
+                  <div className="text-[10px] text-blue-400/80 font-mono">Buyer (Technopark)</div>
                 </div>
               </button>
 
@@ -206,8 +206,8 @@ export const LoginView: React.FC = () => {
                   <Truck className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="font-bold text-slate-200">Logistics Agent</div>
-                  <div className="text-[10px] font-mono text-blue-400/80">agent123</div>
+                  <div className="font-bold text-slate-200">Muhammed Bilal</div>
+                  <div className="text-[10px] text-blue-400/80 font-mono">Logistics (Vyttila)</div>
                 </div>
               </button>
             </div>

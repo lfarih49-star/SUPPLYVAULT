@@ -155,19 +155,19 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-2xl font-black text-slate-100 tracking-tight">
-              Warehouse Operations Hub
+              Warehouse Operations Hub <span className="text-blue-400 text-lg font-mono font-normal">Kakkanad Depot</span>
             </h1>
-            <Badge variant="teal" size="sm">Staff Shift Active</Badge>
+            <Badge variant="blue" size="sm">Kochi Shift Active</Badge>
           </div>
           <p className="text-xs text-slate-400 mt-1">
-            Daily order packing queues, goods receipt logging, and restock requisition dispatch.
+            Kochi Central Warehouse stock replenishment, packing queue, and statewide delivery dispatch.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
           <button
             onClick={() => setRestockModalOpen(true)}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-navy-950 font-semibold text-xs rounded-xl shadow-sm flex items-center gap-1.5 transition-all"
+            className="px-4 py-2 btn-luxury-navy text-white font-bold text-xs rounded-xl shadow-sm flex items-center gap-1.5 transition-all"
           >
             <Plus className="w-4 h-4" /> Submit Restock Requisition
           </button>

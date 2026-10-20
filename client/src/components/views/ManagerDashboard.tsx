@@ -140,12 +140,12 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-2xl font-black text-slate-100 tracking-tight">
-              Executive Command Centre
+              Executive Command Centre <span className="text-blue-400 text-lg font-mono font-normal">Kochi HQ</span>
             </h1>
-            <span className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-blue-600/10 text-blue-400 border border-blue-500/20">Operational Active</span>
+            <span className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-blue-600/10 text-blue-400 border border-blue-500/20">Kerala Grid Active</span>
           </div>
           <p className="text-xs text-slate-400 mt-1">
-            Real-time supply chain operational metrics, inventory valuation, and procurement approvals.
+            Real-time Kerala statewide IT hardware procurement, Kakkanad warehouse inventory, and Technopark/Infopark fulfillment.
           </p>
         </div>
 
@@ -332,43 +332,43 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
             <div className="w-2.5 h-2.5 rounded-full bg-blue-400 animate-ping" />
             <div>
               <h3 className="text-sm font-bold text-slate-100 tracking-tight flex items-center gap-2">
-                Supply Chain Operational Workflow Topology
+                Kerala Statewide Supply Chain Topology
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-blue-500/40 bg-blue-950/50 text-blue-400 font-bold hidden sm:inline-block">
-                  Enterprise Supply Topology
+                  Kochi • TVM • Kozhikode Grid
                 </span>
               </h3>
-              <p className="text-[11px] text-slate-400">End-to-end hardware procurement, warehouse inventory, order dispatch, and delivery topology</p>
+              <p className="text-[11px] text-slate-400">End-to-end hardware procurement from Kerala distributors to Technopark, Infopark & Cyberpark</p>
             </div>
           </div>
 
           <div className="flex items-center gap-1.5 px-3 py-1 bg-navy-950 rounded-xl border border-slate-800 text-xs self-start sm:self-auto">
             <span className="w-2 h-2 rounded-full bg-blue-300" /><span className="w-2 h-2 rounded-full bg-blue-400" /><span className="w-2 h-2 rounded-full bg-blue-500" /><span className="w-2 h-2 rounded-full bg-blue-600" /><span className="w-2 h-2 rounded-full bg-blue-700" />
-            <span className="text-[11px] font-semibold text-slate-300 ml-1">Navy Blue Pipeline</span>
+            <span className="text-[11px] font-semibold text-slate-300 ml-1">Kerala Express Grid</span>
           </div>
         </div>
 
-        {/* 5-Stage Multi-Spectrum Diagram Progression */}
+        {/* 5-Stage Kerala Diagram Progression */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-3 pt-1">
-          {/* Node 1: Procurement */}
+          {/* Node 1: Kerala Procurement */}
           <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-blue-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-blue-400">1. Procurement</span>
+              <span className="text-[10px] uppercase font-bold text-blue-400">1. Kerala Distributors</span>
               <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
                 <Building2 className="w-3.5 h-3.5" />
               </div>
             </div>
             <div className="text-sm font-extrabold text-slate-100 font-mono">
-              {kpis.totalSuppliers} IT Distributors
+              {kpis.totalSuppliers} Kochi / Calicut Hubs
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">
               PO Spend: <span className="text-blue-400 font-mono font-bold">{formatINR(kpis.procurementExpenditureINR)}</span>
             </p>
           </div>
 
-          {/* Node 2: Warehouse Vault */}
+          {/* Node 2: Kakkanad Depot */}
           <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-blue-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-blue-400">2. Hardware Vault</span>
+              <span className="text-[10px] uppercase font-bold text-blue-400">2. Kakkanad Depot</span>
               <div className="p-1.5 rounded-lg bg-blue-600/10 text-blue-400">
                 <Boxes className="w-3.5 h-3.5" />
               </div>
@@ -381,11 +381,11 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
             </p>
           </div>
 
-          {/* Node 3: QA & Order Packing */}
-          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-amber-500/50 transition-all">
+          {/* Node 3: Vyttila Hub */}
+          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-blue-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-amber-400">3. Fulfillment Bay</span>
-              <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400">
+              <span className="text-[10px] uppercase font-bold text-blue-400">3. Vyttila Transit Bay</span>
+              <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
                 <Package className="w-3.5 h-3.5" />
               </div>
             </div>
@@ -393,30 +393,30 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
               {kpis.ordersAwaitingProcessing} Orders Queued
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">
-              Atomic Reservation: <span className="text-amber-400 font-mono font-bold">Guaranteed</span>
+              Dispatch Lane: <span className="text-blue-400 font-mono font-bold">Kochi Central</span>
             </p>
           </div>
 
-          {/* Node 4: Express Dispatch */}
+          {/* Node 4: Kerala State Express Transit */}
           <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-blue-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-blue-400">4. Transit Dispatch</span>
+              <span className="text-[10px] uppercase font-bold text-blue-400">4. NH 66 & MC Road</span>
               <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
                 <Truck className="w-3.5 h-3.5" />
               </div>
             </div>
             <div className="text-sm font-extrabold text-slate-100 font-mono">
-              Active Tracking
+              Statewide Fleet
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">
-              Logistics SLA: <span className="text-blue-400 font-mono font-bold">Same Day / 24h</span>
+              SLA: <span className="text-blue-400 font-mono font-bold">Same Day / 24h</span>
             </p>
           </div>
 
           {/* Node 5: Client Delivered */}
           <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-blue-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-blue-400">5. Client Handover</span>
+              <span className="text-[10px] uppercase font-bold text-blue-400">5. Enterprise Handover</span>
               <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
                 <CheckCircle2 className="w-3.5 h-3.5" />
               </div>

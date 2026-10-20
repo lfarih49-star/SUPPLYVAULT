@@ -12,9 +12,9 @@ interface CartDrawerProps {
 
 export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, onOrderSuccess }) => {
   const { cart, removeFromCart, updateCartQuantity, clearCart, cartTotalINR, token } = useAuth();
-  const [shippingAddress, setShippingAddress] = useState('Maker Chambers V, Nariman Point');
-  const [city, setCity] = useState('Mumbai');
-  const [postalCode, setPostalCode] = useState('400021');
+  const [shippingAddress, setShippingAddress] = useState('Ganga Building, Phase III, Technopark Campus, Kazhakkoottam');
+  const [city, setCity] = useState('Thiruvananthapuram');
+  const [postalCode, setPostalCode] = useState('695583');
   const [notes, setNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -161,7 +161,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, onOrder
             {cart.length > 0 && (
               <form onSubmit={handleCheckout} id="checkout-form" className="mt-6 pt-4 border-t border-slate-800 space-y-3">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  Delivery Address (India)
+                  Delivery Address (Kerala, India)
                 </h3>
 
                 {error && (
