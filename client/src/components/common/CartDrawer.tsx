@@ -231,7 +231,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, onOrder
                   <span className="font-semibold text-slate-900 dark:text-slate-100 font-mono">{formatINR(tax)}</span>
                 </div>
                 <div className="pt-2 border-t border-slate-200 dark:border-slate-700 flex justify-between text-sm font-bold text-slate-900 dark:text-slate-100">
-                  <span>Grand Total (INR)</span>
+                  <span>Grand Total</span>
                   <span className="text-gold-600 dark:text-gold-400 font-mono text-base">{formatINR(grandTotal)}</span>
                 </div>
               </div>

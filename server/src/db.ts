@@ -491,7 +491,7 @@ export async function initDb() {
   if (parseInt(existingNotifications.rows[0].count) === 0) {
     await query(`
       INSERT INTO sv_notifications (target_role, title, message, type) VALUES
-      ('ALL', 'SupplyVault Hardware Platform Operational', 'Enterprise computer hardware & laptop wholesale supply chain system online with strict INR currency governance and four authorized role portals.', 'INFO'),
+      ('ALL', 'SupplyVault Hardware Platform Operational', 'Enterprise computer hardware & laptop wholesale supply chain system online with four authorized role portals.', 'INFO'),
       ('MANAGER', 'Restock Request: Intel Core i9-14900KS', 'Urgent stock requisition submitted for Intel Core i9-14900KS Special Edition processors.', 'WARNING'),
       ('STAFF', 'Hardware Stock Alert', 'Product CPU-INT-14900KS is below safety threshold (6 units remaining, min 10).', 'ALERT');
     `);

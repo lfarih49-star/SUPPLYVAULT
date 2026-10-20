@@ -196,7 +196,7 @@ export const PurchaseOrdersView: React.FC = () => {
               <tr className="border-b border-slate-100 dark:border-slate-800 bg-slate-50/60 dark:bg-navy-950/60 text-slate-400 font-semibold uppercase">
                 <th className="py-3 px-4">PO Number</th>
                 <th className="py-3 px-4">Supplier</th>
-                <th className="py-3 px-4 text-right font-mono">Total Cost (INR)</th>
+                <th className="py-3 px-4 text-right font-mono">Total Cost</th>
                 <th className="py-3 px-4 text-center">Status</th>
                 <th className="py-3 px-4">Order Date</th>
                 <th className="py-3 px-4">Expected Delivery</th>

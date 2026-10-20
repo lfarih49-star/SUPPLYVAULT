@@ -185,7 +185,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
             <Badge variant="gold" size="sm">Active Oversight</Badge>
           </div>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Real-time supply chain operational metrics, valuation in Indian Rupees (₹), and procurement approvals.
+            Real-time supply chain operational metrics, inventory valuation, and procurement approvals.
           </p>
         </div>
 
@@ -502,7 +502,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
               <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tight">
                 Inventory Valuation by Category
               </h3>
-              <p className="text-xs text-slate-400">Strictly calculated in Indian Rupees (₹)</p>
+              <p className="text-xs text-slate-400">Aggregated line-item valuation</p>
             </div>
             <Badge variant="teal" size="sm">Real Database Aggregation</Badge>
           </div>

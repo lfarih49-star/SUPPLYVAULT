@@ -11,7 +11,7 @@ export const ReportsView: React.FC = () => {
     {
       id: 'inventory',
       title: 'Inventory Valuation & Master Ledger',
-      description: 'Complete catalogue with physical, reserved, and available stock units, and line item valuations in INR (₹).',
+      description: 'Complete catalogue with physical, reserved, and available stock units, and line item valuations.',
       filename: 'supplyvault_inventory_valuation.csv',
       variant: 'gold',
     },
@@ -25,7 +25,7 @@ export const ReportsView: React.FC = () => {
     {
       id: 'purchase_orders',
       title: 'Procurement & Purchase Orders Report',
-      description: 'Supplier PO expenditures in INR, approval timestamps, and goods receipts delivery tracking.',
+      description: 'Supplier PO expenditures, approval timestamps, and goods receipts delivery tracking.',
       filename: 'supplyvault_procurement_pos.csv',
       variant: 'teal',
     },
@@ -75,7 +75,7 @@ export const ReportsView: React.FC = () => {
           Enterprise Reports & Data Exports
         </h1>
         <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-          Export actual persisted operational datasets with proper UTF-8 CSV escaping and strict INR formatting.
+          Export actual persisted operational datasets with proper UTF-8 CSV formatting.
         </p>
       </div>
 

@@ -105,7 +105,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
             Computer Hardware & Laptop Wholesale Storefront
           </h1>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Enterprise wholesale hardware & computing catalogue with live atomic stock reservations and INR pricing.
+            Enterprise wholesale hardware & computing catalogue with live atomic stock reservations.
           </p>
         </div>
 

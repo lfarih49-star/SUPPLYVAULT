@@ -87,7 +87,7 @@ export const SuppliersView: React.FC = () => {
             Supplier & Vendor Network
           </h1>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Certified enterprise vendor network with lead time monitoring and INR procurement balances.
+            Certified enterprise vendor network with lead time monitoring and procurement performance.
           </p>
         </div>
 

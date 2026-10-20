@@ -86,7 +86,7 @@ export const OrdersView: React.FC = () => {
                 <th className="py-3 px-4">Order Number</th>
                 <th className="py-3 px-4">Buyer Customer</th>
                 <th className="py-3 px-4">Destination</th>
-                <th className="py-3 px-4 text-right font-mono">Amount (INR)</th>
+                <th className="py-3 px-4 text-right font-mono">Amount</th>
                 <th className="py-3 px-4 text-center">Fulfilment Status</th>
                 <th className="py-3 px-4">Tracking Number</th>
                 <th className="py-3 px-4 text-right">Progress Workflow</th>

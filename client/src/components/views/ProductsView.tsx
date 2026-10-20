@@ -185,7 +185,7 @@ export const ProductsView: React.FC = () => {
             Products & Enterprise Catalogue
           </h1>
           <p className="text-xs text-slate-400 mt-1">
-            Centrally governed item master with fixed 16:9 presentation visuals, strict INR unit costs, and reorder levels.
+            Centrally governed item master with fixed 16:9 presentation visuals, unit pricing, and reorder levels.
           </p>
         </div>
 
@@ -245,8 +245,8 @@ export const ProductsView: React.FC = () => {
                 <th className="py-3 px-3 w-28">Visual</th>
                 <th className="py-3 px-4">SKU / Product</th>
                 <th className="py-3 px-4">Category</th>
-                {isManager && <th className="py-3 px-4 text-right">Purchase Cost (INR)</th>}
-                <th className="py-3 px-4 text-right">Selling Price (INR)</th>
+                {isManager && <th className="py-3 px-4 text-right">Purchase Cost</th>}
+                <th className="py-3 px-4 text-right">Selling Price</th>
                 <th className="py-3 px-4 text-center">Physical Stock</th>
                 <th className="py-3 px-4 text-center">Reserved</th>
                 <th className="py-3 px-4 text-center">Available Stock</th>
@@ -324,7 +324,7 @@ export const ProductsView: React.FC = () => {
         isOpen={addModalOpen}
         onClose={() => setAddModalOpen(false)}
         title="Add New Enterprise Product"
-        subtitle="Provision item with fixed 16:9 presentation visuals and INR accounting."
+        subtitle="Provision item with fixed 16:9 presentation visuals and master catalogue specs."
       >
         <form onSubmit={handleCreateProduct} className="space-y-4 text-xs">
           {error && (

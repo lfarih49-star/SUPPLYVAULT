@@ -124,9 +124,7 @@ export const Shell: React.FC<ShellProps> = ({
                 <span className="text-base font-black tracking-tight text-slate-900 dark:text-slate-100 uppercase">
                   Supply<span className="text-gold-500">Vault</span>
                 </span>
-                <span className="text-[10px] bg-slate-100 dark:bg-navy-800 text-slate-600 dark:text-slate-300 font-mono px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-700">
-                  ₹ INR
-                </span>
+                
               </div>
               <p className="hidden sm:block text-[10px] text-slate-400 tracking-wider uppercase font-semibold">
                 Computer Hardware & Laptop Supply Chain
@@ -268,10 +266,7 @@ export const Shell: React.FC<ShellProps> = ({
 
           {/* Sidebar Footer */}
           <div className="p-4 border-t border-navy-800/80 text-[11px] text-slate-500 space-y-1">
-            <div className="flex justify-between items-center text-slate-400 font-mono">
-              <span>Standard:</span>
-              <span className="text-gold-400 font-bold">INR (₹) Only</span>
-            </div>
+            
             <div className="flex justify-between items-center">
               <span>Timezone:</span>
               <span className="text-slate-300">Asia/Kolkata</span>
