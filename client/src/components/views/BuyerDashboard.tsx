@@ -188,7 +188,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
               return (
                 <div
                   key={product.id}
-                  className="rounded-2xl bg-navy-900 border border-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col group"
+                  className="rounded-2xl glass-card glass-card-hover overflow-hidden flex flex-col group"
                 >
                   {/* Fixed 16:9 Aspect Ratio Presentation Image */}
                   <div className="relative">
@@ -247,7 +247,7 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                             ? 'bg-navy-950 text-slate-400 cursor-not-allowed border border-slate-800'
                             : isAdded
                             ? 'bg-emerald-600 text-white'
-                            : 'bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold transition-all shadow-sm'
+                            : 'btn-luxury-emerald'
                         }`}
                       >
                         {isAdded ? (

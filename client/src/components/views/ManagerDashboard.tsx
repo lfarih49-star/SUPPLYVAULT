@@ -153,14 +153,14 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
           <a
             href={`/api/reports/csv?type=inventory&token=${token}`}
             download
-            className="px-3.5 py-2 text-xs font-semibold bg-navy-900 border border-slate-700 hover:bg-navy-800 text-slate-200 rounded-xl shadow-sm flex items-center gap-2 transition-all"
+            className="px-3.5 py-2 text-xs font-semibold btn-luxury-secondary rounded-xl flex items-center gap-2"
           >
             <FileDown className="w-4 h-4 text-emerald-400" />
             Export Inventory CSV
           </a>
           <button
             onClick={() => onNavigateTab('products')}
-            className="px-3.5 py-2 text-xs font-semibold bg-emerald-500 hover:bg-emerald-400 text-navy-950 rounded-xl shadow-sm flex items-center gap-1.5 transition-all"
+            className="px-3.5 py-2 text-xs font-bold btn-luxury-emerald rounded-xl flex items-center gap-1.5"
           >
             Manage Products
           </button>
@@ -170,10 +170,10 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Card 1: Inventory Valuation */}
-        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 hover:border-slate-700/80 transition-all space-y-3 shadow-sm">
+        <div className="p-5 rounded-2xl glass-card glass-card-hover space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Inventory Valuation</span>
-            <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.2)] flex items-center justify-center">
               <TrendingUp className="w-4 h-4" />
             </div>
           </div>
@@ -190,10 +190,10 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
         </div>
 
         {/* Card 2: Orders Value */}
-        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 hover:border-slate-700/80 transition-all space-y-3 shadow-sm">
+        <div className="p-5 rounded-2xl glass-card glass-card-hover space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Total Orders Value</span>
-            <div className="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/30 text-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.2)] flex items-center justify-center">
               <Boxes className="w-4 h-4" />
             </div>
           </div>
@@ -210,10 +210,10 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
         </div>
 
         {/* Card 3: Procurement Spend */}
-        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 hover:border-slate-700/80 transition-all space-y-3 shadow-sm">
+        <div className="p-5 rounded-2xl glass-card glass-card-hover space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Procurement Spend</span>
-            <div className="w-8 h-8 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.2)] flex items-center justify-center">
               <Building2 className="w-4 h-4" />
             </div>
           </div>
@@ -230,10 +230,10 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
         </div>
 
         {/* Card 4: Inventory Alerts */}
-        <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 hover:border-slate-700/80 transition-all space-y-3 shadow-sm">
+        <div className="p-5 rounded-2xl glass-card glass-card-hover space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Stock Alerts</span>
-            <div className="w-8 h-8 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.2)] flex items-center justify-center">
               <AlertTriangle className="w-4 h-4" />
             </div>
           </div>
@@ -251,7 +251,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
       </div>
 
       {/* Pending Restock Approvals Queue */}
-      <div className="bg-navy-900 border border-slate-800 rounded-2xl p-6 shadow-sm">
+      <div className="glass-card rounded-2xl p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Clock className="w-5 h-5 text-emerald-400" />
@@ -312,7 +312,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                           setApprovedQty(item.requestedQuantity);
                           setReviewNotes('');
                         }}
-                        className="px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-semibold text-xs rounded-lg shadow-sm transition-all"
+                        className="px-3 py-1.5 btn-luxury-emerald text-xs rounded-lg"
                       >
                         Review Requisition
                       </button>
@@ -326,7 +326,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
       </div>
 
       {/* Hardware Supply Chain Operational Flow Diagram — Multi-Spectrum */}
-      <div className="p-5 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4">
+      <div className="p-5 rounded-2xl glass-card space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
           <div className="flex items-center gap-2">
             <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
@@ -438,7 +438,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
       {/* Interactive Charts Area */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Category Stock Valuation Chart */}
-        <div className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4">
+        <div className="p-6 rounded-2xl glass-card space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-bold text-slate-100 tracking-tight">
@@ -502,7 +502,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
         </div>
 
         {/* Order Status Distribution with Clean Side Legend */}
-        <div className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4">
+        <div className="p-6 rounded-2xl glass-card space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-bold text-slate-100 tracking-tight">

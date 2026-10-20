@@ -192,7 +192,7 @@ export const ProductsView: React.FC = () => {
         {isManager && (
           <button
             onClick={() => setAddModalOpen(true)}
-            className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-semibold text-xs rounded-xl shadow-sm flex items-center gap-1.5 transition-all"
+            className="px-4 py-2 btn-luxury-emerald text-xs rounded-xl flex items-center gap-1.5"
           >
             <Plus className="w-4 h-4" /> Add New Product
           </button>
@@ -200,7 +200,7 @@ export const ProductsView: React.FC = () => {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 bg-navy-900 p-4 rounded-2xl border border-slate-800 shadow-sm text-xs">
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 glass-card p-4 rounded-2xl text-xs">
         <div className="flex flex-wrap items-center gap-2">
           <select
             value={selectedCategory}
@@ -237,7 +237,7 @@ export const ProductsView: React.FC = () => {
       </div>
 
       {/* Table */}
-      <div className="bg-navy-900 border border-slate-800 rounded-2xl shadow-sm overflow-hidden">
+      <div className="glass-card rounded-2xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
             <thead>
