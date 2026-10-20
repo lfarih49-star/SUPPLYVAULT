@@ -119,7 +119,7 @@ export const InventoryView: React.FC = () => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="p-4 rounded-xl bg-navy-900 border border-slate-800 shadow-sm">
             <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Total Valuation</span>
-            <div className="text-xl font-extrabold font-mono text-emerald-400 mt-1">
+            <div className="text-xl font-extrabold font-mono text-blue-400 mt-1">
               {formatINR(summary.totalValuationINR)}
             </div>
             <span className="text-[10px] text-slate-500">Physical Stock Basis</span>
@@ -143,7 +143,7 @@ export const InventoryView: React.FC = () => {
 
           <div className="p-4 rounded-xl bg-navy-900 border border-slate-800 shadow-sm">
             <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Available Stock</span>
-            <div className="text-xl font-extrabold font-mono text-emerald-600 dark:text-emerald-400 mt-1">
+            <div className="text-xl font-extrabold font-mono text-blue-400 dark:text-blue-400 mt-1">
               {summary.totalAvailableUnits}
             </div>
             <span className="text-[10px] text-slate-500">Physical − Reserved</span>
@@ -170,11 +170,11 @@ export const InventoryView: React.FC = () => {
                   <tr key={p.id} className="hover:bg-navy-950/40">
                     <td className="py-3 px-4">
                       <div className="font-bold text-slate-100">{p.name}</div>
-                      <span className="font-mono text-[10px] text-emerald-400">{p.sku}</span>
+                      <span className="font-mono text-[10px] text-blue-400">{p.sku}</span>
                     </td>
                     <td className="py-3 px-4 text-center font-mono font-bold">{p.physicalStock} {p.unit}</td>
                     <td className="py-3 px-4 text-center font-mono text-amber-600">{p.reservedStock}</td>
-                    <td className="py-3 px-4 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">
+                    <td className="py-3 px-4 text-center font-mono font-bold text-blue-400 dark:text-blue-400">
                       {p.availableStock}
                     </td>
                     <td className="py-3 px-4 text-center">
@@ -307,7 +307,7 @@ export const InventoryView: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-xl shadow-md transition-all"
+              className="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-navy-950 font-bold rounded-xl shadow-md transition-all"
             >
               {isSubmitting ? 'Recording...' : 'Apply Stock Adjustment'}
             </button>

@@ -68,8 +68,8 @@ export const OrdersView: React.FC = () => {
             onClick={() => setStatusFilter(st)}
             className={`px-3 py-1.5 rounded-xl font-semibold transition-all whitespace-nowrap ${
               statusFilter === st
-                ? 'bg-navy-900 text-emerald-400 dark:bg-emerald-500 dark:text-navy-950 shadow-sm'
-                : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-emerald-500'
+                ? 'bg-navy-900 text-blue-400 dark:bg-blue-600 dark:text-navy-950 shadow-sm'
+                : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-blue-500'
             }`}
           >
             {st === 'ALL' ? 'All Orders' : st}
@@ -105,7 +105,7 @@ export const OrdersView: React.FC = () => {
                   <td className="py-3 px-4 text-slate-400 max-w-xs truncate">
                     {o.city} ({o.postalCode})
                   </td>
-                  <td className="py-3 px-4 text-right font-mono font-bold text-emerald-400">
+                  <td className="py-3 px-4 text-right font-mono font-bold text-blue-400">
                     {formatINR(o.totalAmount)}
                   </td>
                   <td className="py-3 px-4 text-center">
@@ -171,7 +171,7 @@ export const OrdersView: React.FC = () => {
                         </span>
                       )}
                       {o.status === 'DELIVERED' && (
-                        <span className="text-[10px] text-emerald-600 font-bold flex items-center gap-1">
+                        <span className="text-[10px] text-blue-400 font-bold flex items-center gap-1">
                           <CheckCircle2 className="w-3.5 h-3.5" /> Complete
                         </span>
                       )}

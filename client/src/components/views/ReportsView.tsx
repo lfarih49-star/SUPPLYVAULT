@@ -83,7 +83,7 @@ export const ReportsView: React.FC = () => {
         {reportCards.map(rep => (
           <div
             key={rep.id}
-            className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm flex flex-col justify-between space-y-4 hover:border-emerald-500/40 transition-all"
+            className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm flex flex-col justify-between space-y-4 hover:border-blue-500/40 transition-all"
           >
             <div>
               <div className="flex items-center justify-between mb-2">
@@ -105,7 +105,7 @@ export const ReportsView: React.FC = () => {
               <button
                 onClick={() => handleDownload(rep.id, rep.filename)}
                 disabled={downloadingType === rep.id}
-                className="px-4 py-2 bg-navy-900 hover:bg-navy-800 text-emerald-400 border border-emerald-500/30 rounded-xl shadow-md text-xs font-bold flex items-center gap-2 transition-all disabled:opacity-50"
+                className="px-4 py-2 bg-navy-900 hover:bg-navy-800 text-blue-400 border border-blue-500/30 rounded-xl shadow-md text-xs font-bold flex items-center gap-2 transition-all disabled:opacity-50"
               >
                 {downloadingType === rep.id ? (
                   'Exporting...'

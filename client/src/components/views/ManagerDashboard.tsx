@@ -35,25 +35,25 @@ import { Badge } from '../common/Badge';
 import { Modal } from '../common/Modal';
 import { ManagerKPIs, RestockRequest } from '@shared/types';
 
-const SPECTRUM_COLORS = ['#38BDF8', '#A855F7', '#10B981', '#F59E0B', '#F43F5E', '#06B6D4', '#818CF8', '#FB923C'];
+const SPECTRUM_COLORS = ['#3B82F6', '#2563EB', '#1D4ED8', '#60A5FA', '#1E40AF', '#93C5FD', '#172554'];
 
 const CATEGORY_COLORS: Record<string, string> = {
-  'Enterprise Laptops': '#38BDF8',       // Electric Sky Blue
-  'Graphics Cards & GPUs': '#A855F7',   // Neon Purple/Violet
-  'Processors (CPUs)': '#10B981',       // Emerald Mint
-  'Memory & Storage': '#F59E0B',        // Champagne Amber Gold
-  'Motherboards & Power': '#F43F5E',    // Vivid Coral/Rose
-  'Displays & Peripherals': '#06B6D4',  // Electric Cyan
+  'Enterprise Laptops': '#3B82F6',
+  'Graphics Cards & GPUs': '#2563EB',
+  'Processors (CPUs)': '#1D4ED8',
+  'Memory & Storage': '#60A5FA',
+  'Motherboards & Power': '#1E40AF',
+  'Displays & Peripherals': '#93C5FD',
 };
 
 const ORDER_STATUS_COLORS: Record<string, string> = {
-  'PLACED': '#38BDF8',       // Sky Blue
-  'CONFIRMED': '#06B6D4',    // Electric Cyan
-  'PROCESSING': '#818CF8',   // Royal Indigo
-  'PACKED': '#F59E0B',       // Amber Gold
-  'DISPATCHED': '#F97316',   // Vivid Orange
-  'DELIVERED': '#10B981',    // Emerald Green
-  'CANCELLED': '#EF4444',    // Rose Red
+  'PLACED': '#60A5FA',
+  'CONFIRMED': '#3B82F6',
+  'PROCESSING': '#2563EB',
+  'PACKED': '#1D4ED8',
+  'DISPATCHED': '#1E40AF',
+  'DELIVERED': '#2563EB',
+  'CANCELLED': '#64748B',
 };
 
 interface ManagerDashboardProps {
@@ -127,7 +127,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
   if (loading || !kpis) {
     return (
       <div className="p-12 text-center text-slate-400">
-        <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+        <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
         <p className="text-xs uppercase tracking-widest font-semibold">Loading Executive Command Centre...</p>
       </div>
     );
@@ -142,7 +142,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
             <h1 className="text-2xl font-black text-slate-100 tracking-tight">
               Executive Command Centre
             </h1>
-            <span className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Operational Active</span>
+            <span className="text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-blue-600/10 text-blue-400 border border-blue-500/20">Operational Active</span>
           </div>
           <p className="text-xs text-slate-400 mt-1">
             Real-time supply chain operational metrics, inventory valuation, and procurement approvals.
@@ -155,7 +155,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
             download
             className="px-3.5 py-2 text-xs font-semibold btn-luxury-secondary rounded-xl flex items-center gap-2"
           >
-            <FileDown className="w-4 h-4 text-emerald-400" />
+            <FileDown className="w-4 h-4 text-blue-400" />
             Export Inventory CSV
           </a>
           <button
@@ -173,7 +173,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
         <div className="p-5 rounded-2xl glass-card glass-card-hover space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Inventory Valuation</span>
-            <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.2)] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-blue-600/15 border border-blue-500/30 text-blue-400 shadow-[0_0_15px_rgba(37,99,235,0.25)] flex items-center justify-center">
               <TrendingUp className="w-4 h-4" />
             </div>
           </div>
@@ -184,7 +184,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
             <div className="flex items-center gap-3 text-xs text-slate-400 mt-2 font-mono">
               <span>Physical: <b className="text-slate-200">{kpis.physicalStockUnits}</b></span>
               <span className="text-slate-600">•</span>
-              <span>Available: <b className="text-emerald-400">{kpis.availableStockUnits}</b></span>
+              <span>Available: <b className="text-blue-400">{kpis.availableStockUnits}</b></span>
             </div>
           </div>
         </div>
@@ -193,7 +193,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
         <div className="p-5 rounded-2xl glass-card glass-card-hover space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Total Orders Value</span>
-            <div className="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/30 text-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.2)] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-sky-500/30 text-blue-400 shadow-[0_0_15px_rgba(56,189,248,0.2)] flex items-center justify-center">
               <Boxes className="w-4 h-4" />
             </div>
           </div>
@@ -204,7 +204,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
             <div className="flex items-center gap-3 text-xs text-slate-400 mt-2 font-mono">
               <span>Awaiting: <b className="text-amber-400">{kpis.ordersAwaitingProcessing}</b></span>
               <span className="text-slate-600">•</span>
-              <span>Delivered: <b className="text-emerald-400">{kpis.ordersDelivered}</b></span>
+              <span>Delivered: <b className="text-blue-400">{kpis.ordersDelivered}</b></span>
             </div>
           </div>
         </div>
@@ -213,7 +213,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
         <div className="p-5 rounded-2xl glass-card glass-card-hover space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Procurement Spend</span>
-            <div className="w-9 h-9 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.2)] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-blue-600/15 border border-blue-500/30 text-blue-400 shadow-[0_0_15px_rgba(37,99,235,0.25)] flex items-center justify-center">
               <Building2 className="w-4 h-4" />
             </div>
           </div>
@@ -254,14 +254,14 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
       <div className="glass-card rounded-2xl p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <Clock className="w-5 h-5 text-emerald-400" />
+            <Clock className="w-5 h-5 text-blue-400" />
             <h2 className="text-base font-bold text-slate-100 tracking-tight">
               Requisition Approval Queue ({pendingRestocks.length})
             </h2>
           </div>
           <button
             onClick={() => onNavigateTab('restock')}
-            className="text-xs text-emerald-400 font-semibold hover:underline flex items-center gap-1"
+            className="text-xs text-blue-400 font-semibold hover:underline flex items-center gap-1"
           >
             Full Requisitions Ledger <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
@@ -269,7 +269,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
 
         {pendingRestocks.length === 0 ? (
           <div className="py-8 text-center text-slate-400 text-xs">
-            <CheckCircle2 className="w-8 h-8 text-emerald-500 mx-auto mb-2 opacity-80" />
+            <CheckCircle2 className="w-8 h-8 text-blue-400 mx-auto mb-2 opacity-80" />
             All restock requisitions have been approved or reviewed. No pending approvals.
           </div>
         ) : (
@@ -291,10 +291,10 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                   <tr key={item.id} className="hover:bg-navy-950/40 transition-colors">
                     <td className="py-3 font-medium text-slate-100">
                       <div>{item.productName}</div>
-                      <span className="text-[10px] font-mono text-emerald-400">{item.productSku}</span>
+                      <span className="text-[10px] font-mono text-blue-400">{item.productSku}</span>
                     </td>
                     <td className="py-3 font-mono">{item.currentStock} units</td>
-                    <td className="py-3 font-mono font-bold text-emerald-400">{item.requestedQuantity} units</td>
+                    <td className="py-3 font-mono font-bold text-blue-400">{item.requestedQuantity} units</td>
                     <td className="py-3">
                       <Badge
                         variant={item.priority === 'URGENT' ? 'danger' : item.priority === 'HIGH' ? 'warning' : 'neutral'}
@@ -329,12 +329,12 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
       <div className="p-5 rounded-2xl glass-card space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
           <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
+            <div className="w-2.5 h-2.5 rounded-full bg-blue-400 animate-ping" />
             <div>
               <h3 className="text-sm font-bold text-slate-100 tracking-tight flex items-center gap-2">
                 Supply Chain Operational Workflow Topology
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-emerald-500/40 bg-emerald-950/40 text-emerald-400 font-bold hidden sm:inline-block">
-                  Multi-Spectrum Pipeline
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-blue-500/40 bg-blue-950/50 text-blue-400 font-bold hidden sm:inline-block">
+                  Enterprise Supply Topology
                 </span>
               </h3>
               <p className="text-[11px] text-slate-400">End-to-end hardware procurement, warehouse inventory, order dispatch, and delivery topology</p>
@@ -342,22 +342,18 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
           </div>
 
           <div className="flex items-center gap-1.5 px-3 py-1 bg-navy-950 rounded-xl border border-slate-800 text-xs self-start sm:self-auto">
-            <span className="w-2 h-2 rounded-full bg-sky-400" />
-            <span className="w-2 h-2 rounded-full bg-emerald-400" />
-            <span className="w-2 h-2 rounded-full bg-amber-400" />
-            <span className="w-2 h-2 rounded-full bg-purple-400" />
-            <span className="w-2 h-2 rounded-full bg-cyan-400" />
-            <span className="text-[11px] font-semibold text-slate-300 ml-1">Multi-Spectrum Engine</span>
+            <span className="w-2 h-2 rounded-full bg-blue-300" /><span className="w-2 h-2 rounded-full bg-blue-400" /><span className="w-2 h-2 rounded-full bg-blue-500" /><span className="w-2 h-2 rounded-full bg-blue-600" /><span className="w-2 h-2 rounded-full bg-blue-700" />
+            <span className="text-[11px] font-semibold text-slate-300 ml-1">Navy Blue Pipeline</span>
           </div>
         </div>
 
         {/* 5-Stage Multi-Spectrum Diagram Progression */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-3 pt-1">
           {/* Node 1: Procurement */}
-          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-sky-500/50 transition-all">
+          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-blue-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-sky-400">1. Procurement</span>
-              <div className="p-1.5 rounded-lg bg-sky-500/10 text-sky-400">
+              <span className="text-[10px] uppercase font-bold text-blue-400">1. Procurement</span>
+              <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
                 <Building2 className="w-3.5 h-3.5" />
               </div>
             </div>
@@ -365,15 +361,15 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
               {kpis.totalSuppliers} IT Distributors
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">
-              PO Spend: <span className="text-sky-400 font-mono font-bold">{formatINR(kpis.procurementExpenditureINR)}</span>
+              PO Spend: <span className="text-blue-400 font-mono font-bold">{formatINR(kpis.procurementExpenditureINR)}</span>
             </p>
           </div>
 
           {/* Node 2: Warehouse Vault */}
-          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-emerald-500/50 transition-all">
+          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-blue-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-emerald-400">2. Hardware Vault</span>
-              <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400">
+              <span className="text-[10px] uppercase font-bold text-blue-400">2. Hardware Vault</span>
+              <div className="p-1.5 rounded-lg bg-blue-600/10 text-blue-400">
                 <Boxes className="w-3.5 h-3.5" />
               </div>
             </div>
@@ -381,7 +377,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
               {kpis.physicalStockUnits} Units in Stock
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">
-              Valuation: <span className="text-emerald-400 font-mono font-bold">{formatINR(kpis.inventoryValuationINR)}</span>
+              Valuation: <span className="text-blue-400 font-mono font-bold">{formatINR(kpis.inventoryValuationINR)}</span>
             </p>
           </div>
 
@@ -402,10 +398,10 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
           </div>
 
           {/* Node 4: Express Dispatch */}
-          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-purple-500/50 transition-all">
+          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-blue-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-purple-400">4. Transit Dispatch</span>
-              <div className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400">
+              <span className="text-[10px] uppercase font-bold text-blue-400">4. Transit Dispatch</span>
+              <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
                 <Truck className="w-3.5 h-3.5" />
               </div>
             </div>
@@ -413,15 +409,15 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
               Active Tracking
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">
-              Logistics SLA: <span className="text-purple-400 font-mono font-bold">Same Day / 24h</span>
+              Logistics SLA: <span className="text-blue-400 font-mono font-bold">Same Day / 24h</span>
             </p>
           </div>
 
           {/* Node 5: Client Delivered */}
-          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-cyan-500/50 transition-all">
+          <div className="p-3.5 rounded-xl bg-navy-950/80 border border-slate-800 relative group hover:border-blue-500/50 transition-all">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] uppercase font-bold text-cyan-400">5. Client Handover</span>
-              <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400">
+              <span className="text-[10px] uppercase font-bold text-blue-400">5. Client Handover</span>
+              <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
                 <CheckCircle2 className="w-3.5 h-3.5" />
               </div>
             </div>
@@ -429,7 +425,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
               {kpis.ordersDelivered} Delivered
             </div>
             <p className="text-[10px] text-slate-400 mt-0.5">
-              Gross Revenue: <span className="text-cyan-400 font-mono font-bold">{formatINR(kpis.totalSalesValueINR)}</span>
+              Gross Revenue: <span className="text-blue-400 font-mono font-bold">{formatINR(kpis.totalSalesValueINR)}</span>
             </p>
           </div>
         </div>
@@ -649,7 +645,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                 type="button"
                 disabled={isSubmitting || approvedQty <= 0}
                 onClick={() => handleReviewDecision('APPROVE')}
-                className="flex-1 py-2.5 px-4 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-xl shadow-md transition-colors flex items-center justify-center gap-2"
+                className="flex-1 py-2.5 px-4 bg-blue-600 hover:bg-blue-500 text-navy-950 font-bold rounded-xl shadow-md transition-colors flex items-center justify-center gap-2"
               >
                 <CheckCircle2 className="w-4 h-4" /> Authorize Requisition
               </button>

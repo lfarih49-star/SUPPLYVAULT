@@ -78,11 +78,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, onOrder
           {/* Header */}
           <div className="px-6 py-5 border-b border-slate-800 flex items-center justify-between bg-navy-950/40">
             <div className="flex items-center gap-2">
-              <ShoppingBag className="w-5 h-5 text-emerald-400" />
+              <ShoppingBag className="w-5 h-5 text-blue-400" />
               <h2 className="text-lg font-bold text-slate-100 tracking-tight">
                 Procurement Cart
               </h2>
-              <span className="text-xs bg-emerald-500/10 text-emerald-300 dark:bg-emerald-950 dark:text-emerald-300 font-semibold px-2 py-0.5 rounded-full">
+              <span className="text-xs bg-blue-600/10 text-blue-300 dark:bg-navy-900 dark:text-blue-300 font-semibold px-2 py-0.5 rounded-full">
                 {cart.reduce((s, i) => s + i.quantity, 0)} items
               </span>
             </div>
@@ -117,7 +117,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, onOrder
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-semibold text-emerald-400 font-mono">{product.sku}</p>
+                    <p className="text-xs font-semibold text-blue-400 font-mono">{product.sku}</p>
                     <h4 className="text-sm font-medium text-slate-100 truncate">{product.name}</h4>
                     <p className="text-xs font-bold text-slate-100 mt-0.5">
                       {formatINR(product.sellingPrice)}
@@ -177,7 +177,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, onOrder
                     required
                     value={shippingAddress}
                     onChange={e => setShippingAddress(e.target.value)}
-                    className="w-full mt-1 px-3 py-2 text-xs border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                    className="w-full mt-1 px-3 py-2 text-xs border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                   />
                 </div>
 
@@ -189,7 +189,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, onOrder
                       required
                       value={city}
                       onChange={e => setCity(e.target.value)}
-                      className="w-full mt-1 px-3 py-2 text-xs border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                      className="w-full mt-1 px-3 py-2 text-xs border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                     />
                   </div>
                   <div>
@@ -199,7 +199,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, onOrder
                       required
                       value={postalCode}
                       onChange={e => setPostalCode(e.target.value)}
-                      className="w-full mt-1 px-3 py-2 text-xs border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                      className="w-full mt-1 px-3 py-2 text-xs border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                     />
                   </div>
                 </div>
@@ -211,7 +211,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, onOrder
                     placeholder="Gate entry instructions, contact on arrival"
                     value={notes}
                     onChange={e => setNotes(e.target.value)}
-                    className="w-full mt-1 px-3 py-2 text-xs border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                    className="w-full mt-1 px-3 py-2 text-xs border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                   />
                 </div>
               </form>
@@ -232,11 +232,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, onOrder
                 </div>
                 <div className="pt-2 border-t border-slate-700 flex justify-between text-sm font-bold text-slate-100">
                   <span>Grand Total</span>
-                  <span className="text-emerald-400 font-mono text-base">{formatINR(grandTotal)}</span>
+                  <span className="text-blue-400 font-mono text-base">{formatINR(grandTotal)}</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-1.5 text-[11px] text-emerald-600 dark:text-emerald-400">
+              <div className="flex items-center gap-1.5 text-[11px] text-blue-400 dark:text-blue-400">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>Atomic stock reservation upon checkout confirmation</span>
               </div>
@@ -245,10 +245,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, onOrder
                 type="submit"
                 form="checkout-form"
                 disabled={isSubmitting}
-                className="w-full py-3 px-4 bg-gradient-to-r from-navy-900 via-navy-800 to-navy-900 hover:from-navy-800 hover:to-navy-700 text-emerald-400 font-semibold rounded-xl shadow-lg border border-emerald-500/30 flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+                className="w-full py-3 px-4 bg-gradient-to-r from-navy-900 via-navy-800 to-navy-900 hover:from-navy-800 hover:to-navy-700 text-blue-400 font-semibold rounded-xl shadow-lg border border-blue-500/30 flex items-center justify-center gap-2 transition-all disabled:opacity-50"
               >
                 {isSubmitting ? 'Confirming Reservation...' : 'Confirm Order & Reserve Stock'}
-                <ArrowRight className="w-4 h-4 text-emerald-400" />
+                <ArrowRight className="w-4 h-4 text-blue-400" />
               </button>
             </div>
           )}

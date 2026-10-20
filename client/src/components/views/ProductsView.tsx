@@ -205,7 +205,7 @@ export const ProductsView: React.FC = () => {
           <select
             value={selectedCategory}
             onChange={e => setSelectedCategory(e.target.value)}
-            className="px-3 py-1.5 border border-slate-700 rounded-xl bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+            className="px-3 py-1.5 border border-slate-700 rounded-xl bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
           >
             <option value="ALL">All Categories</option>
             {categories.map(c => <option key={c} value={c}>{c}</option>)}
@@ -231,7 +231,7 @@ export const ProductsView: React.FC = () => {
             placeholder="Search SKU or name..."
             value={search}
             onChange={e => setSearch(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 border border-slate-700 rounded-xl bg-navy-950 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+            className="w-full pl-9 pr-3 py-1.5 border border-slate-700 rounded-xl bg-navy-950 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
           />
         </div>
       </div>
@@ -268,7 +268,7 @@ export const ProductsView: React.FC = () => {
                   </td>
                   <td className="py-3 px-4">
                     <div className="font-bold text-slate-100">{p.name}</div>
-                    <span className="font-mono text-[10px] text-emerald-400 font-semibold">{p.sku}</span>
+                    <span className="font-mono text-[10px] text-blue-400 font-semibold">{p.sku}</span>
                   </td>
                   <td className="py-3 px-4 text-slate-400">{p.category}</td>
                   {isManager && (
@@ -281,7 +281,7 @@ export const ProductsView: React.FC = () => {
                   </td>
                   <td className="py-3 px-4 text-center font-mono text-slate-300">{p.physicalStock} {p.unit}</td>
                   <td className="py-3 px-4 text-center font-mono text-amber-400">{p.reservedStock}</td>
-                  <td className="py-3 px-4 text-center font-mono font-bold text-emerald-400">
+                  <td className="py-3 px-4 text-center font-mono font-bold text-blue-400">
                     {p.availableStock}
                   </td>
                   <td className="py-3 px-4 text-center">
@@ -304,7 +304,7 @@ export const ProductsView: React.FC = () => {
                     <td className="py-3 px-4 text-center">
                       <button
                         onClick={() => openEditModal(p)}
-                        className="px-2.5 py-1.5 rounded-xl bg-navy-800 hover:bg-navy-700 text-emerald-400 border border-emerald-500/30 text-[11px] font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm"
+                        className="px-2.5 py-1.5 rounded-xl bg-navy-800 hover:bg-navy-700 text-blue-400 border border-blue-500/30 text-[11px] font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm"
                         title="Edit Details & Upload Image"
                       >
                         <Edit3 className="w-3.5 h-3.5" />
@@ -352,7 +352,7 @@ export const ProductsView: React.FC = () => {
                 placeholder="LAP-DELL-XPS16"
                 value={newSku}
                 onChange={e => setNewSku(e.target.value.toUpperCase())}
-                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               />
             </div>
             <div>
@@ -363,7 +363,7 @@ export const ProductsView: React.FC = () => {
                 placeholder="Enterprise Laptops"
                 value={newCat}
                 onChange={e => setNewCat(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               />
             </div>
           </div>
@@ -376,7 +376,7 @@ export const ProductsView: React.FC = () => {
               placeholder="Dell Precision 5690 Mobile Workstation"
               value={newName}
               onChange={e => setNewName(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+              className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
             />
           </div>
 
@@ -387,7 +387,7 @@ export const ProductsView: React.FC = () => {
               placeholder="High-performance enterprise laptop, GPU, or processor specification..."
               value={newDesc}
               onChange={e => setNewDesc(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+              className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
             />
           </div>
 
@@ -401,7 +401,7 @@ export const ProductsView: React.FC = () => {
                 required
                 value={newPurchaseCost}
                 onChange={e => setNewPurchaseCost(parseFloat(e.target.value) || 0)}
-                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               />
             </div>
             <div>
@@ -413,7 +413,7 @@ export const ProductsView: React.FC = () => {
                 required
                 value={newSellingPrice}
                 onChange={e => setNewSellingPrice(parseFloat(e.target.value) || 0)}
-                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               />
             </div>
             <div>
@@ -423,7 +423,7 @@ export const ProductsView: React.FC = () => {
                 required
                 value={newUnit}
                 onChange={e => setNewUnit(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               />
             </div>
           </div>
@@ -437,7 +437,7 @@ export const ProductsView: React.FC = () => {
                 required
                 value={newPhysicalStock}
                 onChange={e => setNewPhysicalStock(parseInt(e.target.value, 10) || 0)}
-                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               />
             </div>
             <div>
@@ -448,7 +448,7 @@ export const ProductsView: React.FC = () => {
                 required
                 value={newMinStock}
                 onChange={e => setNewMinStock(parseInt(e.target.value, 10) || 10)}
-                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               />
             </div>
             <div>
@@ -459,7 +459,7 @@ export const ProductsView: React.FC = () => {
                 required
                 value={newReorderQty}
                 onChange={e => setNewReorderQty(parseInt(e.target.value, 10) || 50)}
-                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               />
             </div>
           </div>
@@ -467,7 +467,7 @@ export const ProductsView: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-semibold rounded-xl shadow-sm transition-all mt-2"
+            className="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-navy-950 font-semibold rounded-xl shadow-sm transition-all mt-2"
           >
             {isSubmitting ? 'Provisioning...' : 'Provision Product in Catalogue'}
           </button>
@@ -506,7 +506,7 @@ export const ProductsView: React.FC = () => {
                   type="text"
                   disabled
                   value={editingProduct.sku}
-                  className="w-full px-3 py-2 border border-slate-800 rounded-lg bg-navy-950 text-emerald-400 font-mono cursor-not-allowed opacity-80"
+                  className="w-full px-3 py-2 border border-slate-800 rounded-lg bg-navy-950 text-blue-400 font-mono cursor-not-allowed opacity-80"
                 />
               </div>
               <div>
@@ -516,7 +516,7 @@ export const ProductsView: React.FC = () => {
                   required
                   value={editCat}
                   onChange={e => setEditCat(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                 />
               </div>
             </div>
@@ -528,7 +528,7 @@ export const ProductsView: React.FC = () => {
                 required
                 value={editName}
                 onChange={e => setEditName(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               />
             </div>
 
@@ -538,7 +538,7 @@ export const ProductsView: React.FC = () => {
                 rows={2}
                 value={editDesc}
                 onChange={e => setEditDesc(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               />
             </div>
 
@@ -552,7 +552,7 @@ export const ProductsView: React.FC = () => {
                   required
                   value={editPurchaseCost}
                   onChange={e => setEditPurchaseCost(parseFloat(e.target.value) || 0)}
-                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                 />
               </div>
               <div>
@@ -564,7 +564,7 @@ export const ProductsView: React.FC = () => {
                   required
                   value={editSellingPrice}
                   onChange={e => setEditSellingPrice(parseFloat(e.target.value) || 0)}
-                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                 />
               </div>
               <div>
@@ -574,7 +574,7 @@ export const ProductsView: React.FC = () => {
                   required
                   value={editUnit}
                   onChange={e => setEditUnit(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                 />
               </div>
             </div>
@@ -588,7 +588,7 @@ export const ProductsView: React.FC = () => {
                   required
                   value={editMinStock}
                   onChange={e => setEditMinStock(parseInt(e.target.value, 10) || 10)}
-                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                 />
               </div>
               <div>
@@ -599,7 +599,7 @@ export const ProductsView: React.FC = () => {
                   required
                   value={editReorderQty}
                   onChange={e => setEditReorderQty(parseInt(e.target.value, 10) || 50)}
-                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                 />
               </div>
               <div>
@@ -607,7 +607,7 @@ export const ProductsView: React.FC = () => {
                 <select
                   value={editStatus}
                   onChange={e => setEditStatus(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+                  className="w-full px-3 py-2 border border-slate-700 rounded-lg bg-navy-950 text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
                 >
                   <option value="ACTIVE">ACTIVE</option>
                   <option value="LOW_STOCK">LOW_STOCK</option>
@@ -628,7 +628,7 @@ export const ProductsView: React.FC = () => {
               <button
                 type="submit"
                 disabled={isEditSubmitting}
-                className="flex-1 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-xl shadow-md transition-all"
+                className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-500 text-navy-950 font-bold rounded-xl shadow-md transition-all"
               >
                 {isEditSubmitting ? 'Saving Changes...' : 'Save Product & Image'}
               </button>

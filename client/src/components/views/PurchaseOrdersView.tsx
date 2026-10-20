@@ -210,7 +210,7 @@ export const PurchaseOrdersView: React.FC = () => {
                     {po.poNumber}
                   </td>
                   <td className="py-3 px-4 font-medium text-slate-200">{po.supplierName}</td>
-                  <td className="py-3 px-4 text-right font-mono font-bold text-emerald-400">
+                  <td className="py-3 px-4 text-right font-mono font-bold text-blue-400">
                     {formatINR(po.totalAmount)}
                   </td>
                   <td className="py-3 px-4 text-center">
@@ -238,7 +238,7 @@ export const PurchaseOrdersView: React.FC = () => {
                       {isManager && po.status === 'PENDING_APPROVAL' && (
                         <button
                           onClick={() => handleApprovePO(po.id)}
-                          className="px-2.5 py-1 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-lg shadow-sm"
+                          className="px-2.5 py-1 bg-blue-600 hover:bg-blue-500 text-navy-950 font-bold rounded-lg shadow-sm"
                         >
                           Approve PO
                         </button>
@@ -256,14 +256,14 @@ export const PurchaseOrdersView: React.FC = () => {
                       {(po.status === 'ORDERED' || po.status === 'PARTIALLY_RECEIVED') && (
                         <button
                           onClick={() => openGoodsReceiptModal(po.id)}
-                          className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg shadow-sm flex items-center gap-1"
+                          className="px-2.5 py-1 bg-blue-600 hover:bg-emerald-700 text-white font-bold rounded-lg shadow-sm flex items-center gap-1"
                         >
                           <PackageCheck className="w-3 h-3" /> Verify Goods Receipt
                         </button>
                       )}
 
                       {po.status === 'RECEIVED' && (
-                        <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1">
+                        <span className="text-[10px] text-blue-400 dark:text-blue-400 font-bold flex items-center gap-1">
                           <CheckCircle2 className="w-3.5 h-3.5" /> Stock Credited
                         </span>
                       )}
@@ -379,7 +379,7 @@ export const PurchaseOrdersView: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting || poItems.length === 0}
-            className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-xl shadow-md transition-all"
+            className="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-navy-950 font-bold rounded-xl shadow-md transition-all"
           >
             {isSubmitting ? 'Submitting PO...' : 'Issue Purchase Order'}
           </button>
@@ -413,21 +413,21 @@ export const PurchaseOrdersView: React.FC = () => {
                       max={item.quantity - (item.receivedQuantity || 0)}
                       value={receiptInputs[item.id] || 0}
                       onChange={e => setReceiptInputs({ ...receiptInputs, [item.id]: parseInt(e.target.value, 10) || 0 })}
-                      className="w-20 px-2 py-1 border rounded bg-navy-900 font-mono text-center font-bold text-emerald-600"
+                      className="w-20 px-2 py-1 border rounded bg-navy-900 font-mono text-center font-bold text-blue-400"
                     />
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="p-3 rounded-xl bg-emerald-950/30 border border-emerald-800/60 text-[11px] text-emerald-300">
+            <div className="p-3 rounded-xl bg-blue-950/40 border border-blue-800/60 text-[11px] text-blue-300">
               <b>Inventory Rule:</b> Physical inventory will automatically increment for the received units and a GOODS_RECEIPT audit log entry will be created.
             </div>
 
             <button
               type="submit"
               disabled={isReceiving}
-              className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+              className="w-full py-2.5 bg-blue-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
             >
               {isReceiving ? 'Crediting Physical Stock...' : 'Confirm Goods Receipt & Credit Stock'}
             </button>

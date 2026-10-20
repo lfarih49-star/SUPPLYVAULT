@@ -91,20 +91,20 @@ export const Shell: React.FC<ShellProps> = ({
   const getRoleBadge = (role: Role) => {
     switch (role) {
       case 'MANAGER':
-        return 'border-emerald-500/40 text-emerald-300 bg-emerald-950/40 shadow-[0_0_10px_rgba(16,185,129,0.15)]';
+        return 'border-blue-500/40 text-blue-300 bg-blue-950/40 shadow-[0_0_10px_rgba(37,99,235,0.15)]';
       case 'STAFF':
-        return 'border-sky-500/40 text-sky-300 bg-sky-950/40 shadow-[0_0_10px_rgba(56,189,248,0.15)]';
+        return 'border-slate-700 text-slate-300 bg-navy-900/80';
       case 'BUYER':
-        return 'border-purple-500/40 text-purple-300 bg-purple-950/40 shadow-[0_0_10px_rgba(168,85,247,0.15)]';
+        return 'border-blue-500/40 text-blue-300 bg-blue-950/40 shadow-[0_0_10px_rgba(37,99,235,0.15)]';
       case 'DELIVERY_AGENT':
-        return 'border-amber-500/40 text-amber-300 bg-amber-950/40 shadow-[0_0_10px_rgba(245,158,11,0.15)]';
+        return 'border-slate-700 text-slate-300 bg-navy-900/80';
     }
   };
 
   return (
     <div className="min-h-screen bg-navy-950 flex flex-col antialiased">
-      {/* Top Luxury Frosted Navbar */}
-      <header className="sticky top-0 z-30 h-16 bg-navy-950/80 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.5)] flex items-center justify-between px-4 sm:px-6">
+      {/* Top Luxury Midnight Navy Frosted Navbar */}
+      <header className="sticky top-0 z-30 h-16 bg-navy-950/90 backdrop-blur-2xl border-b border-slate-800/80 shadow-[0_4px_30px_rgba(0,0,0,0.6)] flex items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-4">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -113,18 +113,18 @@ export const Shell: React.FC<ShellProps> = ({
             {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
 
-          {/* Brand Mark with Emerald Crest */}
+          {/* Brand Mark with Navy Crest */}
           <div className="flex items-center gap-3">
-            <div className="relative w-9 h-9 rounded-xl bg-gradient-to-b from-navy-800 to-navy-950 border border-emerald-500/40 flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] group">
-              <span className="font-mono text-sm font-black text-emerald-300 tracking-wider">SV</span>
-              <div className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399] animate-pulse" />
+            <div className="relative w-9 h-9 rounded-xl bg-gradient-to-b from-navy-850 to-navy-950 border border-blue-500/40 flex items-center justify-center shadow-[0_0_20px_rgba(37,99,235,0.25),inset_0_1px_0_rgba(255,255,255,0.1)] group">
+              <span className="font-mono text-sm font-black text-blue-400 tracking-wider">SV</span>
+              <div className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_6px_#3b82f6] animate-pulse" />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="text-base font-black tracking-tight text-slate-100 uppercase">
-                  Supply<span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-300">Vault</span>
+                  Supply<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-blue-200">Vault</span>
                 </span>
-                <span className="hidden sm:inline-block text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-950/80 text-emerald-400 border border-emerald-500/30 uppercase tracking-widest font-bold">
+                <span className="hidden sm:inline-block text-[9px] font-mono px-1.5 py-0.2 rounded bg-blue-950/80 text-blue-400 border border-blue-500/30 uppercase tracking-widest font-bold">
                   Enterprise
                 </span>
               </div>
@@ -144,7 +144,7 @@ export const Shell: React.FC<ShellProps> = ({
               placeholder="Search hardware catalog, orders, POs, serials..."
               value={searchQuery}
               onChange={e => onSearchChange(e.target.value)}
-              className="w-full pl-9 pr-10 py-1.5 text-xs bg-navy-900/80 border border-slate-800/80 rounded-full text-slate-100 placeholder-slate-500 focus:outline-none focus:border-emerald-500/60 focus:ring-2 focus:ring-emerald-500/20 transition-all shadow-inner"
+              className="w-full pl-9 pr-10 py-1.5 text-xs bg-navy-900/90 border border-slate-800 rounded-full text-slate-100 placeholder-slate-500 focus:outline-none focus:border-blue-500/70 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-inner"
             />
             <kbd className="hidden lg:inline-flex items-center px-1.5 py-0.5 text-[9px] font-mono text-slate-500 bg-navy-950 border border-slate-800 rounded absolute right-3 top-1/2 -translate-y-1/2">
               ⌘K
@@ -163,7 +163,7 @@ export const Shell: React.FC<ShellProps> = ({
             >
               <ShoppingCart className="w-5 h-5" />
               {cart.length > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-gradient-to-r from-emerald-400 to-emerald-600 text-navy-950 text-[10px] font-bold rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/30 animate-pulse">
+                <span className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-[10px] font-bold rounded-full flex items-center justify-center shadow-lg shadow-blue-500/40 animate-pulse">
                   {cart.reduce((s: number, i: any) => s + i.quantity, 0)}
                 </span>
               )}
@@ -179,7 +179,7 @@ export const Shell: React.FC<ShellProps> = ({
             >
               <Bell className="w-5 h-5" />
               {unreadCount > 0 && (
-                <span className="absolute 1.5 top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full ring-2 ring-navy-950 shadow-[0_0_8px_#f43f5e]" />
+                <span className="absolute 1.5 top-1.5 right-1.5 w-2 h-2 bg-blue-500 rounded-full ring-2 ring-navy-950 shadow-[0_0_8px_#3b82f6]" />
               )}
             </button>
             <NotificationsPopover
@@ -189,7 +189,7 @@ export const Shell: React.FC<ShellProps> = ({
           </div>
 
           {/* User Profile Pill & Logout */}
-          <div className="flex items-center gap-2.5 pl-3 border-l border-white/[0.06]">
+          <div className="flex items-center gap-2.5 pl-3 border-l border-slate-800">
             <div className="hidden sm:block text-right">
               <p className="text-xs font-bold text-slate-100 leading-tight">
                 {user.fullName}
@@ -199,7 +199,7 @@ export const Shell: React.FC<ShellProps> = ({
               </span>
             </div>
 
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-b from-navy-800 to-navy-950 text-emerald-300 border border-emerald-500/30 font-bold flex items-center justify-center text-xs shadow-inner">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-b from-navy-850 to-navy-950 text-blue-300 border border-blue-500/40 font-bold flex items-center justify-center text-xs shadow-inner">
               {user.fullName.charAt(0)}
             </div>
 
@@ -216,20 +216,20 @@ export const Shell: React.FC<ShellProps> = ({
 
       {/* Main Body with Sidebar */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Obsidian Sidebar */}
+        {/* Obsidian Navy Sidebar */}
         <aside
           className={`
-            fixed inset-y-0 left-0 z-40 w-64 bg-navy-950/95 backdrop-blur-2xl text-slate-200 border-r border-white/[0.06] flex flex-col
+            fixed inset-y-0 left-0 z-40 w-64 bg-navy-950/95 backdrop-blur-2xl text-slate-200 border-r border-slate-800 flex flex-col
             transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static
             ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
           `}
         >
           {/* Sidebar Top Identity */}
-          <div className="p-5 border-b border-white/[0.06]">
+          <div className="p-5 border-b border-slate-800">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest font-semibold flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <p className="text-[10px] font-mono text-blue-400 uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
                   Privileged Access
                 </p>
                 <h3 className="text-sm font-extrabold text-white tracking-tight mt-0.5">
@@ -258,12 +258,12 @@ export const Shell: React.FC<ShellProps> = ({
                     w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-medium tracking-wide transition-all
                     ${
                       isActive
-                        ? 'bg-emerald-500/10 text-emerald-300 font-semibold border-l-2 border-emerald-400 shadow-[inset_0_0_12px_rgba(16,185,129,0.1)]'
+                        ? 'bg-blue-600/15 text-blue-300 font-semibold border-l-2 border-blue-500 shadow-[inset_0_0_12px_rgba(37,99,235,0.15)]'
                         : 'text-slate-400 hover:text-slate-200 hover:bg-navy-900/60'
                     }
                   `}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-emerald-400' : 'text-slate-400'}`} />
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-blue-400' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
                 </button>
               );
@@ -271,10 +271,10 @@ export const Shell: React.FC<ShellProps> = ({
           </nav>
 
           {/* Sidebar Footer with Live Cluster Beacon */}
-          <div className="p-4 border-t border-white/[0.06] text-[11px] text-slate-500 space-y-2">
+          <div className="p-4 border-t border-slate-800 text-[11px] text-slate-500 space-y-2">
             <div className="flex items-center justify-between">
               <span className="flex items-center gap-1.5 text-slate-400">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#10B981] animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_6px_#3B82F6] animate-pulse" />
                 Cluster:
               </span>
               <span className="text-slate-300 font-mono text-[10px]">ap-south-1 (IN)</span>
@@ -285,7 +285,7 @@ export const Shell: React.FC<ShellProps> = ({
             </div>
             <div className="flex justify-between items-center pt-1 border-t border-slate-800/60">
               <span>Environment:</span>
-              <span className="text-emerald-400 font-mono text-[10px] font-bold">ENTERPRISE-PROD</span>
+              <span className="text-blue-400 font-mono text-[10px] font-bold">ENTERPRISE-PROD</span>
             </div>
           </div>
         </aside>

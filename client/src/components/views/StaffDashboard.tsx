@@ -167,7 +167,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
         <div className="flex items-center gap-2">
           <button
             onClick={() => setRestockModalOpen(true)}
-            className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-semibold text-xs rounded-xl shadow-sm flex items-center gap-1.5 transition-all"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-navy-950 font-semibold text-xs rounded-xl shadow-sm flex items-center gap-1.5 transition-all"
           >
             <Plus className="w-4 h-4" /> Submit Restock Requisition
           </button>
@@ -225,7 +225,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
 
           {pendingOrders.length === 0 ? (
             <div className="py-8 text-center text-xs text-slate-400">
-              <CheckCircle className="w-8 h-8 text-emerald-500 mx-auto mb-2 opacity-80" />
+              <CheckCircle className="w-8 h-8 text-blue-400 mx-auto mb-2 opacity-80" />
               All incoming buyer orders have been confirmed and queued for packing.
             </div>
           ) : (
@@ -238,7 +238,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
                   <div>
                     <div className="font-bold text-slate-100">{o.orderNumber}</div>
                     <span className="text-slate-500">{o.buyerName} • {o.city}</span>
-                    <div className="text-[11px] font-mono font-bold text-emerald-400 dark:text-emerald-400 mt-0.5">
+                    <div className="text-[11px] font-mono font-bold text-blue-400 dark:text-blue-400 mt-0.5">
                       {formatINR(o.totalAmount)}
                     </div>
                   </div>
@@ -263,7 +263,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
             </h2>
             <button
               onClick={() => onNavigateTab('inventory')}
-              className="text-xs text-emerald-400 dark:text-emerald-400 hover:underline"
+              className="text-xs text-blue-400 dark:text-blue-400 hover:underline"
             >
               Inventory Registry
             </button>
@@ -293,7 +293,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
                       setAdjustQty(p.reorderQuantity);
                       setAdjustModalOpen(true);
                     }}
-                    className="px-2.5 py-1.5 bg-navy-900 border border-slate-700 hover:border-emerald-500 font-semibold rounded-lg text-slate-200 shadow-sm text-xs"
+                    className="px-2.5 py-1.5 bg-navy-900 border border-slate-700 hover:border-blue-500 font-semibold rounded-lg text-slate-200 shadow-sm text-xs"
                   >
                     Adjust Stock
                   </button>
@@ -308,7 +308,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
       <div className="p-6 rounded-2xl bg-navy-900 border border-slate-800 shadow-sm space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <History className="w-5 h-5 text-emerald-400" />
+            <History className="w-5 h-5 text-blue-400" />
             <h2 className="text-base font-bold text-slate-100 tracking-tight">
               Warehouse Movement Audit Feed
             </h2>
@@ -438,7 +438,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-semibold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2"
+            className="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-navy-950 font-semibold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2"
           >
             {isSubmitting ? 'Transmitting...' : 'Dispatch Requisition to Manager'}
           </button>
@@ -500,7 +500,7 @@ export const StaffDashboard: React.FC<StaffDashboardProps> = ({ onNavigateTab })
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-2.5 bg-navy-900 hover:bg-navy-800 text-emerald-400 font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 border border-emerald-500/30"
+              className="w-full py-2.5 bg-navy-900 hover:bg-navy-800 text-blue-400 font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 border border-blue-500/30"
             >
               {isSubmitting ? 'Recording Movement...' : 'Apply Stock Change'}
             </button>

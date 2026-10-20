@@ -138,8 +138,8 @@ export const RestockView: React.FC = () => {
             onClick={() => setStatusFilter(st)}
             className={`px-3.5 py-1.5 rounded-xl font-semibold transition-all ${
               statusFilter === st
-                ? 'bg-navy-900 text-emerald-400 dark:bg-emerald-500 dark:text-navy-950 shadow-sm'
-                : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-emerald-500'
+                ? 'bg-navy-900 text-blue-400 dark:bg-blue-600 dark:text-navy-950 shadow-sm'
+                : 'bg-navy-900 text-slate-300 border border-slate-800 hover:border-blue-500'
             }`}
           >
             {st === 'ALL' ? 'All Requisitions' : st}
@@ -169,11 +169,11 @@ export const RestockView: React.FC = () => {
                 <tr key={r.id} className="hover:bg-navy-950/40">
                   <td className="py-3 px-4">
                     <div className="font-bold text-slate-100">{r.productName}</div>
-                    <span className="font-mono text-[10px] text-emerald-400">{r.productSku}</span>
+                    <span className="font-mono text-[10px] text-blue-400">{r.productSku}</span>
                   </td>
                   <td className="py-3 px-4 text-center font-mono">{r.currentStock}</td>
-                  <td className="py-3 px-4 text-center font-mono font-bold text-emerald-400">{r.requestedQuantity}</td>
-                  <td className="py-3 px-4 text-center font-mono font-bold text-emerald-600">
+                  <td className="py-3 px-4 text-center font-mono font-bold text-blue-400">{r.requestedQuantity}</td>
+                  <td className="py-3 px-4 text-center font-mono font-bold text-blue-400">
                     {r.approvedQuantity != null ? r.approvedQuantity : '—'}
                   </td>
                   <td className="py-3 px-4 text-center">
@@ -203,7 +203,7 @@ export const RestockView: React.FC = () => {
                             setApprovedQty(r.requestedQuantity);
                             setReviewNotes('');
                           }}
-                          className="px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-lg shadow-sm"
+                          className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-navy-950 font-bold rounded-lg shadow-sm"
                         >
                           Review
                         </button>
@@ -286,7 +286,7 @@ export const RestockView: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-2.5 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-xl shadow-md transition-all"
+            className="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-navy-950 font-bold rounded-xl shadow-md transition-all"
           >
             {isSubmitting ? 'Submitting...' : 'Transmit Requisition to Manager'}
           </button>
@@ -303,7 +303,7 @@ export const RestockView: React.FC = () => {
         >
           <div className="space-y-4 text-xs">
             <div className="p-3 bg-navy-950 rounded-xl border border-slate-800 space-y-1">
-              <div><span className="text-slate-400">SKU:</span> <b className="font-mono text-emerald-400">{reviewItem.productSku}</b></div>
+              <div><span className="text-slate-400">SKU:</span> <b className="font-mono text-blue-400">{reviewItem.productSku}</b></div>
               <div><span className="text-slate-400">Current Stock:</span> <b className="font-mono">{reviewItem.currentStock} units</b></div>
               <div><span className="text-slate-400">Reason:</span> <span className="italic">{reviewItem.reason}</span></div>
             </div>
@@ -343,7 +343,7 @@ export const RestockView: React.FC = () => {
                 type="button"
                 disabled={isSubmitting || approvedQty <= 0}
                 onClick={() => handleReview('APPROVE')}
-                className="flex-1 py-2 bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold rounded-xl shadow-md"
+                className="flex-1 py-2 bg-blue-600 hover:bg-blue-500 text-navy-950 font-bold rounded-xl shadow-md"
               >
                 Approve & Authorize
               </button>

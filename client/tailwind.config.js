@@ -14,69 +14,59 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Deep Midnight Navy & Black Foundations
         navy: {
-          950: '#03070C',
-          900: '#071219',
-          850: '#0B1A24',
-          800: '#0F2432',
-          700: '#173647',
-          600: '#1F475E',
+          950: '#020617', // Purest Midnight Black-Navy (Canvas)
+          900: '#070F1E', // Dark Obsidian Navy (Panels/Sidebar)
+          850: '#0B152A', // Elevated Navy Glass
+          800: '#0E1D3B', // Card Surface
+          750: '#13264D', // Active Hover Surface
+          700: '#172E5C', // Outer Borders
+          600: '#1E3A8A', // Deep Royal Navy
+          500: '#2563EB', // Primary Executive Navy Blue
+          400: '#3B82F6', // Vibrant Sapphire Blue
+          300: '#60A5FA', // Sky Slate Blue
+          200: '#93C5FD',
+          100: '#DBEAFE',
+          50: '#EFF6FF',
         },
+        // Mapping gold & emerald to Navy Blue to ensure single unified theme across any lingering classes
         gold: {
-          50: '#ECFDF5',
-          100: '#D1FAE5',
-          200: '#A7F3D0',
-          300: '#6EE7B7',
-          400: '#34D399',
-          500: '#10B981',
-          600: '#059669',
-          700: '#047857',
-          800: '#065F46',
-          900: '#064E3B',
-          950: '#022C22',
+          50: '#EFF6FF',
+          100: '#DBEAFE',
+          200: '#93C5FD',
+          300: '#60A5FA',
+          400: '#3B82F6',
+          500: '#2563EB',
+          600: '#1D4ED8',
+          700: '#1E40AF',
+          800: '#1E3A8A',
+          900: '#172554',
+          950: '#0B152A',
         },
         emerald: {
-          50: '#ECFDF5',
-          100: '#D1FAE5',
-          200: '#A7F3D0',
-          300: '#6EE7B7',
-          400: '#34D399',
-          500: '#10B981',
-          600: '#059669',
-          700: '#047857',
-          800: '#065F46',
-          900: '#064E3B',
-          950: '#022C22',
+          50: '#EFF6FF',
+          100: '#DBEAFE',
+          200: '#93C5FD',
+          300: '#60A5FA',
+          400: '#3B82F6',
+          500: '#2563EB',
+          600: '#1D4ED8',
+          700: '#1E40AF',
+          800: '#1E3A8A',
+          900: '#172554',
+          950: '#0B152A',
         },
-        teal: {
-          50: '#F0FDFA',
-          100: '#CCFBF1',
-          200: '#99F6E4',
-          300: '#5EEAD4',
-          400: '#2DD4BF',
-          500: '#14B8A6',
-          600: '#0D9488',
-          700: '#0F766E',
-          800: '#115E59',
-          900: '#134E4A',
-        },
-        platinum: {
-          50: '#FAFAFB',
-          100: '#F4F5F8',
-          200: '#E8EAEE',
-          300: '#D5D8DF',
-          400: '#9CA3AF',
-        }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
       boxShadow: {
-        'luxury-card': '0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.06)',
-        'luxury-glow': '0 0 35px -5px rgba(16, 185, 129, 0.25)',
-        'emerald-btn': '0 0 20px rgba(16, 185, 129, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35)',
-        'emerald-btn-hover': '0 0 28px rgba(16, 185, 129, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.45)',
+        'navy-card': '0 8px 32px 0 rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.05)',
+        'navy-glow': '0 0 35px -5px rgba(37, 99, 235, 0.3)',
+        'navy-btn': '0 0 20px rgba(37, 99, 235, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
+        'navy-btn-hover': '0 0 28px rgba(37, 99, 235, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.45)',
       },
     },
   },
