@@ -15,6 +15,7 @@ import { OrdersView } from './components/views/OrdersView';
 import { ShipmentsView } from './components/views/ShipmentsView';
 import { ReportsView } from './components/views/ReportsView';
 import { AuditLogView } from './components/views/AuditLogView';
+import { SchemaVisualView } from './components/views/SchemaVisualView';
 
 const AppContent: React.FC = () => {
   const { user, isLoading } = useAuth();
@@ -77,6 +78,8 @@ const AppContent: React.FC = () => {
         return <ShipmentsView />;
       case 'reports':
         return <ReportsView />;
+      case 'schema':
+        return <SchemaVisualView />;
       case 'audit':
         return <AuditLogView />;
       default:
