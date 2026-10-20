@@ -11,7 +11,11 @@ import {
   Building2,
   CheckCircle2,
   XCircle,
-  FileDown
+  FileDown,
+  SlidersHorizontal,
+  Sparkles,
+  ArrowRight,
+  Activity
 } from 'lucide-react';
 import {
   BarChart,
@@ -31,6 +35,64 @@ import { Badge } from '../common/Badge';
 import { Modal } from '../common/Modal';
 import { ManagerKPIs, RestockRequest } from '@shared/types';
 
+type ChartPalette = 'cyan' | 'violet' | 'amber' | 'spectrum';
+
+const PALETTES = {
+  cyan: {
+    id: 'cyan' as const,
+    label: 'Electric Cyan',
+    accentColor: '#38BDF8',
+    borderColor: '#0284C7',
+    gradientId: 'barGradientCyan',
+    barFill: 'url(#barGradientCyan)',
+    pieColors: ['#38BDF8', '#0284C7', '#818CF8', '#F59E0B', '#10B981', '#EC4899', '#94A3B8'],
+    cardBorder: 'border-cyan-500/30',
+    glowColor: 'rgba(6, 182, 212, 0.25)',
+  },
+  violet: {
+    id: 'violet' as const,
+    label: 'Neon Violet',
+    accentColor: '#A855F7',
+    borderColor: '#7C3AED',
+    gradientId: 'barGradientViolet',
+    barFill: 'url(#barGradientViolet)',
+    pieColors: ['#C084FC', '#8B5CF6', '#6366F1', '#EC4899', '#F43F5E', '#14B8A6', '#94A3B8'],
+    cardBorder: 'border-violet-500/30',
+    glowColor: 'rgba(168, 85, 247, 0.25)',
+  },
+  amber: {
+    id: 'amber' as const,
+    label: 'Champagne Gold',
+    accentColor: '#FBBF24',
+    borderColor: '#D97706',
+    gradientId: 'barGradientAmber',
+    barFill: 'url(#barGradientAmber)',
+    pieColors: ['#FDE047', '#F59E0B', '#FB923C', '#EA580C', '#06B6D4', '#10B981', '#EF4444'],
+    cardBorder: 'border-amber-500/30',
+    glowColor: 'rgba(245, 158, 11, 0.25)',
+  },
+  spectrum: {
+    id: 'spectrum' as const,
+    label: 'Multi-Spectrum',
+    accentColor: '#F43F5E',
+    borderColor: '#EC4899',
+    gradientId: 'barGradientCyan',
+    barFill: '#38BDF8',
+    pieColors: ['#38BDF8', '#A855F7', '#34D399', '#FBBF24', '#F43F5E', '#818CF8', '#FB923C'],
+    cardBorder: 'border-emerald-500/30',
+    glowColor: 'rgba(236, 72, 153, 0.25)',
+  },
+};
+
+const CATEGORY_COLORS: Record<string, string> = {
+  'Enterprise Laptops': '#38BDF8',       // Electric Sky Blue
+  'Graphics Cards & GPUs': '#A855F7',   // Neon Purple/Violet
+  'Processors (CPUs)': '#06B6D4',       // Vibrant Cyan
+  'Memory & Storage': '#FBBF24',        // Champagne Amber
+  'Motherboards & Power': '#F43F5E',    // Vivid Coral/Rose
+  'Displays & Peripherals': '#10B981',  // Mint Emerald
+};
+
 interface ManagerDashboardProps {
   onNavigateTab: (tab: string) => void;
 }
@@ -41,6 +103,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
   const [charts, setCharts] = useState<any>(null);
   const [pendingRestocks, setPendingRestocks] = useState<RestockRequest[]>([]);
   const [loading, setLoading] = useState(true);
+  const [chartColorTheme, setChartColorTheme] = useState<ChartPalette>('cyan');
 
   // Review modal state
   const [selectedRestock, setSelectedRestock] = useState<RestockRequest | null>(null);
@@ -108,7 +171,7 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
     );
   }
 
-  const PIE_COLORS = ['#10B981', '#34D399', '#059669', '#14B8A6', '#0D9488', '#2563EB'];
+  const activePalette = PALETTES[chartColorTheme];
 
   return (
     <div className="space-y-6">
@@ -297,6 +360,139 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
         )}
       </div>
 
+      {/* Hardware Supply Chain Operational Flow Diagram & Palette Switcher */}
+      <div className="p-5 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100 dark:border-slate-800">
+          <div className="flex items-center gap-2">
+            <div
+              className="w-2.5 h-2.5 rounded-full animate-ping"
+              style={{ backgroundColor: activePalette.accentColor }}
+            />
+            <div>
+              <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tight flex items-center gap-2">
+                Supply Chain Operational Workflow Diagram
+                <span
+                  className="text-[10px] font-mono px-2 py-0.5 rounded-full border hidden sm:inline-block font-semibold"
+                  style={{ color: activePalette.accentColor, borderColor: `${activePalette.accentColor}50`, backgroundColor: `${activePalette.accentColor}15` }}
+                >
+                  Live Pipeline
+                </span>
+              </h3>
+              <p className="text-[11px] text-slate-400">End-to-end hardware procurement, warehouse inventory, order dispatch, and delivery topology</p>
+            </div>
+          </div>
+
+          {/* Color Palette Switcher */}
+          <div className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-navy-950 rounded-xl border border-slate-200 dark:border-slate-800 text-xs self-start sm:self-auto">
+            <span className="text-[10px] font-semibold text-slate-400 px-1.5 flex items-center gap-1">
+              <SlidersHorizontal className="w-3 h-3" /> Graph Color:
+            </span>
+            {(Object.keys(PALETTES) as ChartPalette[]).map(pKey => {
+              const p = PALETTES[pKey];
+              const isActive = chartColorTheme === pKey;
+              return (
+                <button
+                  key={pKey}
+                  type="button"
+                  onClick={() => setChartColorTheme(pKey)}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-bold flex items-center gap-1.5 transition-all ${
+                    isActive
+                      ? 'bg-navy-800 text-white shadow-sm ring-1 ring-inset ring-slate-600'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  <span className="w-2 h-2 rounded-full shadow" style={{ backgroundColor: p.accentColor }} />
+                  {p.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* 5-Stage Diagram Progression */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-3 pt-1">
+          {/* Node 1: Procurement */}
+          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/80 border border-slate-200 dark:border-slate-800 relative group hover:border-slate-700 transition-all">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[10px] uppercase font-bold text-slate-400">1. Procurement</span>
+              <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
+                <Building2 className="w-3.5 h-3.5" />
+              </div>
+            </div>
+            <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100 font-mono">
+              {kpis.totalSuppliers} IT Distributors
+            </div>
+            <p className="text-[10px] text-slate-400 mt-0.5">
+              PO Spend: <span className="text-blue-400 font-mono font-bold">{formatINR(kpis.procurementExpenditureINR)}</span>
+            </p>
+          </div>
+
+          {/* Node 2: Warehouse Vault */}
+          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/80 border border-slate-200 dark:border-slate-800 relative group hover:border-slate-700 transition-all">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[10px] uppercase font-bold text-slate-400">2. Hardware Vault</span>
+              <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400">
+                <Boxes className="w-3.5 h-3.5" />
+              </div>
+            </div>
+            <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100 font-mono">
+              {kpis.physicalStockUnits} Units in Stock
+            </div>
+            <p className="text-[10px] text-slate-400 mt-0.5">
+              Valuation: <span className="text-cyan-400 font-mono font-bold">{formatINR(kpis.inventoryValuationINR)}</span>
+            </p>
+          </div>
+
+          {/* Node 3: QA & Order Packing */}
+          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/80 border border-slate-200 dark:border-slate-800 relative group hover:border-slate-700 transition-all">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[10px] uppercase font-bold text-slate-400">3. Fulfillment Bay</span>
+              <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400">
+                <Package className="w-3.5 h-3.5" />
+              </div>
+            </div>
+            <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100 font-mono">
+              {kpis.ordersAwaitingProcessing} Orders Queued
+            </div>
+            <p className="text-[10px] text-slate-400 mt-0.5">
+              Atomic Reservation: <span className="text-amber-400 font-mono font-bold">Guaranteed</span>
+            </p>
+          </div>
+
+          {/* Node 4: Express Dispatch */}
+          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/80 border border-slate-200 dark:border-slate-800 relative group hover:border-slate-700 transition-all">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[10px] uppercase font-bold text-slate-400">4. Transit Dispatch</span>
+              <div className="p-1.5 rounded-lg bg-violet-500/10 text-violet-400">
+                <Truck className="w-3.5 h-3.5" />
+              </div>
+            </div>
+            <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100 font-mono">
+              Active Tracking
+            </div>
+            <p className="text-[10px] text-slate-400 mt-0.5">
+              Logistics SLA: <span className="text-violet-400 font-mono font-bold">Same Day / 24h</span>
+            </p>
+          </div>
+
+          {/* Node 5: Client Delivered */}
+          <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-navy-950/80 border border-slate-200 dark:border-slate-800 relative group hover:border-slate-700 transition-all">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[10px] uppercase font-bold text-slate-400">5. Client Handover</span>
+              <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+              </div>
+            </div>
+            <div className="text-sm font-extrabold text-slate-900 dark:text-slate-100 font-mono">
+              {kpis.ordersDelivered} Delivered
+            </div>
+            <p className="text-[10px] text-slate-400 mt-0.5">
+              Gross Revenue: <span className="text-emerald-400 font-mono font-bold">{formatINR(kpis.totalSalesValueINR)}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Interactive Charts Area */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Category Stock Valuation Chart */}
@@ -315,17 +511,56 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
             {charts?.categoryValuation && charts.categoryValuation.length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={charts.categoryValuation} margin={{ top: 10, right: 10, left: 10, bottom: 25 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" opacity={0.5} />
-                  <XAxis dataKey="category" tick={{ fontSize: 10 }} angle={-15} textAnchor="end" />
+                  <defs>
+                    <linearGradient id="barGradientCyan" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#38BDF8" stopOpacity={0.95}/>
+                      <stop offset="100%" stopColor="#0284C7" stopOpacity={0.7}/>
+                    </linearGradient>
+                    <linearGradient id="barGradientViolet" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#C084FC" stopOpacity={0.95}/>
+                      <stop offset="100%" stopColor="#7C3AED" stopOpacity={0.7}/>
+                    </linearGradient>
+                    <linearGradient id="barGradientAmber" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#FDE047" stopOpacity={0.95}/>
+                      <stop offset="100%" stopColor="#D97706" stopOpacity={0.7}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" opacity={0.6} />
+                  <XAxis
+                    dataKey="category"
+                    tick={{ fontSize: 10, fill: '#94a3b8' }}
+                    angle={-15}
+                    textAnchor="end"
+                    stroke="#334155"
+                  />
                   <YAxis
-                    tick={{ fontSize: 10 }}
+                    tick={{ fontSize: 10, fill: '#94a3b8' }}
                     tickFormatter={val => `₹${(val / 1000).toFixed(0)}k`}
+                    stroke="#334155"
                   />
                   <Tooltip
                     formatter={(val: any) => [formatINR(val), 'Valuation']}
-                    contentStyle={{ backgroundColor: '#071219', borderColor: '#10B981', color: '#fff', borderRadius: '12px' }}
+                    contentStyle={{
+                      backgroundColor: '#050b14',
+                      borderColor: activePalette.accentColor,
+                      color: '#f8fafc',
+                      borderRadius: '12px',
+                      boxShadow: `0 8px 24px ${activePalette.glowColor}`,
+                      borderWidth: '1px'
+                    }}
                   />
-                  <Bar dataKey="valuationINR" fill="#10B981" radius={[6, 6, 0, 0]} />
+                  <Bar
+                    dataKey="valuationINR"
+                    fill={chartColorTheme === 'spectrum' ? '#38BDF8' : activePalette.barFill}
+                    radius={[6, 6, 0, 0]}
+                  >
+                    {chartColorTheme === 'spectrum' && charts.categoryValuation.map((entry: any, index: number) => (
+                      <Cell
+                        key={`bar-cell-${index}`}
+                        fill={CATEGORY_COLORS[entry.category] || activePalette.pieColors[index % activePalette.pieColors.length]}
+                      />
+                    ))}
+                  </Bar>
                 </BarChart>
               </ResponsiveContainer>
             ) : (
@@ -358,17 +593,31 @@ export const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ onNavigateTa
                     nameKey="status"
                     cx="50%"
                     cy="50%"
+                    innerRadius={45}
                     outerRadius={80}
+                    paddingAngle={3}
                     label={({ name, percent }: any) => `${name} ${(percent * 100).toFixed(0)}%`}
                     labelLine={false}
                   >
                     {charts.orderStatus.map((_: any, index: number) => (
-                      <Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={activePalette.pieColors[index % activePalette.pieColors.length]}
+                        stroke="#050b14"
+                        strokeWidth={2}
+                      />
                     ))}
                   </Pie>
                   <Tooltip
                     formatter={(val: any) => [`${val} orders`, 'Count']}
-                    contentStyle={{ backgroundColor: '#071219', borderColor: '#10B981', color: '#fff', borderRadius: '12px' }}
+                    contentStyle={{
+                      backgroundColor: '#050b14',
+                      borderColor: activePalette.accentColor,
+                      color: '#f8fafc',
+                      borderRadius: '12px',
+                      boxShadow: `0 8px 24px ${activePalette.glowColor}`,
+                      borderWidth: '1px'
+                    }}
                   />
                 </PieChart>
               </ResponsiveContainer>

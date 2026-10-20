@@ -338,13 +338,13 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                     </div>
                   </div>
 
-                  {/* Delivery Tracking Bar */}
+                  {/* Delivery Tracking Bar Diagram */}
                   {order.status !== 'CANCELLED' && (
                     <div className="py-2">
                       <div className="flex items-center justify-between text-[11px] font-semibold text-slate-400 mb-2">
                         <span>Fulfilment Tracking Progression</span>
                         {order.trackingNumber && (
-                          <span className="font-mono text-gold-600 dark:text-gold-400">
+                          <span className="font-mono text-cyan-600 dark:text-cyan-400">
                             Tracking: <b>{order.trackingNumber}</b> ({order.assignedAgentName || 'Agent Assigned'})
                           </span>
                         )}
@@ -357,15 +357,18 @@ export const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ initialTab = 'st
                           return (
                             <div key={st} className="space-y-1">
                               <div
-                                className={`h-2 rounded-full transition-all ${
+                                className={`h-2.5 rounded-full transition-all ${
                                   isDone
-                                    ? 'bg-gradient-to-r from-gold-500 to-teal-500'
+                                    ? 'bg-gradient-to-r from-cyan-500 to-blue-500 shadow-sm shadow-cyan-500/30'
                                     : 'bg-slate-200 dark:bg-navy-800'
                                 }`}
                               />
-                              <p className={`text-[10px] truncate ${isCurrent ? 'font-bold text-slate-900 dark:text-slate-100' : 'text-slate-400'}`}>
-                                {st}
-                              </p>
+                              <div className="flex items-center gap-1">
+                                {isCurrent && <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping inline-block" />}
+                                <p className={`text-[10px] truncate ${isCurrent ? 'font-bold text-cyan-400' : isDone ? 'text-blue-300' : 'text-slate-500'}`}>
+                                  {st}
+                                </p>
+                              </div>
                             </div>
                           );
                         })}
