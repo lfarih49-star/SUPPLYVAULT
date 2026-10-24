@@ -70,6 +70,7 @@ export const Shell: React.FC<ShellProps> = ({
           { id: 'purchase-orders', label: 'Goods Receipts', icon: FileText },
           { id: 'orders', label: 'Order Packing', icon: ShoppingBag },
           { id: 'shipments', label: 'Dispatch Shipments', icon: Truck },
+          { id: 'audit', label: 'Operations Audit Log', icon: ShieldCheck },
         ];
       case 'BUYER':
         return [

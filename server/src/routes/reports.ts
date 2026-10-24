@@ -11,19 +11,43 @@ function escapeCsv(val: any): string {
   return `"${str}"`;
 }
 
-// GET /api/reports/audit (Manager only)
-router.get('/audit', authenticate, authorizeRoles('MANAGER'), async (_req: Request, res: Response) => {
+// GET /api/reports/audit (Manager & Staff)
+router.get('/audit', authenticate, authorizeRoles('MANAGER', 'STAFF'), async (req: Request, res: Response) => {
   try {
-    const result = await query(`
+    const { role, action, search, limit } = req.query;
+    const fetchLimit = Math.min(Math.max(parseInt(limit as string) || 200, 1), 500);
+
+    let sql = `
       SELECT 
         id, actor_id as "actorId", actor_name as "actorName",
         actor_role as "actorRole", action, entity_type as "entityType",
         entity_id as "entityId", details, ip_address as "ipAddress",
         created_at as "createdAt"
       FROM sv_audit_logs
-      ORDER BY created_at DESC
-      LIMIT 100;
-    `);
+      WHERE 1=1
+    `;
+    const params: any[] = [];
+
+    if (role && role !== 'ALL') {
+      params.push(role);
+      sql += ` AND actor_role = $${params.length}`;
+    }
+
+    if (action && action !== 'ALL') {
+      params.push(`%${action}%`);
+      sql += ` AND action ILIKE $${params.length}`;
+    }
+
+    if (search && typeof search === 'string' && search.trim() !== '') {
+      params.push(`%${search.trim()}%`);
+      const pIdx = params.length;
+      sql += ` AND (actor_name ILIKE $${pIdx} OR action ILIKE $${pIdx} OR details ILIKE $${pIdx} OR entity_type ILIKE $${pIdx} OR ip_address ILIKE $${pIdx})`;
+    }
+
+    params.push(fetchLimit);
+    sql += ` ORDER BY created_at DESC LIMIT $${params.length};`;
+
+    const result = await query(sql, params);
     return res.json(result.rows);
   } catch (err: any) {
     return res.status(500).json({ error: err.message });
@@ -131,6 +155,25 @@ router.get('/csv', authenticate, authorizeRoles('MANAGER', 'STAFF'), async (req:
           escapeCsv(r.tracking_number), escapeCsv(r.order_number), escapeCsv(r.assigned_agent_name), escapeCsv(r.status),
           escapeCsv(r.recipient_name), escapeCsv(r.delivery_address), escapeCsv(r.city), r.total_amount,
           escapeCsv(r.dispatched_at), escapeCsv(r.delivered_at), escapeCsv(r.failure_reason)
+        ].join(',') + '\n';
+      }
+    } else if (type === 'audit') {
+      const rows = await query(`
+        SELECT 
+          id, actor_name, actor_role, action, entity_type,
+          entity_id, details, ip_address, created_at
+        FROM sv_audit_logs
+        ORDER BY created_at DESC
+        LIMIT 500;
+      `);
+
+      const headers = ['Log ID', 'Timestamp (UTC)', 'Actor Name', 'Role', 'Action', 'Entity Type', 'Entity ID', 'Details', 'IP Address'];
+      csvContent = headers.join(',') + '\n';
+      for (const r of rows.rows) {
+        csvContent += [
+          escapeCsv(r.id), escapeCsv(r.created_at), escapeCsv(r.actor_name), escapeCsv(r.actor_role),
+          escapeCsv(r.action), escapeCsv(r.entity_type), escapeCsv(r.entity_id),
+          escapeCsv(r.details), escapeCsv(r.ip_address)
         ].join(',') + '\n';
       }
     } else {

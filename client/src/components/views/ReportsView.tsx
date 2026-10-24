@@ -43,6 +43,13 @@ export const ReportsView: React.FC = () => {
       filename: 'supplyvault_delivery_performance.csv',
       variant: 'success',
     },
+    {
+      id: 'audit',
+      title: 'Security & Operations Audit Trail',
+      description: 'Immutable forensic ledger of all authentication sessions, stock count adjustments, PO authorizations, and dispatches.',
+      filename: 'supplyvault_audit_trail.csv',
+      variant: 'blue',
+    },
   ];
 
   const handleDownload = async (type: string, filename: string) => {
