@@ -11,7 +11,11 @@
     "build:server": "esbuild server/src/index.ts --bundle --platform=node --target=node20 --format=esm --packages=external --outfile=dist/server.js",
     "build": "npm run build:client && npm run build:server",
     "start": "node dist/server.js",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "java:cli": "java -jar java/target/supplyvault-enterprise-1.0.0.jar --cli",
+    "java:gui": "java -jar java/target/supplyvault-enterprise-1.0.0.jar --gui",
+    "java:server": "java -jar java/target/supplyvault-enterprise-1.0.0.jar --server",
+    "java:build": "cd java && mvn clean package -DskipTests"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",
