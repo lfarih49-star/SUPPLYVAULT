@@ -230,3 +230,4 @@ public class SupplyVaultCLI {
         return text.length() <= max ? text : text.substring(0, max - 3) + "...";
     }
 }
+

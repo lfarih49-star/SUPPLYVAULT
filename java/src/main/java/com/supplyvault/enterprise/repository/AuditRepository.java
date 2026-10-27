@@ -12,3 +12,4 @@ public interface AuditRepository {
     void save(AuditLog log);
     void saveMovement(InventoryMovement movement);
 }
+

@@ -81,3 +81,4 @@ public class AuditLog {
                 createdAt, actorName, actorRole, action, entityType, details);
     }
 }
+

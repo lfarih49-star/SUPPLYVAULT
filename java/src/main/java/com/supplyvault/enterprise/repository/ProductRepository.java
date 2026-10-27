@@ -13,3 +13,4 @@ public interface ProductRepository {
     List<Product> findLowStockProducts();
     void updateStock(String productId, int newPhysical, int newReserved);
 }
+

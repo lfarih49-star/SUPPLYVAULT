@@ -17,3 +17,4 @@ public class InsufficientStockException extends SupplyVaultException {
     public int getRequested() { return requested; }
     public int getAvailable() { return available; }
 }
+

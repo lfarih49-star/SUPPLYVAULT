@@ -19,3 +19,4 @@ public enum Role {
         return description;
     }
 }
+

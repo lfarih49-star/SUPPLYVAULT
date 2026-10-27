@@ -5,3 +5,4 @@ public class EntityNotFoundException extends SupplyVaultException {
         super(String.format("%s not found with identifier: %s", entityType, identifier));
     }
 }
+

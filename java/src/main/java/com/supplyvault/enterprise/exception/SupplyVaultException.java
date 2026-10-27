@@ -9,3 +9,4 @@ public class SupplyVaultException extends RuntimeException {
         super(message, cause);
     }
 }
+

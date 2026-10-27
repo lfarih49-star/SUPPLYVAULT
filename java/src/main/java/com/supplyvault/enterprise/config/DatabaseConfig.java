@@ -117,3 +117,4 @@ public class DatabaseConfig {
         return "postgresql://postgres:root@localhost:5432/supplyvault";
     }
 }
+

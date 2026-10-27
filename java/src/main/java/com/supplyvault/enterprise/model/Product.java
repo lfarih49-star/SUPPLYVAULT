@@ -121,3 +121,4 @@ public class Product {
                 sku, name, physicalStock, reservedStock, getAvailableStock(), status);
     }
 }
+
